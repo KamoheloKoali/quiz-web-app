@@ -258,7 +258,7 @@
                                 button.style.animationTimingFunction = "ease-in-out";
 
                                 // stop question timer
-                                onchoose = 1;
+                                onchoose = 1; 
 
                                 button.disabled = false;
                                 opt1.disabled = true;
@@ -372,6 +372,7 @@
                     random: function(){
                        let run = Math.floor(Math.random() * 3);
                        onchoose = 0;
+                       score = 0;
 
                        removechanges();
 
@@ -417,7 +418,7 @@
                                 styleofpopupcorrect();
 
                                 // update score
-                                score += 1;
+                                score = 1;
                                 updatescore();
                                 
                                 },
@@ -832,7 +833,7 @@
                         styleofpopupcorrect();
 
                         // update score
-                        score += 1;
+                        score = 2;
                         updatescore();
 
                         },
@@ -1200,6 +1201,7 @@
                         random: function(){
                                 let run = Math.floor(Math.random() * 3);
                                 onchoose = 0;
+                                score = 0;
 
                                 // add question number
                                 document.getElementById("questionnum").innerHTML = "2 of 10 questions";
