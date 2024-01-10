@@ -8,7 +8,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
-    <body onload=" overalltimer(), bioquestion.next()">
+    <body onload=" overalltimer(), bioquestion.one.random()">
         <main>
 
             <div id="options">
@@ -36,6 +36,9 @@
         </main>
 
         <script>
+
+            let onchoose = 0;
+            var count = 9;
 
             //questions
 
@@ -78,23 +81,7 @@
                         timediv.remove();
 
                         // stop button animation
-                        button.style.animation = "none";
-
-                        // reset timer
-                        count = 89;
-                        interval = setInterval(function(){
-
-                                document.getElementById('count').innerHTML=count;
-                                count--;
-
-                                if (count === -1){
-                                    clearInterval(interval);
-                                    timerunout();
-                                    document.getElementById('count').innerHTML='0';
-                                }
-                            }, 1000);
-
-                            //enable buttons for answers
+                        button.style.animation = "none";     //enable buttons for answers
 
                             opt1.disabled = false;
                             opt2.disabled = false;
@@ -257,8 +244,7 @@
                                 button.style.animationTimingFunction = "ease-in-out";
 
                                 // stop question timer
-
-                                clearInterval(interval);
+                                onchoose += 1
 
                                 button.disabled = false;
                                 opt1.disabled = true;
@@ -331,8 +317,7 @@
                                 button.style.animationTimingFunction = "ease-in-out";
 
                                 // stop question timer
-
-                                clearInterval(interval);
+                                onchoose += 1;
 
                                 button.disabled = false;
                                 opt1.disabled = true;
@@ -345,7 +330,8 @@
             const bioquestion = {
 
                 next: function(){
-                    const question = Math.floor(Math.random() * 2);
+                    bioquestion.two.random();
+                    /*const question = Math.floor(Math.random() * 2);
                     let mem = 0;
 
                     switch(question){
@@ -364,7 +350,7 @@
                         bioquestion.one.random().disabled = true;
                     }else if(mem === 2){
                         bioquestion.two.random().disabled =  true;
-                    }
+                    }*/
                 },
 
                 one: {
@@ -390,6 +376,22 @@
                             button.disabled = true;
                             break;
                        };
+
+                       //timer
+                        var interval = setInterval(function(){
+
+                        document.getElementById('count').innerHTML=count;
+                        count--;
+
+                        if (count === -1){
+                            clearInterval(interval);
+                            timerunout();
+                            document.getElementById('count').innerHTML='0';
+                        }else if(onchoose === 1){
+                        clearInterval(interval);
+                    }
+                    }, 1000);
+
                     },
 
                         popwhencorrect: function(){
@@ -1195,6 +1197,7 @@
 
                         random: function(){
                                 let run = Math.floor(Math.random() * 3);
+                                onchoose -= 1;
 
                                 // add question number
                                 document.getElementById("questionnum").innerHTML = "2 of 10 questions";
@@ -1220,25 +1223,26 @@
                                 button.disabled = true;
                                 break;
 
+                                // reset timer
+                                var interval = setInterval(function(){
+
+                                count = 9;
+                                count--;
+
+                                if (count === -1){
+                                    clearInterval(interval);
+                                    timerunout();
+                                    document.getElementById('count').innerHTML='0';
+                                }else if(onchoose === 1){
+                                    clearInterval(interval);
+                                }    
+                            }, 1000);
+
                             };
                         }
                     },
 
     };
-
-    //timer
-    var count = 9;
-                    var interval = setInterval(function(){
-
-                    document.getElementById('count').innerHTML=count;
-                    count--;
-
-                    if (count === -1){
-                        clearInterval(interval);
-                        timerunout();
-                        document.getElementById('count').innerHTML='0';
-                    }
-                }, 1000);
 
         //countdown
         function overalltimer(){
