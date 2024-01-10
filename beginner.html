@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>beginner quiz</title>
+        <link rel="icon" type="image/x-icon" href="logo.png">
+        <link rel="stylesheet" href="quizstyle.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body onload=" overalltimer(), bioquestion.next()">
+        <main>
+
+            <div id="options">
+                <h1>SCORE: <span id="score">0</span></h1>
+                <h4 id="time">Time Left<span id="count">Start</span></h4>
+                <h2 id="home"><i title="Home" class="fa fa-home" style="font-size: 48px;"></i></h2>
+                <h3 id="question"></h3>
+
+                <div>
+                    <button id="opt1"></button><br>
+                    <button id="opt2"></button><br>
+                    <button id="opt3"></button><br>
+                    <button id="opt4"></button>
+                </div>
+
+                <div id="countdown" style="font-family: sans-serif; font-weight: bolder;"></div>
+
+                <hr>
+
+                <div id="next">
+                  <h5 id="questionnum">1 of 10 questions</h5>
+                  <button id="nextbutton" onclick="bioquestion.next()">Next</button>
+                </div>
+           </div>
+        </main>
+
+        <script>
+
+            //questions
+
+            const element = document.getElementById("options");
+            const opt1 = document.getElementById("opt1");
+            const opt2 = document.getElementById("opt2");
+            const opt3 = document.getElementById("opt3");
+            const opt4 = document.getElementById("opt4");
+
+            // div for pop up when wrong or correct
+
+            const div = document.createElement("div");
+            const div1 = document.createElement("div");
+            const div2 = document.createElement("div");
+            const timediv = document.createElement("div");
+
+
+            // removing changes on page for following question
+
+            function removechanges(){
+                        // background color
+
+                        opt2.style.backgroundColor = "hsla(33, 100%, 88%, 0.5)";
+                        opt1.style.backgroundColor = "hsla(33, 100%, 88%, 0.5)"; 
+                        opt4.style.backgroundColor = "hsla(33, 100%, 88%, 0.5)";
+                        opt3.style.backgroundColor = "hsla(33, 100%, 88%, 0.5)";
+
+
+                        //  border
+
+                        opt1.style.border = "5px solid rgba(0, 0, 0, 0.3)"; 
+                        opt2.style.border = "5px solid rgba(0, 0, 0, 0.3)";
+                        opt3.style.border = "5px solid rgba(0, 0, 0, 0.3)";
+                        opt4.style.border = "5px solid rgba(0, 0, 0, 0.3)";
+
+                        // remove pop up
+                        div.remove();
+                        div1.remove();
+                        div2.remove();
+                        timediv.remove();
+
+                        // stop button animation
+                        button.style.animation = "none";
+
+                        // reset timer
+                        count = 89;
+                        interval = setInterval(function(){
+
+                                document.getElementById('count').innerHTML=count;
+                                count--;
+
+                                if (count === -1){
+                                    clearInterval(interval);
+                                    timerunout();
+                                    document.getElementById('count').innerHTML='0';
+                                }
+                            }, 1000);
+
+                            //enable buttons for answers
+
+                            opt1.disabled = false;
+                            opt2.disabled = false;
+                            opt3.disabled = false;
+                            opt4.disabled = false;
+
+
+            };
+
+            //update score
+            let score = 0;
+
+            function updatescore(){
+
+                const scorecount = document.getElementById("score");
+
+                if(score === 1){
+                    scorecount.innerHTML = "1";
+                }else if(score === 2){
+                    scorecount.innerHTML = "2";
+                }else if(score === 3){
+                    scorecount.innerHTML = "3";
+                }else if(score === 4){
+                    scorecount.innerHTML = "4";
+                }else if(score === 5){
+                    scorecount.innerHTML = "5";
+                }else if(score === 6){
+                    scorecount.innerHTML = "6";
+                }else if(score === 7){
+                    scorecount.innerHTML = "7";
+                }else if(score === 8){
+                    scorecount.innerHTML = "8";
+                }else if(score === 9){
+                    scorecount.innerHTML = "9";
+                }else if(score === 10){
+                    scorecount.innerHTML = "10";
+                }
+
+            };
+
+            // next button
+            const button = document.getElementById("nextbutton");
+
+            // when time runs out
+            function timerunout(){
+
+                // add div
+                const text = document.createTextNode("You\'ve run out time!!😦");
+                const par = document.createElement("p");
+                                const heading = document.createElement("h3");
+
+
+                                // append to webpage
+                                element.appendChild(timediv);
+                                timediv.appendChild(heading);
+                                timediv.appendChild(par);
+                                heading.appendChild(text);
+
+                                // style new elements
+                                timediv.style.backgroundColor = "red";
+                                timediv.style.maxWidth = "20%";
+                                timediv.style.maxHeight = "80%";
+                                timediv.style.zIndex = "-1";
+                                timediv.style.position = "absolute";
+                                timediv.style.top = "13%";
+                                timediv.style.right = "30%";
+                                timediv.style.borderRadius = "10px";
+                                timediv.style.boxShadow = "0px 4px 25px 0 black";
+                                timediv.style.fontFamily = "sans-serif";
+                                timediv.style.fontWeight = "bold";
+                                timediv.style.fontSize = "1em";
+
+                                // timediv animation
+                                timediv.style.animation = "timedivanimation";
+                                timediv.style.animationDuration = "5s";
+                                timediv.style.animationTimingFunction = "ease-in-out";
+                                timediv.style.transition = "top 5s";
+
+                                //button 
+                                button.style.animation = "anim";
+                                button.style.animationDuration = "3s";
+                                button.style.animationIterationCount = "infinite";
+                                button.style.animationTimingFunction = "ease-in-out";
+                                button.disabled = false;
+
+                                // disable option buttons
+                                opt1.disabled = true;
+                                opt2.disabled = true;
+                                opt3.disabled = true;
+                                opt4.disabled = true;
+
+                                // remove pop up 
+                                setTimeout(() => {
+                                    bioquestion.next();
+                                }, 10000);
+                       
+            };
+
+            function styleofpopupcorrect(){
+
+                                //animation
+                                div.style.animation = "popwhencorrectanimation";
+                                div1.style.animation = "popwhencorrectanimation";
+                                div2.style.animation = "popwhencorrectanimation";
+                                
+                
+                                // style new elements first div
+                                div.style.backgroundColor = "lawngreen";
+                                div.style.maxWidth = "20%";
+                                div.style.maxHeight = "80%";
+                                div.style.position = "absolute"
+                                div.style.top = "5%"
+                                div.style.borderRadius = "10px";
+                                div.style.boxShadow = "1px 1px 8px 0 black";
+                                div.style.fontFamily = "sans-serif"
+                                div.style.fontWeight = "bold";
+                                div.style.fontSize = "1em";
+                                div.style.animationDuration = "5s";
+                                div.style.animationTimingFunction = "ease-in-out";
+                                div.style.transition = "top 5s";
+                                div.style.zIndex = "-1";
+
+                                // style new elements sec div
+                                div1.style.backgroundColor = "lawngreen";
+                                div1.style.maxWidth = "20%";
+                                div1.style.maxHeight = "80%";
+                                div1.style.position = "absolute"
+                                div1.style.top = "5%"
+                                div1.style.borderRadius = "10px";
+                                div1.style.boxShadow = "1px 1px 8px 0 black";
+                                div1.style.fontFamily = "sans-serif"
+                                div1.style.fontWeight = "bold";
+                                div1.style.fontSize = "1em";
+                                div1.style.animationDuration = "5s";
+                                div1.style.animationTimingFunction = "ease-in-out";
+                                div1.style.transition = "top 5s";
+                                div1.style.zIndex = "-1";
+
+                                // style new elements third div
+                                div2.style.backgroundColor = "lawngreen";
+                                div2.style.maxWidth = "20%";
+                                div2.style.maxHeight = "80%";
+                                div2.style.position = "absolute"
+                                div2.style.top = "5%"
+                                div2.style.borderRadius = "10px";
+                                div2.style.boxShadow = "1px 1px 8px 0 black";
+                                div2.style.fontFamily = "sans-serif"
+                                div2.style.fontWeight = "bold";
+                                div2.style.fontSize = "1em";
+                                div2.style.animationDuration = "5s";
+                                div2.style.animationTimingFunction = "ease-in-out";
+                                div2.style.transition = "top 5s";
+                                div2.style.zIndex = "-1";
+
+                                // next button
+
+                                button.style.animation = "anim";
+                                button.style.animationDuration = "3s";
+                                button.style.animationIterationCount = "infinite";
+                                button.style.animationTimingFunction = "ease-in-out";
+
+                                // stop question timer
+
+                                clearInterval(interval);
+
+                                button.disabled = false;
+                                opt1.disabled = true;
+                                opt2.disabled = true;
+                                opt3.disabled = true;
+                                opt4.disabled = true;
+
+            };
+
+            function styleofpopupwrong(){
+
+                                //animation
+                                div.style.animation = "popwhenwronganimation";
+                                div1.style.animation = "popwhenwronganimation";
+                                div2.style.animation = "popwhenwronganimation";
+                
+                                // style new elements for first div
+                                div.style.backgroundColor = "red";
+                                div.style.maxWidth = "20%";
+                                div.style.maxHeight = "80%";
+                                div.style.position = "absolute"
+                                div.style.top = "2%"
+                                div.style.borderRadius = "10px";
+                                div.style.boxShadow = "1px 1px 8px 0 black";
+                                div.style.fontFamily = "sans-serif"
+                                div.style.fontWeight = "bold";
+                                div.style.fontSize = "1em";
+                                div.style.animationDuration = "5s";
+                                div.style.animationTimingFunction = "ease-in-out";
+                                div.style.transition = "top 5s";
+                                div.style.zIndex = "-1";
+
+                                // style new elements for sec div
+                                div1.style.backgroundColor = "red";
+                                div1.style.maxWidth = "20%";
+                                div1.style.maxHeight = "80%";
+                                div1.style.position = "absolute"
+                                div1.style.top = "2%"
+                                div1.style.borderRadius = "10px";
+                                div1.style.boxShadow = "1px 1px 8px 0 black";
+                                div1.style.fontFamily = "sans-serif"
+                                div1.style.fontWeight = "bold";
+                                div1.style.fontSize = "1em";
+                                div1.style.animationDuration = "5s";
+                                div1.style.animationTimingFunction = "ease-in-out";
+                                div1.style.transition = "top 5s";
+                                div1.style.zIndex = "-1";
+
+                                // style new elements for third div
+                                div2.style.backgroundColor = "red";
+                                div2.style.maxWidth = "20%";
+                                div2.style.maxHeight = "80%";
+                                div2.style.position = "absolute"
+                                div2.style.top = "5%"
+                                div2.style.borderRadius = "10px";
+                                div2.style.boxShadow = "1px 1px 8px 0 black";
+                                div2.style.fontFamily = "sans-serif"
+                                div2.style.fontWeight = "bold";
+                                div2.style.fontSize = "1em";
+                                div2.style.animationDuration = "5s";
+                                div2.style.animationTimingFunction = "ease-in-out";
+                                div2.style.transition = "top 5s";
+                                div2.style.zIndex = "-1";
+
+                                // next button
+
+                                button.style.animation = "anim";
+                                button.style.animationDuration = "3s";
+                                button.style.animationIterationCount = "infinite";
+                                button.style.animationTimingFunction = "ease-in-out";
+
+                                // stop question timer
+
+                                clearInterval(interval);
+
+                                button.disabled = false;
+                                opt1.disabled = true;
+                                opt2.disabled = true;
+                                opt3.disabled = true;
+                                opt4.disabled = true;
+                            
+            };
+
+            const bioquestion = {
+
+                next: function(){
+                    const question = Math.floor(Math.random() * 2);
+                    let mem = 0;
+
+                    switch(question){
+                        case 0:
+                            bioquestion.one.random();
+                            mem += 1;
+                            break;
+
+                        case 1:
+                            bioquestion.two.random();
+                            mem += 2;
+                            break;   
+                    };
+
+                    if(mem === 1){
+                        bioquestion.one.random().disabled = true;
+                    }else if(mem === 2){
+                        bioquestion.two.random().disabled =  true;
+                    }
+                },
+
+                one: {
+
+                    random: function(){
+                       let run = Math.floor(Math.random() * 3);
+
+                       removechanges();
+
+                       switch(run){
+                        case 0:
+                            bioquestion.one.order1();
+                            button.disabled = true;
+                            break;
+
+                        case 1:
+                            bioquestion.one.order2();
+                            button.disabled = true;
+                            break;
+
+                        case 2:
+                            bioquestion.one.order3();
+                            button.disabled = true;
+                            break;
+                       };
+                    },
+
+                        popwhencorrect: function(){
+
+                                // add div to state that they are correct
+                                const par = document.createElement("p");
+                                const heading = document.createElement("h3");
+                                const text = document.createTextNode("Correct!");
+                                const ans = document.createTextNode("Nutrition is the process of taking in food and converting it into energy and other vital nutrients required for life")
+                                const emoji = document.createTextNode("😀");
+
+                                // append to webpage
+
+                                element.appendChild(div);
+                                div.appendChild(heading);
+                                div.appendChild(par);
+                                heading.appendChild(text);
+                                heading.appendChild(emoji);
+                                par.appendChild(ans);
+
+                                styleofpopupcorrect();
+
+                                // update score
+                                score += 1;
+                                updatescore();
+                                
+                                },
+
+                        popwhenwrong: function(){
+
+                                // add div to state that they are correct
+                                const par = document.createElement("p");
+                                const heading = document.createElement("h3");
+                                const text = document.createTextNode("Wrong!");
+                                const ans = document.createTextNode("The correct answer is nutrition. It is the process of taking in food and converting it into energy and other vital nutrients required for life")
+                                const emoji = document.createTextNode("🙁");
+
+                                // append to webpage
+
+                                element.appendChild(div);
+                                div.appendChild(heading);
+                                div.appendChild(par);
+                                heading.appendChild(text);
+                                heading.appendChild(emoji);
+                                par.appendChild(ans);
+
+                                styleofpopupwrong();
+
+                                },
+
+                    // option2 correct
+
+                    correct: function(){
+
+                        // change background color
+
+                        opt2.style.backgroundColor = "lawngreen";
+                        opt1.style.backgroundColor = "grey"; 
+                        opt4.style.backgroundColor = "grey";
+                        opt3.style.backgroundColor = "grey";
+
+
+                        // remove border
+                        opt1.style.border = "none"; 
+                        opt2.style.border = "none";
+                        opt3.style.border = "none";
+                        opt4.style.border = "none";
+
+                        bioquestion.one.popwhencorrect();
+
+                        // next
+                        opt2.addEventListener("click", setTimeout(() => {
+                            bioquestion.next();
+                        }, 60000));
+                        
+                        
+                    },
+
+                    // option 4 correct
+
+                    correct1: function(){
+
+                        // change background color
+
+                        opt4.style.backgroundColor = "lawngreen";
+                        opt1.style.backgroundColor = "grey"; 
+                        opt2.style.backgroundColor = "grey";
+                        opt3.style.backgroundColor = "grey";
+
+                        // remove border
+
+                        opt1.style.border = "none"; 
+                        opt2.style.border = "none";
+                        opt3.style.border = "none";
+                        opt4.style.border = "none";
+
+                        bioquestion.one.popwhencorrect();
+
+                        // next
+                        opt4.addEventListener("click", setTimeout(() => {
+                            bioquestion.next();
+                        }, 60000));
+                        
+                    },
+
+                    // option 3 correct
+
+                    correct2: function(){
+                        
+                        // change background color
+
+                        opt3.style.backgroundColor = "grey";
+                        opt1.style.backgroundColor = "lawngreen"; 
+                        opt2.style.backgroundColor = "grey";
+                        opt4.style.backgroundColor = "grey";
+
+
+                        // remove border
+
+                        opt1.style.border = "none"; 
+                        opt2.style.border = "none";
+                        opt3.style.border = "none";
+                        opt4.style.border = "none";
+
+                        bioquestion.one.popwhencorrect();
+
+                        // next
+
+                        opt3.addEventListener("click", setTimeout(() => {
+                            bioquestion.next();
+                        }, 60000));
+
+                    },
+
+                    wrong1: function(){
+
+                        // change background color
+
+                        opt1.style.backgroundColor = "red";
+                        opt3.style.backgroundColor = "grey"; 
+                        opt2.style.backgroundColor = "lawngreen";
+                        opt4.style.backgroundColor = "grey";
+
+
+                        // remove border
+
+                        opt1.style.border = "none"; 
+                        opt2.style.border = "none";
+                        opt3.style.border = "none";
+                        opt4.style.border = "none";
+
+                        bioquestion.one.popwhenwrong();
+
+                        // next
+
+                        opt1.addEventListener("click", setTimeout(() => {
+                            bioquestion.next();
+                        }, 60000));
+
+                    },
+
+                    wrong2: function(){
+                        // change background color
+
+                        opt3.style.backgroundColor = "red";
+                        opt1.style.backgroundColor = "grey"; 
+                        opt2.style.backgroundColor = "lawngreen";
+                        opt4.style.backgroundColor = "grey";
+
+
+                        // remove border
+
+                        opt1.style.border = "none"; 
+                        opt2.style.border = "none";
+                        opt3.style.border = "none";
+                        opt4.style.border = "none";
+
+                        bioquestion.one.popwhenwrong();
+
+                        // next
+
+                        opt3.addEventListener("click", setTimeout(() => {
+                            bioquestion.next();
+                        }, 60000));
+
+                    },
+
+                    wrong3: function(){
+                        // change background color
+
+                        opt4.style.backgroundColor = "red";
+                        opt1.style.backgroundColor = "grey"; 
+                        opt2.style.backgroundColor = "lawngreen";
+                        opt3.style.backgroundColor = "grey";
+
+
+                        // remove border
+
+                        opt1.style.border = "none"; 
+                        opt2.style.border = "none";
+                        opt3.style.border = "none";
+                        opt4.style.border = "none";
+
+                        bioquestion.one.popwhenwrong();
+
+                        // next
+
+                        opt4.addEventListener("click", setTimeout(() => {
+                            bioquestion.next();
+                        }, 60000));
+
+                    },
+
+                    wrong4: function(){
+                        // change background color
+
+                        opt1.style.backgroundColor = "red";
+                        opt3.style.backgroundColor = "grey"; 
+                        opt2.style.backgroundColor = "grey";
+                        opt4.style.backgroundColor = "lawngreen";
+
+
+                        // remove border
+
+                        opt1.style.border = "none"; 
+                        opt2.style.border = "none";
+                        opt3.style.border = "none";
+                        opt4.style.border = "none";
+
+                        bioquestion.one.popwhenwrong();
+
+                        // next
+
+                        opt1.addEventListener("click", setTimeout(() => {
+                            bioquestion.next();
+                        }, 60000));
+
+                    },
+
+                    wrong5: function(){
+                        // change background color
+
+                        opt2.style.backgroundColor = "red";
+                        opt1.style.backgroundColor = "grey"; 
+                        opt3.style.backgroundColor = "grey";
+                        opt4.style.backgroundColor = "lawngreen";
+
+
+                        // remove border
+
+                        opt1.style.border = "none"; 
+                        opt2.style.border = "none";
+                        opt3.style.border = "none";
+                        opt4.style.border = "none";
+
+                        bioquestion.one.popwhenwrong();
+
+                        // next
+
+                        opt2.addEventListener("click", setTimeout(() => {
+                            bioquestion.next();
+                        }, 60000));
+
+                    },
+
+                    wrong6: function(){
+                        // change background color
+
+                        opt3.style.backgroundColor = "red";
+                        opt1.style.backgroundColor = "grey"; 
+                        opt2.style.backgroundColor = "grey";
+                        opt4.style.backgroundColor = "lawngreen";
+
+
+                        // remove border
+
+                        opt1.style.border = "none"; 
+                        opt2.style.border = "none";
+                        opt3.style.border = "none";
+                        opt4.style.border = "none";
+
+                        bioquestion.one.popwhenwrong();
+
+                        // next
+
+                        opt3.addEventListener("click", setTimeout(() => {
+                            bioquestion.next();
+                        }, 60000));
+
+                    },
+
+                    wrong7: function(){
+                        // change background color
+
+                        opt1.style.backgroundColor = "lawngreen";
+                        opt3.style.backgroundColor = "red"; 
+                        opt2.style.backgroundColor = "grey";
+                        opt4.style.backgroundColor = "grey";
+
+
+                        // remove border
+
+                        opt1.style.border = "none"; 
+                        opt2.style.border = "none";
+                        opt3.style.border = "none";
+                        opt4.style.border = "none";
+
+                        bioquestion.one.popwhenwrong();
+
+                        // next
+
+                        opt2.addEventListener("click", setTimeout(() => {
+                            bioquestion.next();
+                        }, 60000));
+
+                    },
+
+                    wrong8: function(){
+                        // change background color
+
+                        opt2.style.backgroundColor = "red";
+                        opt1.style.backgroundColor = "grey"; 
+                        opt3.style.backgroundColor = "lawngreen";
+                        opt4.style.backgroundColor = "grey";
+
+
+                        // remove border
+
+                        opt1.style.border = "none"; 
+                        opt2.style.border = "none";
+                        opt3.style.border = "none";
+                        opt4.style.border = "none";
+
+                        bioquestion.one.popwhenwrong();
+
+                        // next
+
+                        opt2.addEventListener("click", setTimeout(() => {
+                            bioquestion.next();
+                        }, 60000));
+
+                    },
+
+                    wrong9: function(){
+                        // change background color
+
+                        opt4.style.backgroundColor = "red";
+                        opt1.style.backgroundColor = "grey"; 
+                        opt2.style.backgroundColor = "grey";
+                        opt3.style.backgroundColor = "lawngreen";
+
+
+                        // remove border
+
+                        opt1.style.border = "none"; 
+                        opt2.style.border = "none";
+                        opt3.style.border = "none";
+                        opt4.style.border = "none";
+
+                        bioquestion.one.popwhenwrong();
+
+                        // next
+
+                        opt4.addEventListener("click", setTimeout(() => {
+                            bioquestion.two.random();
+                            removechanges();
+                        }, 60000));
+                        
+                    },
+
+                    order1: function(){
+                        document.getElementById("question").innerHTML = "Which  characteristic  of  living  organisms is  the  taking  in <br> of  materials  for  energy,  growth  and development?";
+                        opt1.innerHTML = "respiration";
+                        opt2.innerHTML = "nutrition";
+                        opt3.innerHTML = "excretion";
+                        opt4.innerHTML = "reproduction";
+
+                        opt1.addEventListener("click", bioquestion.one.wrong1);
+                        opt2.addEventListener("click", bioquestion.one.correct);
+                        opt3.addEventListener("click", bioquestion.one.wrong2);
+                        opt4.addEventListener("click", bioquestion.one.wrong3);
+
+                    },
+
+                    order2: function(){
+                        document.getElementById("question").innerHTML = "Which  characteristic  of  living  organisms is  the  taking  in <br> of  materials  for  energy,  growth  and development?";
+                        opt1.innerHTML = "reproduction";
+                        opt2.innerHTML = "respiration";
+                        opt3.innerHTML = "excretion";
+                        opt4.innerHTML = "nutrition";
+
+                        opt1.addEventListener("click", bioquestion.one.wrong4);
+                        opt2.addEventListener("click", bioquestion.one.wrong5);
+                        opt3.addEventListener("click", bioquestion.one.wrong6);
+                        opt4.addEventListener("click", bioquestion.one.correct1);
+
+                    },
+
+                    order3: function(){
+                        document.getElementById("question").innerHTML = "Which  characteristic  of  living  organisms is  the  taking  in <br> of  materials  for  energy,  growth  and development?";
+                        opt1.innerHTML = "nutrition";
+                        opt2.innerHTML = "excretion";
+                        opt3.innerHTML = "respiration ";
+                        opt4.innerHTML = "reproduction";
+
+                        opt1.addEventListener("click", bioquestion.one.correct2);
+                        opt2.addEventListener("click", bioquestion.one.wrong8);
+                        opt3.addEventListener("click", bioquestion.one.wrong7);
+                        opt4.addEventListener("click", bioquestion.one.wrong9);
+
+                    }
+                },
+
+                two: {
+
+                    popwhencorrect: function(){
+
+                        // add div to state that they are correct
+
+                        const heading = document.createElement("h3");
+                        const par = document.createElement("p");
+                        const text = document.createTextNode("Correct!");
+                        const ans = document.createTextNode("Ranunculus bulbosus and Ranunculus repens")
+                        const emoji = document.createTextNode("😀");
+
+                        // append to webpage
+
+                        element.appendChild(div1);
+                        div1.appendChild(heading);
+                        div1.appendChild(par);
+                        div.remove();
+                        heading.appendChild(text);
+                        heading.appendChild(emoji);
+                        par.appendChild(ans);
+
+                        styleofpopupcorrect();
+
+                        // update score
+                        score += 1;
+                        updatescore();
+
+                        },
+
+                        popwhenwrong: function(){
+
+                            // add div to state that they are correct
+
+                            const heading = document.createElement("h3");
+                            const par = document.createElement("p");
+                            const text = document.createTextNode("Wrong!");
+                            const ans = document.createTextNode("The correct answer is Ranunculus bulbosus and Ranunculus repens")
+                            const emoji = document.createTextNode("🙁");
+
+                            // append to webpage
+
+                            element.appendChild(div1);
+                            div1.appendChild(heading);
+                            div1.appendChild(par);
+                            div.remove();
+                            heading.appendChild(text);
+                            heading.appendChild(emoji);
+                            par.appendChild(ans);
+
+                            styleofpopupwrong();
+
+                            },
+
+
+                    // option2 correct
+
+                    correct: function(){
+
+                        // change background color
+
+                        opt2.style.backgroundColor = "lawngreen";
+                        opt1.style.backgroundColor = "grey"; 
+                        opt4.style.backgroundColor = "grey";
+                        opt3.style.backgroundColor = "grey";
+
+
+                        // remove border
+                        opt1.style.border = "none"; 
+                        opt2.style.border = "none";
+                        opt3.style.border = "none";
+                        opt4.style.border = "none";
+
+                        bioquestion.two.popwhencorrect();
+
+                        opt2.addEventListener("click", setTimeout(() => {
+                            bioquestion.next();
+                        }, 60000));
+
+                    },
+
+                        // option 4 correct
+
+                     correct1: function(){
+
+                            // change background color
+
+                            opt4.style.backgroundColor = "lawngreen";
+                            opt1.style.backgroundColor = "grey"; 
+                            opt2.style.backgroundColor = "grey";
+                            opt3.style.backgroundColor = "grey";
+
+                            // remove border
+
+                            opt1.style.border = "none"; 
+                            opt2.style.border = "none";
+                            opt3.style.border = "none";
+                            opt4.style.border = "none";
+
+                            bioquestion.two.popwhencorrect();
+
+                            opt4.addEventListener("click", setTimeout(() => {
+                            bioquestion.next();
+                        }, 60000));
+
+                            },
+
+                            correct2: function(){
+
+                                // change background color
+
+                                opt2.style.backgroundColor = "lawngreen";
+                                opt1.style.backgroundColor = "grey"; 
+                                opt3.style.backgroundColor = "grey";
+                                opt4.style.backgroundColor = "grey";
+
+
+                                // remove border
+
+                                opt1.style.border = "none"; 
+                                opt2.style.border = "none";
+                                opt3.style.border = "none";
+                                opt4.style.border = "none";
+
+                                bioquestion.two.popwhencorrect();
+
+                                opt2.addEventListener("click", setTimeout(() => {
+                                    bioquestion.next();
+                                }, 60000));
+
+                            },
+
+                            wrong1: function(){
+
+                                // change background color
+
+                                opt1.style.backgroundColor = "red";
+                                opt3.style.backgroundColor = "grey"; 
+                                opt2.style.backgroundColor = "lawngreen";
+                                opt4.style.backgroundColor = "grey";
+
+
+                                // remove border
+
+                                opt1.style.border = "none"; 
+                                opt2.style.border = "none";
+                                opt3.style.border = "none";
+                                opt4.style.border = "none";
+
+                                bioquestion.two.popwhenwrong();
+
+                                opt1.addEventListener("click", setTimeout(() => {
+                                    bioquestion.next();
+                                }, 60000));
+
+                            },
+
+                            wrong2: function(){
+                                    // change background color
+
+                                    opt3.style.backgroundColor = "red";
+                                    opt1.style.backgroundColor = "grey"; 
+                                    opt2.style.backgroundColor = "lawngreen";
+                                    opt4.style.backgroundColor = "grey";
+
+
+                                    // remove border
+
+                                    opt1.style.border = "none"; 
+                                    opt2.style.border = "none";
+                                    opt3.style.border = "none";
+                                    opt4.style.border = "none";
+
+                                    bioquestion.two.popwhenwrong();
+
+                                    opt3.addEventListener("click", setTimeout(() => {
+                                    bioquestion.next();
+                                }, 60000));
+
+                            },
+
+                            wrong3: function(){
+                                // change background color
+
+                                opt4.style.backgroundColor = "red";
+                                opt1.style.backgroundColor = "grey"; 
+                                opt2.style.backgroundColor = "lawngreen";
+                                opt3.style.backgroundColor = "grey";
+
+
+                                // remove border
+
+                                opt1.style.border = "none"; 
+                                opt2.style.border = "none";
+                                opt3.style.border = "none";
+                                opt4.style.border = "none";
+
+                                bioquestion.two.popwhenwrong();
+
+                                opt4.addEventListener("click", setTimeout(() => {
+                                    bioquestion.next();
+                                }, 60000));
+
+                            },
+
+                            wrong4: function(){
+                                // change background color
+
+                                opt1.style.backgroundColor = "red";
+                                opt3.style.backgroundColor = "grey"; 
+                                opt2.style.backgroundColor = "grey";
+                                opt4.style.backgroundColor = "lawngreen";
+
+
+                                // remove border
+
+                                opt1.style.border = "none"; 
+                                opt2.style.border = "none";
+                                opt3.style.border = "none";
+                                opt4.style.border = "none";
+
+                                bioquestion.two.popwhenwrong();
+
+                                opt1.addEventListener("click", setTimeout(() => {
+                                    bioquestion.next();
+                                }, 60000));
+
+                            },
+
+                            wrong5: function(){
+                                // change background color
+
+                                opt2.style.backgroundColor = "red";
+                                opt1.style.backgroundColor = "grey"; 
+                                opt3.style.backgroundColor = "grey";
+                                opt4.style.backgroundColor = "lawngreen";
+
+
+                                // remove border
+
+                                opt1.style.border = "none"; 
+                                opt2.style.border = "none";
+                                opt3.style.border = "none";
+                                opt4.style.border = "none";
+
+                                bioquestion.two.popwhenwrong();
+
+                                opt2.addEventListener("click", setTimeout(() => {
+                                    bioquestion.next();
+                                }, 60000));
+
+                            },
+
+                            wrong6: function(){
+                                // change background color
+
+                                opt3.style.backgroundColor = "red";
+                                opt1.style.backgroundColor = "grey"; 
+                                opt2.style.backgroundColor = "grey";
+                                opt4.style.backgroundColor = "lawngreen";
+
+
+                                // remove border
+
+                                opt1.style.border = "none"; 
+                                opt2.style.border = "none";
+                                opt3.style.border = "none";
+                                opt4.style.border = "none";
+
+                                bioquestion.two.popwhenwrong();
+
+                                opt3.addEventListener("click", setTimeout(() => {
+                                    bioquestion.next();
+                                }, 60000));
+
+                            },
+
+                            wrong7: function(){
+                                // change background color
+
+                                opt1.style.backgroundColor = "red";
+                                opt3.style.backgroundColor = "grey"; 
+                                opt2.style.backgroundColor = "lawngreen";
+                                opt4.style.backgroundColor = "grey";
+
+
+                                // remove border
+
+                                opt1.style.border = "none"; 
+                                opt2.style.border = "none";
+                                opt3.style.border = "none";
+                                opt4.style.border = "none";
+
+                                bioquestion.two.popwhenwrong();
+
+                                opt3.addEventListener("click", setTimeout(() => {
+                                    bioquestion.next();
+                                }, 60000));
+
+                            },
+
+                            wrong8: function(){
+                                // change background color
+
+                                opt2.style.backgroundColor = "red";
+                                opt1.style.backgroundColor = "grey"; 
+                                opt3.style.backgroundColor = "lawngreen";
+                                opt4.style.backgroundColor = "grey";
+
+
+                                // remove border
+
+                                opt1.style.border = "none"; 
+                                opt2.style.border = "none";
+                                opt3.style.border = "none";
+                                opt4.style.border = "none";
+
+                                bioquestion.two.popwhenwrong();
+
+                                opt2.addEventListener("click", setTimeout(() => {
+                                    bioquestion.next();
+                                }, 60000));
+
+                            },
+
+                            wrong9: function(){
+                                // change background color
+
+                                opt4.style.backgroundColor = "red";
+                                opt1.style.backgroundColor = "grey"; 
+                                opt2.style.backgroundColor = "grey";
+                                opt3.style.backgroundColor = "lawngreen";
+
+
+                                // remove border
+
+                                opt1.style.border = "none"; 
+                                opt2.style.border = "none";
+                                opt3.style.border = "none";
+                                opt4.style.border = "none";
+
+                                bioquestion.two.popwhenwrong();
+
+                                opt4.addEventListener("click", setTimeout(() => {
+                                    bioquestion.next();
+                                }, 60000));
+
+                            },
+
+
+                            order1: function(){
+                            document.getElementById("question").innerHTML = "Which pair of plant species belong to the same genus? ";
+                            opt1.innerHTML = "Juncus bulbosus and Ranunculus bulbosus";
+                            opt2.innerHTML = "Ranunculus bulbosus and Ranunculus repens";
+                            opt3.innerHTML = "Callisia repens and Juncus bulbosus";
+                            opt4.innerHTML = "Callisia repens and Ranunculus repens";
+                            opt1.addEventListener("click", bioquestion.two.wrong1);
+                            opt2.addEventListener("click", bioquestion.two.correct);
+                            opt3.addEventListener("click", bioquestion.two.wrong2);
+                            opt4.addEventListener("click", bioquestion.two.wrong3);
+
+                        },
+
+                        order2: function(){
+                            document.getElementById("question").innerHTML = "Which pair of plant species belong to the same genus? ";
+                            opt1.innerHTML = "Callisia repens and Juncus bulbosus";
+                            opt2.innerHTML = "Callisia repens and Ranunculus repens";
+                            opt3.innerHTML = "Juncus bulbosus and Ranunculus bulbosus";
+                            opt4.innerHTML = "Ranunculus bulbosus and Ranunculus repens";
+                            opt1.addEventListener("click", bioquestion.two.wrong4);
+                            opt2.addEventListener("click", bioquestion.two.wrong5);
+                            opt3.addEventListener("click", bioquestion.two.wrong6);
+                            opt4.addEventListener("click", bioquestion.two.correct1);
+
+                        },
+
+                        order3: function(){
+                            document.getElementById("question").innerHTML = "Which pair of plant species belong to the same genus? ";
+                            opt1.innerHTML = "Juncus bulbosus and Ranunculus bulbosus";
+                            opt2.innerHTML = "Ranunculus bulbosus and Ranunculus repens";
+                            opt3.innerHTML = "Callisia repens and Juncus bulbosus";
+                            opt4.innerHTML = "Callisia repens and Ranunculus repens";
+                            opt1.addEventListener("click", bioquestion.two.wrong7);
+                            opt2.addEventListener("click", bioquestion.two.correct2);
+                            opt3.addEventListener("click", bioquestion.two.wrong8 );
+                            opt4.addEventListener("click", bioquestion.two.wrong9);
+
+                        },
+
+
+                        random: function(){
+                                let run = Math.floor(Math.random() * 3);
+
+                                // add question number
+                                document.getElementById("questionnum").innerHTML = "2 of 10 questions";
+
+                                // remove div 
+                                removechanges();
+
+                                //pick random question
+                                switch(run){
+
+                                case 0:
+                                bioquestion.two.order1();
+                                button.disabled = true;
+                                break;
+
+                                case 1:
+                                bioquestion.two.order2();
+                                button.disabled = true;
+                                break;
+
+                                case 2:
+                                bioquestion.two.order3();
+                                button.disabled = true;
+                                break;
+
+                            };
+                        }
+                    },
+
+    };
+
+    //timer
+    var count = 9;
+                    var interval = setInterval(function(){
+
+                    document.getElementById('count').innerHTML=count;
+                    count--;
+
+                    if (count === -1){
+                        clearInterval(interval);
+                        timerunout();
+                        document.getElementById('count').innerHTML='0';
+                    }
+                }, 1000);
+
+        //countdown
+        function overalltimer(){
+
+        // Get the countdown element
+        var countdown = document.getElementById("countdown");
+
+        // Set the total time in seconds
+        var totalTime = 2400;
+
+        // Every second...
+        var interval = setInterval(function(){
+            // Update the time remaining
+            updateTime();
+
+            // If time runs out, stop the countdown
+            if(totalTime == -1){
+                clearInterval(interval);
+                return;
+            }
+        }, 1000);
+
+
+        // Display the countdown
+        function displayTime(){
+            // Determine the number of minutes and seconds remaining
+            var minutes = Math.floor(totalTime / 60);
+            var seconds = totalTime % 60;
+
+            // Add a leading 0 to the number of seconds remaining if it's less than 10
+            if (seconds < 10){
+                seconds = "0" + seconds;
+            }
+
+            // Split the number of minutes into two strings
+            var minutesString = minutes + "";
+            var minutesChunks = minutesString.split("");
+
+            // Split the number of seconds into two strings
+            var secondsString = seconds + "";
+            var secondsChunks = secondsString.split("");
+
+            // If the total time is 10 minutes or greater...
+            if (totalTime >= 600){
+                // Add a leading 0 to the number of minutes remaining if it's less than 10
+                if (minutes < 10){
+                    minutes = "0" + minutes;
+                }
+                // Display the time remaining
+                countdown.innerHTML = "<span>" + minutesChunks[0] + "</span>" + "<span>" + minutesChunks[1] + "</span>" + ":" + "<span>" + secondsChunks[0] + "</span>" + "<span>" + secondsChunks[1] + "</span>";
+            }
+            // If the total time is less than 10 minutes...
+            else {
+                // Display the time remaining without a leading 0 on the number of minutes
+                countdown.innerHTML = "<span>" + minutes + "</span>" + ":" + "<span>" + secondsChunks[0] + "</span>" + "<span>" + secondsChunks[1] + "</span>"
+            }        
+        }
+
+        // Update the time remaining
+        function updateTime(){
+            displayTime();
+            totalTime--;
+        }
+
+        // Start the countdown immediately on the initial pageload
+        updateTime();
+
+        };
+
+        </script>
+
+    </body>
+
+</html>
+
+  

@@ -1,0 +1,445 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: hsl(0, 0%, 60%);
+}
+
+/* navigation */
+
+nav{
+    width: 100%;
+    border-bottom: 2px solid hsla(0, 0%, 0%, 0.5);
+    display: inline-flex;
+    font-family: sans-serif;
+    font-weight: medium;
+    font-size: large;
+    position: absolute;
+    top: 0;
+    background-color: hsla(10, 30%, 80%, 0.3);
+}
+
+nav div{
+    padding: 20px;
+}
+
+.link1, .link2{
+  border-right: 2px solid black;
+  padding-right: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+#logintext:hover{
+    color: lightgreen;
+    cursor: pointer;
+}
+
+.login{
+    border: 2px solid hsl(0, 20%, 10%, 0.4);
+    border-radius: 20px;
+    background-color: hsl(187, 52%, 80%, 0.3);
+    padding: 8px 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+
+.login:hover{
+    box-shadow: 0 2px 25px 0 black;
+}
+
+.link1:hover, .link2:hover{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-right: 2px solid black;
+    border-left: 2px solid black;
+    background-color: grey;
+    color: whitesmoke;
+}
+
+/* main */
+
+.home{
+    display: grid;
+    grid-template-rows: 30%;
+    grid-template-columns: repeat(3, 2fr);
+    gap: 5px;
+    overflow: visible;
+    column-gap: 50px;
+    width: 80%;
+    height: 800px;
+    padding-top: 2%;
+    margin: auto;   
+}
+
+.home .quiz{
+    grid-area: 1 / 1 / 2 / 4;
+    background-image: url("cover\ page4.jpg");
+    filter: blur(0.2px);
+    background-size: contain;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 4em;
+    text-align: center;
+    padding-top: 3%;
+    letter-spacing: 0.4rem;
+    border: solid 2px hsla(0, 0%, 0%, 0.5);
+    border-radius: 25px;
+    box-shadow: 0 2px 25px 0 black;
+    color: aquamarine;
+    position: relative;
+    top: 5%;
+}
+
+.home h2{
+    font-family: sans-serif;
+    font-weight: bolder;
+}
+
+.classification{
+    color:  hsl(90, 100%, 49%);
+    cursor: pointer;
+}
+
+.physicist{
+    color: aqua;
+    cursor: pointer;
+}
+
+.classification:hover{
+    color: lightseagreen;
+}
+
+.physicist:hover{
+    color: grey;
+    text-decoration: underline;
+}
+
+
+.biology, .physics, .chemistry{
+    grid-row: 3 / 15;
+    border-radius: 15px;
+    box-shadow: 0 2px 25px 0 black;
+}
+
+.biology:hover, .physics:hover, .chemistry:hover{
+    box-shadow: 0 2px 25px 0 lightskyblue;
+}
+
+.biology{
+    background-image: url("bio6.jpg");
+    background-size: contain;
+}
+
+#head1{
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 3em;
+    text-align: center;
+    letter-spacing: 0.2em;
+}
+
+.biology p{
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 1em;
+    text-align: center;
+    background-color: hsla(0, 0%, 100%, 0.3);
+}
+
+.button1{
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 20px 30px;
+    position: relative;
+    top: 4.3%;
+    left: 26%;
+    background-color: chartreuse;
+    color: black;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.button1:hover, .button2:hover, .button3:hover{
+    box-shadow: 0 2px 25px 0 black;
+}
+
+.time{
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: small;
+    position: absolute;
+    top: 0;
+    right: 5px;
+    color: black;
+}
+
+.fa{
+    color: black;
+    font-size: small;
+}
+
+.physics{
+    background-image: url("phy2.jpg");
+    background-size: contain;
+}
+
+.physics p{
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 1em;
+    text-align: center;
+    background-color: hsla(0, 0%, 100%, 0.3);
+}
+
+.button2{
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 20px 30px;
+    position: relative;
+    top: 19%;
+    left: 26%;
+    background-color: chartreuse;
+    color: black;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+
+.chemistry{
+    background-image: url("chem1.jpg");
+    background-size: contain;
+}
+
+.chemistry p{
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 1em;
+    text-align: center;
+    background-color: hsla(0, 0%, 100%, 0.3);
+}
+
+.button3{
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 20px 30px;
+    position: relative;
+    top: 24.8%;
+    left: 26%;
+    background-color: chartreuse;
+    color: black;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* footer */
+
+#newsletter{
+    display: inline-flex;
+    height: 600px;
+    width: 100%;
+    position: absolute;
+    top: 850px;
+    background-color: hsla(2, 10%, 20%, 0.75);
+    border-radius: 15px;
+}
+
+.newsletterform{
+    height: 55%;
+    width: 25%;
+    margin-top: 3%;
+    position: relative;
+    left: 8%;
+    background-color: hsla(2, 0%, 20%, 0.2);
+    border-radius: 15px;
+}
+
+.newsletterhead{
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: medium;
+    text-align: center;
+    color: white;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.newsletterform p{
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    text-align: center;
+    color: hsl(0, 0%, 70%);
+    padding-bottom: 10px;
+}
+
+#username{
+    background-color: hsla(2, 0%, 20%,0);
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: medium;
+    border-top: none;
+    border-right: none;
+    border-bottom: 2px solid black;
+    border-left: none;
+    position: relative;
+    left: 13%;
+    margin-bottom: 40px;
+    padding-right: 20px;
+}
+
+#email{
+    background-color: hsla(2, 0%, 20%,0);
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: medium;
+    border-top: none;
+    border-right: none;
+    border-bottom: 2px solid black;
+    border-left: none;
+    position: relative;
+    left: 13%;
+    padding-right: 20px;
+}
+
+#newsletterbutn{
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    border-radius: 50px;
+    padding: 10px 30px;
+    position: relative;
+    top: 5%;
+    left: 13%;
+    background-color: hsl(49, 100%, 40%);
+    color: whitesmoke;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#newsletterbutn:hover{
+    background-color:burlywood;
+}
+
+#navigation{
+    height: auto;
+    width: 25%;
+    margin-top: 1%;
+    position: absolute;
+    left: 37%;
+}
+
+#navigation pre a{
+    text-decoration: none;
+    color: black;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: medium;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#navigation pre a:hover{
+    color: burlywood;
+}
+
+
+.fa-facebook{
+    position: absolute;
+    left: 10%;
+    bottom: 25%;
+    background-color: gray;
+    border-radius: 50px;
+    padding: 20px 23px;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.fa-instagram{
+    position: absolute;
+    left: 15%;
+    bottom: 25%;
+    background-color: gray;
+    border-radius: 30px;
+    padding: 20px;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.fa-twitter{
+    position: absolute;
+    left: 20%;
+    bottom: 25%;
+    background-color: gray;
+    border-radius: 30px;
+    padding: 20px;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.fa-pinterest{
+    position: absolute;
+    left: 25%;
+    bottom: 25%;
+    background-color: gray;
+    border-radius: 30px;
+    padding: 20px;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.fa{
+    text-decoration: none;
+}
+
+.fa-facebook:hover{
+    background-color: cornflowerblue;
+}
+
+.fa-instagram:hover{
+    background-color: darksalmon;
+}
+
+.fa-twitter:hover{
+    background-color: cornflowerblue;
+}
+
+.fa-pinterest:hover{
+    background-color: red;
+}
+
+img{
+    position: absolute;
+    right: 8%;
+    margin-top: 3%;
+    width: 25%;
+    height: auto;
+    border-radius: 10px;
+}
+
+#statement{
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 1em;
+    text-align: center;
+    color: aliceblue;
+    position: absolute;
+    right: 6%;
+    bottom: 15%;
+
+}

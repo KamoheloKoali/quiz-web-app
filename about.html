@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>chemistry</title>
+        <link rel="icon" type="image/x-icon" href="logo.png">
+        <link rel="stylesheet" href="quizstyle.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <h1 style="text-align: center;">Not ready</h1>
+    </body>
+</html>
+
+popwhencorrect: function(){
+
+    // add div to state that they are correct
+
+    const div = document.createElement("div");
+    const heading = document.createElement("h3");
+    const par = document.createElement("p");
+    const text = document.createTextNode("Correct!");
+    const ans = document.createTextNode("Nutrition is the process of taking in food and converting it into energy and other vital nutrients required for life")
+    const emoji = document.createTextNode("😀");
+
+    // append to webpage
+
+    element.appendChild(div);
+    div.appendChild(heading);
+    div.appendChild(par);
+    heading.appendChild(text);
+    heading.appendChild(emoji);
+    par.appendChild(ans);
+
+    // style new elements
+
+    div.style.backgroundColor = "lawngreen";
+    div.style.maxWidth = "20%";
+    div.style.maxHeight = "80%";
+    div.style.position = "absolute"
+    div.style.top = "5%"
+    div.style.borderRadius = "10px";
+    div.style.boxShadow = "1px 1px 8px 0 black";
+    div.style.fontFamily = "sans-serif"
+    div.style.fontWeight = "bold";
+    div.style.fontSize = "1em";
+
+    // next button
+
+    const button = document.getElementById("nextbutton");
+
+    button.style.animation = "anim";
+    button.style.animationDuration = "3s";
+    button.style.animationIterationCount = "infinite";
+    button.style.animationTimingFunction = "ease-in-out";
+
+    // stop question timer
+
+    clearInterval(interval);
+
+    button.disabled = false;
+    opt1.disabled = true;
+    opt2.disabled = true;
+    opt3.disabled = true;
+     opt4.disabled = true;
+
+    },
+
+    popwhenwrong: function(){
+
+    // add div to state that they are correct
+
+    const div = document.createElement("div");
+    const heading = document.createElement("h3");
+    const par = document.createElement("p");
+    const text = document.createTextNode("Wrong!");
+    const ans = document.createTextNode("The correct answer is nutrition. It is the process of taking in food and converting it into energy and other vital nutrients required for life")
+    const emoji = document.createTextNode("🙁");
+
+    // append to webpage
+
+    element.appendChild(div);
+    div.appendChild(heading);
+    div.appendChild(par);
+    heading.appendChild(text);
+    heading.appendChild(emoji);
+    par.appendChild(ans);
+
+    // style new elements
+
+    div.style.backgroundColor = "red";
+    div.style.maxWidth = "20%";
+    div.style.maxHeight = "80%";
+    div.style.position = "absolute"
+    div.style.top = "2%"
+    div.style.borderRadius = "10px";
+    div.style.boxShadow = "1px 1px 8px 0 black";
+    div.style.fontFamily = "sans-serif"
+    div.style.fontWeight = "bold";
+    div.style.fontSize = "1em";
+
+    // next button
+
+    const button = document.getElementById("nextbutton");
+
+    button.style.animation = "anim";
+    button.style.animationDuration = "3s";
+    button.style.animationIterationCount = "infinite";
+    button.style.animationTimingFunction = "ease-in-out";
+
+    addEventListener("click", bioquestion.three);
+
+    // stop question timer
+
+    clearInterval(interval);
+
+    },
+
+    // option2 correct
+
+    correct: function(){
+
+    // change background color
+
+    opt2.style.backgroundColor = "lawngreen";
+    opt1.style.backgroundColor = "grey"; 
+    opt4.style.backgroundColor = "grey";
+    opt3.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.two.popwhencorrect();
+
+    // update score
+
+    document.getElementById("score").innerHTML = "2";
+
+    },
+
+    // option 4 correct
+
+    correct1: function(){
+
+    // change background color
+
+    opt4.style.backgroundColor = "lawngreen";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt3.style.backgroundColor = "grey";
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.two.popwhencorrect();
+
+    // update score
+
+    document.getElementById("score").innerHTML = "2";
+
+    },
+
+    // option 3 correct
+
+    correct2: function(){
+
+    // change background color
+
+    opt3.style.backgroundColor = "lawngreen";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.two.popwhencorrect();
+
+    // update score
+
+    document.getElementById("score").innerHTML = "2";
+
+    },
+
+    wrong1: function(){
+
+    // change background color
+
+    opt1.style.backgroundColor = "red";
+    opt3.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "lawngreen";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.two.popwhenwrong();
+
+    },
+
+    wrong2: function(){
+    // change background color
+
+    opt3.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "lawngreen";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.two.popwhenwrong();
+
+    },
+
+    wrong3: function(){
+    // change background color
+
+    opt4.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "lawngreen";
+    opt3.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.two.popwhenwrong();
+
+    },
+
+    wrong4: function(){
+    // change background color
+
+    opt1.style.backgroundColor = "red";
+    opt3.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "lawngreen";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.two.popwhenwrong();
+
+    },
+
+    wrong5: function(){
+    // change background color
+
+    opt2.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt3.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "lawngreen";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.two.popwhenwrong();
+
+    },
+
+    wrong6: function(){
+    // change background color
+
+    opt3.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "lawngreen";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.two.popwhenwrong();
+
+    },
+
+    wrong7: function(){
+    // change background color
+
+    opt1.style.backgroundColor = "red";
+    opt3.style.backgroundColor = "lawngreen"; 
+    opt2.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.two.popwhenwrong();
+
+    },
+
+    wrong8: function(){
+    // change background color
+
+    opt2.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt3.style.backgroundColor = "lawngreen";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.two.popwhenwrong();
+
+    },
+
+    wrong9: function(){
+    // change background color
+
+    opt4.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt3.style.backgroundColor = "lawngreen";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.two.popwhenwrong();
+
+    },

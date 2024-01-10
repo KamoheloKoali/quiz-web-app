@@ -1,0 +1,175 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: hsl(34, 57%, 70%, 0.75);
+}
+
+/* main  */
+
+#options{
+    width: 40%;
+    background-color: hsl(0, 0%, 100%, 0.6);
+    text-align: center;
+    margin: auto;
+    margin-top: 180px;
+    box-shadow: 1px 1px 8px 0 black;
+    border-radius: 5px;
+}
+
+h1{
+  font-family: sans-serif;
+  font-weight: bolder;
+  font-size: 2em;
+  color: orange;
+}
+
+
+h4{
+  background-color: blanchedalmond;
+  position: absolute;
+  top: 25%;
+  right: 32%;
+  padding: 5px 15px;
+  font-family: sans-serif;
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+h4 span{
+  color: white;
+  background-color: hsla(0, 0%, 30%, 0.6);
+  font-family: sans-serif;
+  font-weight: bolder;
+   padding: 0 10px;
+   margin-right: 5px;
+   margin-left: 5px;
+   border-radius: 5px;
+}
+
+.fa{
+  position: absolute;
+  top: 25%;
+  left: 33%;
+  cursor: pointer;
+}
+
+h3{
+    font-family: sans-serif;
+    font-weight: bolder;
+}
+
+#opt1, #opt2, #opt3, #opt4{
+    border: 5px solid rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    width: 60%;
+    background-color:hsla(33, 100%, 88%, 0.5);
+    color: black;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    margin-top: 5px;
+    margin-left: 18px;
+    position: relative;
+    left: 0px;
+    cursor: pointer;
+}
+
+#opt4{
+  margin-bottom: 15px;
+}
+
+#opt1:hover, #opt2:hover, #opt3:hover, #opt4:hover{
+    background-color: lightcyan;
+    box-shadow: 1px 1px 8px 0 grey;
+}
+
+#next{
+  display: flex;
+  justify-content: space-between;
+}
+
+#next h5{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 0.75em;
+  margin-left: 10px;
+}
+
+#next button{
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 0.85em;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  padding: 0 35px;
+  color: white;
+  background-color: burlywood;
+  border-radius: 5px;
+  border: none;
+}
+
+#next button:hover{
+  background-color: hsla(0, 0%, 80%);
+  box-shadow: 1px 1px 15px 0 hsla(0, 0%, 0%, 0.5);
+}
+
+@keyframes anim{
+  from {
+    background-color: burlywood;
+  }
+
+  25% {
+    background-color: cyan;
+    box-shadow: 1px 1px 15px 0 hsla(0, 0%, 0%, 0.5);
+  }
+
+  50% {
+    background-color: burlywood;
+  }
+
+  75%{
+    background-color: cyan;
+    box-shadow: 1px 1px 15px 0 hsla(0, 0%, 0%, 0.5);
+  }
+
+  to{
+    background-color: burlywood;
+  }
+}
+
+@keyframes timedivanimation{
+  from {
+    top: 50%;
+    right: 33%;
+  }
+
+  to{
+    top: 13%;
+    right: 30%;
+  }
+}
+
+@keyframes popwhencorrectanimation{
+  from {
+    top: 48%;
+  }
+
+  to{
+    top: 5%;
+  }
+}
+
+@keyframes popwhenwronganimation{
+  from {
+    top: 48%;
+  }
+
+  to{
+    top: 2%;
+  }
+}
+
+
+

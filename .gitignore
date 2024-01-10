@@ -1,0 +1,7 @@
+# ignore all images and pdf files
+
+*.pdf
+*jpg
+*png
+*webp
+*avif

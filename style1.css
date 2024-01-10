@@ -1,0 +1,93 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    /*background-color: rgba(255, 245, 225, 0.3);*/
+    background-image: url("./background2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* grid */
+
+#main{
+    display: grid;
+    position: absolute;
+    right: 15%;
+    grid-template-columns: 50%;
+    grid-template-rows: repeat(3, 2fr);
+    gap: 10px;
+    overflow: visible;
+    column-gap: 50px;
+    width: 80%;
+    height: 600px;
+    padding-top: 2%;
+    margin: auto;   
+}
+
+.leaderboard{
+    grid-area: 1 / 1 / 4 / 7;
+    border-radius: 15px;
+    box-shadow: 1px 1px 15px 0 black;
+    background-color: hsla(33, 100%, 88%, 0.5);
+}
+
+.beginner{
+    grid-area: 1 / 7 / 2 / 16;
+    box-shadow: 1px 1px 8px 0 black;
+    border-radius: 15px;
+    background-color: hsla(33, 100%, 88%, 0.5);
+}
+
+.intermediate{
+    grid-area: 2 / 7 / 3 / 16;
+    box-shadow: 1px 1px 8px 0 black;
+    border-radius: 15px;
+    background-color: hsla(33, 100%, 88%, 0.5);
+}
+
+.advanced{
+    grid-area: 3 / 7 / 4 / 16;
+    box-shadow: 1px 1px 8px 0 black;
+    border-radius: 15px;
+    background-color: hsla(33, 100%, 88%, 0.5);
+}
+
+.beginner, .intermediate, .advanced{
+    cursor: pointer;
+}
+
+.beginner:hover,
+.intermediate:hover,
+.advanced:hover,
+.leaderboard:hover{
+    box-shadow: 5px 10px 40px 0 black;
+    color: white;
+    background-color: hsla(0, 0%, 35%, 0.4);
+}
+
+.curriculum:hover, p:hover{
+    color: black;
+}
+
+.head{
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 2em;
+    text-align: center;
+}
+
+.curriculum{
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+}
+
+.par{
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: 1em;
+    text-align: center;
+}
