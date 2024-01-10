@@ -38,7 +38,21 @@
         <script>
 
             let onchoose = 0;
-            var count = 9;
+            
+            function timer(){
+                var count = 89;
+                var interval = setInterval(function(){
+                document.getElementById('count').innerHTML=count;
+                count--;
+                if (count === 0){
+                    clearInterval(interval);
+                    document.getElementById('count').innerHTML='0';
+                    alert("You're out of time!");
+                }else if(onchoose === 1){
+                                            clearInterval(interval);
+                                        }
+                }, 1000);
+            };
 
             //questions
 
@@ -244,7 +258,7 @@
                                 button.style.animationTimingFunction = "ease-in-out";
 
                                 // stop question timer
-                                onchoose += 1
+                                onchoose = 1;
 
                                 button.disabled = false;
                                 opt1.disabled = true;
@@ -317,7 +331,7 @@
                                 button.style.animationTimingFunction = "ease-in-out";
 
                                 // stop question timer
-                                onchoose += 1;
+                                onchoose = 1;
 
                                 button.disabled = false;
                                 opt1.disabled = true;
@@ -357,6 +371,7 @@
 
                     random: function(){
                        let run = Math.floor(Math.random() * 3);
+                       onchoose = 0;
 
                        removechanges();
 
@@ -377,20 +392,7 @@
                             break;
                        };
 
-                       //timer
-                        var interval = setInterval(function(){
-
-                        document.getElementById('count').innerHTML=count;
-                        count--;
-
-                        if (count === -1){
-                            clearInterval(interval);
-                            timerunout();
-                            document.getElementById('count').innerHTML='0';
-                        }else if(onchoose === 1){
-                        clearInterval(interval);
-                    }
-                    }, 1000);
+                       timer();
 
                     },
 
@@ -1197,7 +1199,7 @@
 
                         random: function(){
                                 let run = Math.floor(Math.random() * 3);
-                                onchoose -= 1;
+                                onchoose = 0;
 
                                 // add question number
                                 document.getElementById("questionnum").innerHTML = "2 of 10 questions";
@@ -1223,22 +1225,9 @@
                                 button.disabled = true;
                                 break;
 
-                                // reset timer
-                                var interval = setInterval(function(){
-
-                                count = 9;
-                                count--;
-
-                                if (count === -1){
-                                    clearInterval(interval);
-                                    timerunout();
-                                    document.getElementById('count').innerHTML='0';
-                                }else if(onchoose === 1){
-                                    clearInterval(interval);
-                                }    
-                            }, 1000);
-
                             };
+
+                            timer();
                         }
                     },
 
