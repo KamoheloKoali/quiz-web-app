@@ -38,6 +38,7 @@
         <script>
 
             let onchoose = 0;
+            let score = 0;
             
             function timer(){
                 var count = 89;
@@ -104,9 +105,6 @@
 
 
             };
-
-            //update score
-            let score = 0;
 
             function updatescore(){
 
@@ -341,6 +339,7 @@
                             
             };
 
+
             const bioquestion = {
 
                 next: function(){
@@ -372,7 +371,6 @@
                     random: function(){
                        let run = Math.floor(Math.random() * 3);
                        onchoose = 0;
-                       score = 0;
 
                        removechanges();
 
@@ -418,7 +416,7 @@
                                 styleofpopupcorrect();
 
                                 // update score
-                                score = 1;
+                                score += 1;
                                 updatescore();
                                 
                                 },
@@ -469,7 +467,7 @@
                         opt2.addEventListener("click", setTimeout(() => {
                             bioquestion.next();
                         }, 60000));
-                        
+
                         
                     },
 
@@ -833,7 +831,7 @@
                         styleofpopupcorrect();
 
                         // update score
-                        score = 2;
+                        score += 1;
                         updatescore();
 
                         },
@@ -1201,7 +1199,6 @@
                         random: function(){
                                 let run = Math.floor(Math.random() * 3);
                                 onchoose = 0;
-                                score = 0;
 
                                 // add question number
                                 document.getElementById("questionnum").innerHTML = "2 of 10 questions";
