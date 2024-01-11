@@ -43,13 +43,14 @@
             function timer(){
                 var count = 89;
                 var interval = setInterval(function(){
+
                 document.getElementById('count').innerHTML=count;
                 count--;
                 if (count === 0){
                     clearInterval(interval);
                     document.getElementById('count').innerHTML='0';
                     alert("You're out of time!");
-                }
+                };
 
                 switch(onchoose){
                     case 1:
@@ -58,7 +59,37 @@
 
                     case 2:
                         clearInterval(interval);
-                        break;    
+                        break;
+                        
+                    // file deepcode ignore DuplicateCaseBody: <no idea>
+                    case 3:
+                        clearInterval(interval);
+                        break; 
+                        
+                    case 4:
+                        clearInterval(interval);
+                        break; 
+                        
+                    case 5:
+                        clearInterval(interval);
+                        break; 
+
+                    case 6:
+                        clearInterval(interval);
+                        break; 
+                        
+                    case 7:
+                        clearInterval(interval);
+                        break; 
+                        
+                    case 8:
+                        clearInterval(interval);
+                        break; 
+                        
+                    case 9:
+                        clearInterval(interval);
+                        break;     
+    
                 };
 
                 }, 1000);
@@ -77,6 +108,13 @@
             const div = document.createElement("div");
             const div1 = document.createElement("div");
             const div2 = document.createElement("div");
+            const div3 = document.createElement("div");
+            const div4 = document.createElement("div");
+            const div5 = document.createElement("div");
+            const div6 = document.createElement("div");
+            const div7 = document.createElement("div");
+            const div8 = document.createElement("div");
+            const div9 = document.createElement("div");
             const timediv = document.createElement("div");
 
 
@@ -102,11 +140,19 @@
                         div.remove();
                         div1.remove();
                         div2.remove();
+                        div3.remove();
+                        div4.remove();
+                        div5.remove();
+                        div6.remove();
+                        div7.remove();
+                        div8.remove();
+                        div9.remove();
                         timediv.remove();
 
                         // stop button animation
-                        button.style.animation = "none";     //enable buttons for answers
-
+                        button.style.animation = "none";     
+                        
+                        //enable buttons for answers
                             opt1.disabled = false;
                             opt2.disabled = false;
                             opt3.disabled = false;
@@ -207,6 +253,13 @@
                                 div.style.animation = "popwhencorrectanimation";
                                 div1.style.animation = "popwhencorrectanimation";
                                 div2.style.animation = "popwhencorrectanimation";
+                                div3.style.animation = "popwhencorrectanimation";
+                                div4.style.animation = "popwhencorrectanimation";
+                                div5.style.animation = "popwhencorrectanimation";
+                                div6.style.animation = "popwhencorrectanimation";
+                                div7.style.animation = "popwhencorrectanimation";
+                                div8.style.animation = "popwhencorrectanimation";
+                                div9.style.animation = "popwhencorrectanimation";
                                 
                 
                                 // style new elements first div
@@ -257,6 +310,118 @@
                                 div2.style.transition = "top 5s";
                                 div2.style.zIndex = "-1";
 
+                                // style new elements fourth div
+                                div3.style.backgroundColor = "lawngreen";
+                                div3.style.maxWidth = "20%";
+                                div3.style.maxHeight = "80%";
+                                div3.style.position = "absolute"
+                                div3.style.top = "5%"
+                                div3.style.borderRadius = "10px";
+                                div3.style.boxShadow = "1px 1px 8px 0 black";
+                                div3.style.fontFamily = "sans-serif"
+                                div3.style.fontWeight = "bold";
+                                div3.style.fontSize = "1em";
+                                div3.style.animationDuration = "5s";
+                                div3.style.animationTimingFunction = "ease-in-out";
+                                div3.style.transition = "top 5s";
+                                div3.style.zIndex = "-1";
+
+                                // style new elements fifth div
+                                div4.style.backgroundColor = "lawngreen";
+                                div4.style.maxWidth = "20%";
+                                div4.style.maxHeight = "80%";
+                                div4.style.position = "absolute"
+                                div4.style.top = "5%"
+                                div4.style.borderRadius = "10px";
+                                div4.style.boxShadow = "1px 1px 8px 0 black";
+                                div4.style.fontFamily = "sans-serif"
+                                div4.style.fontWeight = "bold";
+                                div4.style.fontSize = "1em";
+                                div4.style.animationDuration = "5s";
+                                div4.style.animationTimingFunction = "ease-in-out";
+                                div4.style.transition = "top 5s";
+                                div4.style.zIndex = "-1";
+
+                                // style new elements sixth div
+                                div5.style.backgroundColor = "lawngreen";
+                                div5.style.maxWidth = "20%";
+                                div5.style.maxHeight = "80%";
+                                div5.style.position = "absolute"
+                                div5.style.top = "5%"
+                                div5.style.borderRadius = "10px";
+                                div5.style.boxShadow = "1px 1px 8px 0 black";
+                                div5.style.fontFamily = "sans-serif"
+                                div5.style.fontWeight = "bold";
+                                div5.style.fontSize = "1em";
+                                div5.style.animationDuration = "5s";
+                                div5.style.animationTimingFunction = "ease-in-out";
+                                div5.style.transition = "top 5s";
+                                div5.style.zIndex = "-1";
+
+                                // style new elements seventh div
+                                div6.style.backgroundColor = "lawngreen";
+                                div6.style.maxWidth = "20%";
+                                div6.style.maxHeight = "80%";
+                                div6.style.position = "absolute"
+                                div6.style.top = "5%"
+                                div6.style.borderRadius = "10px";
+                                div6.style.boxShadow = "1px 1px 8px 0 black";
+                                div6.style.fontFamily = "sans-serif"
+                                div6.style.fontWeight = "bold";
+                                div6.style.fontSize = "1em";
+                                div6.style.animationDuration = "5s";
+                                div6.style.animationTimingFunction = "ease-in-out";
+                                div6.style.transition = "top 5s";
+                                div6.style.zIndex = "-1";
+
+                                // style new elements eighth div
+                                div7.style.backgroundColor = "lawngreen";
+                                div7.style.maxWidth = "20%";
+                                div7.style.maxHeight = "80%";
+                                div7.style.position = "absolute"
+                                div7.style.top = "5%"
+                                div7.style.borderRadius = "10px";
+                                div7.style.boxShadow = "1px 1px 8px 0 black";
+                                div7.style.fontFamily = "sans-serif"
+                                div7.style.fontWeight = "bold";
+                                div7.style.fontSize = "1em";
+                                div7.style.animationDuration = "5s";
+                                div7.style.animationTimingFunction = "ease-in-out";
+                                div7.style.transition = "top 5s";
+                                div7.style.zIndex = "-1";
+
+                                // style new elements ninth div
+                                div8.style.backgroundColor = "lawngreen";
+                                div8.style.maxWidth = "20%";
+                                div8.style.maxHeight = "80%";
+                                div8.style.position = "absolute"
+                                div8.style.top = "5%"
+                                div8.style.borderRadius = "10px";
+                                div8.style.boxShadow = "1px 1px 8px 0 black";
+                                div8.style.fontFamily = "sans-serif"
+                                div8.style.fontWeight = "bold";
+                                div8.style.fontSize = "1em";
+                                div8.style.animationDuration = "5s";
+                                div8.style.animationTimingFunction = "ease-in-out";
+                                div8.style.transition = "top 5s";
+                                div8.style.zIndex = "-1";
+
+                                // style new elements tenth div
+                                div9.style.backgroundColor = "lawngreen";
+                                div9.style.maxWidth = "20%";
+                                div9.style.maxHeight = "80%";
+                                div9.style.position = "absolute"
+                                div9.style.top = "5%"
+                                div9.style.borderRadius = "10px";
+                                div9.style.boxShadow = "1px 1px 8px 0 black";
+                                div9.style.fontFamily = "sans-serif"
+                                div9.style.fontWeight = "bold";
+                                div9.style.fontSize = "1em";
+                                div9.style.animationDuration = "5s";
+                                div9.style.animationTimingFunction = "ease-in-out";
+                                div9.style.transition = "top 5s";
+                                div9.style.zIndex = "-1";
+
                                 // next button
 
                                 button.style.animation = "anim";
@@ -278,6 +443,12 @@
                                 div.style.animation = "popwhenwronganimation";
                                 div1.style.animation = "popwhenwronganimation";
                                 div2.style.animation = "popwhenwronganimation";
+                                div4.style.animation = "popwhencorrectanimation";
+                                div5.style.animation = "popwhencorrectanimation";
+                                div6.style.animation = "popwhencorrectanimation";
+                                div7.style.animation = "popwhencorrectanimation";
+                                div8.style.animation = "popwhencorrectanimation";
+                                div9.style.animation = "popwhencorrectanimation";
                 
                                 // style new elements for first div
                                 div.style.backgroundColor = "red";
@@ -327,6 +498,119 @@
                                 div2.style.transition = "top 5s";
                                 div2.style.zIndex = "-1";
 
+                                // style new elements for fourth div
+                                div3.style.backgroundColor = "red";
+                                div3.style.maxWidth = "20%";
+                                div3.style.maxHeight = "80%";
+                                div3.style.position = "absolute"
+                                div3.style.top = "2%"
+                                div3.style.borderRadius = "10px";
+                                div3.style.boxShadow = "1px 1px 8px 0 black";
+                                div3.style.fontFamily = "sans-serif"
+                                div3.style.fontWeight = "bold";
+                                div3.style.fontSize = "1em";
+                                div3.style.animationDuration = "5s";
+                                div3.style.animationTimingFunction = "ease-in-out";
+                                div3.style.transition = "top 5s";
+                                div3.style.zIndex = "-1";
+
+                                
+                                // style new elements for fifth div
+                                div4.style.backgroundColor = "red";
+                                div4.style.maxWidth = "20%";
+                                div4.style.maxHeight = "80%";
+                                div4.style.position = "absolute"
+                                div4.style.top = "2%"
+                                div4.style.borderRadius = "10px";
+                                div4.style.boxShadow = "1px 1px 8px 0 black";
+                                div4.style.fontFamily = "sans-serif"
+                                div4.style.fontWeight = "bold";
+                                div4.style.fontSize = "1em";
+                                div4.style.animationDuration = "5s";
+                                div4.style.animationTimingFunction = "ease-in-out";
+                                div4.style.transition = "top 5s";
+                                div4.style.zIndex = "-1";
+
+                                // style new elements for sixth div
+                                div5.style.backgroundColor = "red";
+                                div5.style.maxWidth = "20%";
+                                div5.style.maxHeight = "80%";
+                                div5.style.position = "absolute"
+                                div5.style.top = "2%"
+                                div5.style.borderRadius = "10px";
+                                div5.style.boxShadow = "1px 1px 8px 0 black";
+                                div5.style.fontFamily = "sans-serif"
+                                div5.style.fontWeight = "bold";
+                                div5.style.fontSize = "1em";
+                                div5.style.animationDuration = "5s";
+                                div5.style.animationTimingFunction = "ease-in-out";
+                                div5.style.transition = "top 5s";
+                                div5.style.zIndex = "-1";
+
+                                // style new elements for seventh div
+                                div6.style.backgroundColor = "red";
+                                div6.style.maxWidth = "20%";
+                                div6.style.maxHeight = "80%";
+                                div6.style.position = "absolute"
+                                div6.style.top = "2%"
+                                div6.style.borderRadius = "10px";
+                                div6.style.boxShadow = "1px 1px 8px 0 black";
+                                div6.style.fontFamily = "sans-serif"
+                                div6.style.fontWeight = "bold";
+                                div6.style.fontSize = "1em";
+                                div6.style.animationDuration = "5s";
+                                div6.style.animationTimingFunction = "ease-in-out";
+                                div6.style.transition = "top 5s";
+                                div6.style.zIndex = "-1";
+
+                                // style new elements for eighth div
+                                div7.style.backgroundColor = "red";
+                                div7.style.maxWidth = "20%";
+                                div7.style.maxHeight = "80%";
+                                div7.style.position = "absolute"
+                                div7.style.top = "2%"
+                                div7.style.borderRadius = "10px";
+                                div7.style.boxShadow = "1px 1px 8px 0 black";
+                                div7.style.fontFamily = "sans-serif"
+                                div7.style.fontWeight = "bold";
+                                div7.style.fontSize = "1em";
+                                div7.style.animationDuration = "5s";
+                                div7.style.animationTimingFunction = "ease-in-out";
+                                div7.style.transition = "top 5s";
+                                div7.style.zIndex = "-1";
+
+                                // style new elements for ninth div
+                                div8.style.backgroundColor = "red";
+                                div8.style.maxWidth = "20%";
+                                div8.style.maxHeight = "80%";
+                                div8.style.position = "absolute"
+                                div8.style.top = "2%"
+                                div8.style.borderRadius = "10px";
+                                div8.style.boxShadow = "1px 1px 8px 0 black";
+                                div8.style.fontFamily = "sans-serif"
+                                div8.style.fontWeight = "bold";
+                                div8.style.fontSize = "1em";
+                                div8.style.animationDuration = "5s";
+                                div8.style.animationTimingFunction = "ease-in-out";
+                                div8.style.transition = "top 5s";
+                                div8.style.zIndex = "-1";
+
+                                // style new elements for tenth div
+                                div9.style.backgroundColor = "red";
+                                div9.style.maxWidth = "20%";
+                                div9.style.maxHeight = "80%";
+                                div9.style.position = "absolute"
+                                div9.style.top = "2%"
+                                div9.style.borderRadius = "10px";
+                                div9.style.boxShadow = "1px 1px 8px 0 black";
+                                div9.style.fontFamily = "sans-serif"
+                                div9.style.fontWeight = "bold";
+                                div9.style.fontSize = "1em";
+                                div9.style.animationDuration = "5s";
+                                div9.style.animationTimingFunction = "ease-in-out";
+                                div9.style.transition = "top 5s";
+                                div9.style.zIndex = "-1";
+
                                 // next button
 
                                 button.style.animation = "anim";
@@ -353,7 +637,40 @@
 
                     case 2:
                         bioquestion.three.random();
+                        break;
+                        
+                    case 3:
+                        bioquestion.fourth.random();
+                        break;
+
+                    case 4:
+                        bioquestion.fifth.random();
+                        break;  
+                    
+                    case 5:
+                        bioquestion.sixth.random();
+                        break;
+
+                    case 6:
+                        bioquestion.seventh.random();
+                        break; 
+                        
+                    case 7:
+                        bioquestion.eighth.random();
+                        break; 
+                        
+                    case 8:
+                        bioquestion.ninth.random();
+                        break; 
+                        
+                    case 9:
+                        bioquestion.tenth.random();
+                        break; 
+                        
+                    case 10:
+                        bioquestion.three.random();
                         break;    
+                      
                 };
             
                 },
@@ -362,7 +679,6 @@
 
                     random: function(){
                        let run = Math.floor(Math.random() * 3);
-                       onchoose = 0;
 
                        removechanges();
 
@@ -1509,7 +1825,7 @@
                             opt3.style.border = "none";
                             opt4.style.border = "none";
 
-                            bbioquestion.three.popwhenwrong();
+                            bioquestion.three.popwhenwrong();
 
                             opt3.addEventListener("click", setTimeout(() => {
                                 bioquestion.next();
@@ -1653,6 +1969,434 @@
 
                                 case 2:
                                 bioquestion.three.order3();
+                                button.disabled = true;
+                                break;
+
+                            };
+
+                            timer();
+                        }
+                    },
+
+                    fourth: {
+
+                        popwhencorrect: function(){
+
+                            // add div to state that they are correct
+
+                            const heading = document.createElement("h3");
+                            const par = document.createElement("p");
+                            const text = document.createTextNode("Correct!");
+                            const ans = document.createTextNode("The pH of the stomach is acidic.")
+                            const emoji = document.createTextNode("😀");
+
+                            // append to webpage
+
+                            element.appendChild(div3);
+                            div3.appendChild(heading);
+                            div3.appendChild(par);
+                            div2.remove();
+                            heading.appendChild(text);
+                            heading.appendChild(emoji);
+                            par.appendChild(ans);
+
+                            styleofpopupcorrect();
+
+                            // update score
+                            score += 1;
+                            updatescore();
+
+                            // stop question timer
+                            onchoose = 4;
+
+                            },
+
+                            popwhenwrong: function(){
+
+                            // add div to state that they are correct
+
+                            const heading = document.createElement("h3");
+                            const par = document.createElement("p");
+                            const text = document.createTextNode("Wrong!");
+                            const ans = document.createTextNode("The correct answer is that the pH of the stomach is acidic.")
+                            const emoji = document.createTextNode("🙁");
+
+                            // append to webpage
+
+                            element.appendChild(div3);
+                            div3.appendChild(heading);
+                            div3.appendChild(par);
+                            div2.remove();
+                            heading.appendChild(text);
+                            heading.appendChild(emoji);
+                            par.appendChild(ans);
+
+                            styleofpopupwrong();
+
+                            // stop question timer
+                            onchoose = 4;
+
+                            },
+
+
+                            // option2 correct
+
+                            correct: function(){
+
+                            // change background color
+
+                            opt2.style.backgroundColor = "lawngreen";
+                            opt1.style.backgroundColor = "grey"; 
+                            opt4.style.backgroundColor = "grey";
+                            opt3.style.backgroundColor = "grey";
+
+
+                            // remove border
+                            opt1.style.border = "none"; 
+                            opt2.style.border = "none";
+                            opt3.style.border = "none";
+                            opt4.style.border = "none";
+
+                            bioquestion.fourth.popwhencorrect();
+
+                            opt2.addEventListener("click", setTimeout(() => {
+                            bioquestion.next();
+                            }, 60000));
+
+                            },
+
+                            // option 4 correct
+
+                            correct1: function(){
+
+                            // change background color
+
+                            opt4.style.backgroundColor = "lawngreen";
+                            opt1.style.backgroundColor = "grey"; 
+                            opt2.style.backgroundColor = "grey";
+                            opt3.style.backgroundColor = "grey";
+
+                            // remove border
+
+                            opt1.style.border = "none"; 
+                            opt2.style.border = "none";
+                            opt3.style.border = "none";
+                            opt4.style.border = "none";
+
+                            bioquestion.fourth.popwhencorrect();
+
+                            opt4.addEventListener("click", setTimeout(() => {
+                            bioquestion.next();
+                            }, 60000));
+
+                            },
+
+                            correct2: function(){
+
+                            // change background color
+
+                            opt2.style.backgroundColor = "lawngreen";
+                            opt1.style.backgroundColor = "grey"; 
+                            opt3.style.backgroundColor = "grey";
+                            opt4.style.backgroundColor = "grey";
+
+
+                            // remove border
+
+                            opt1.style.border = "none"; 
+                            opt2.style.border = "none";
+                            opt3.style.border = "none";
+                            opt4.style.border = "none";
+
+                            bioquestion.fourth.popwhencorrect();
+
+                            opt2.addEventListener("click", setTimeout(() => {
+                                bioquestion.next();
+                            }, 60000));
+
+                            },
+
+                            wrong1: function(){
+
+                            // change background color
+
+                            opt1.style.backgroundColor = "red";
+                            opt3.style.backgroundColor = "grey"; 
+                            opt2.style.backgroundColor = "lawngreen";
+                            opt4.style.backgroundColor = "grey";
+
+
+                            // remove border
+
+                            opt1.style.border = "none"; 
+                            opt2.style.border = "none";
+                            opt3.style.border = "none";
+                            opt4.style.border = "none";
+
+                            bioquestion.fourth.popwhenwrong();
+
+                            opt1.addEventListener("click", setTimeout(() => {
+                                bioquestion.next();
+                            }, 60000));
+
+                            },
+
+                            wrong2: function(){
+                                // change background color
+
+                                opt3.style.backgroundColor = "red";
+                                opt1.style.backgroundColor = "grey"; 
+                                opt2.style.backgroundColor = "lawngreen";
+                                opt4.style.backgroundColor = "grey";
+
+
+                                // remove border
+
+                                opt1.style.border = "none"; 
+                                opt2.style.border = "none";
+                                opt3.style.border = "none";
+                                opt4.style.border = "none";
+
+                                bioquestion.fourth.popwhenwrong();
+
+                                opt3.addEventListener("click", setTimeout(() => {
+                                bioquestion.next();
+                            }, 60000));
+
+                            },
+
+                            wrong3: function(){
+                            // change background color
+
+                            opt4.style.backgroundColor = "red";
+                            opt1.style.backgroundColor = "grey"; 
+                            opt2.style.backgroundColor = "lawngreen";
+                            opt3.style.backgroundColor = "grey";
+
+
+                            // remove border
+
+                            opt1.style.border = "none"; 
+                            opt2.style.border = "none";
+                            opt3.style.border = "none";
+                            opt4.style.border = "none";
+
+                            bioquestion.fourth.popwhenwrong();
+
+                            opt4.addEventListener("click", setTimeout(() => {
+                                bioquestion.next();
+                            }, 60000));
+
+                            },
+
+                            wrong4: function(){
+                            // change background color
+
+                            opt1.style.backgroundColor = "red";
+                            opt3.style.backgroundColor = "grey"; 
+                            opt2.style.backgroundColor = "grey";
+                            opt4.style.backgroundColor = "lawngreen";
+
+
+                            // remove border
+
+                            opt1.style.border = "none"; 
+                            opt2.style.border = "none";
+                            opt3.style.border = "none";
+                            opt4.style.border = "none";
+
+                            bioquestion.fourth.popwhenwrong();
+
+                            opt1.addEventListener("click", setTimeout(() => {
+                                bioquestion.next();
+                            }, 60000));
+
+                            },
+
+                            wrong5: function(){
+                            // change background color
+
+                            opt2.style.backgroundColor = "red";
+                            opt1.style.backgroundColor = "grey"; 
+                            opt3.style.backgroundColor = "grey";
+                            opt4.style.backgroundColor = "lawngreen";
+
+
+                            // remove border
+
+                            opt1.style.border = "none"; 
+                            opt2.style.border = "none";
+                            opt3.style.border = "none";
+                            opt4.style.border = "none";
+
+                            bioquestion.fourth.popwhenwrong();
+
+                            opt2.addEventListener("click", setTimeout(() => {
+                                bioquestion.next();
+                            }, 60000));
+
+                            },
+
+                            wrong6: function(){
+                            // change background color
+
+                            opt3.style.backgroundColor = "red";
+                            opt1.style.backgroundColor = "grey"; 
+                            opt2.style.backgroundColor = "grey";
+                            opt4.style.backgroundColor = "lawngreen";
+
+
+                            // remove border
+
+                            opt1.style.border = "none"; 
+                            opt2.style.border = "none";
+                            opt3.style.border = "none";
+                            opt4.style.border = "none";
+
+                            bioquestion.fourth.popwhenwrong();
+
+                            opt3.addEventListener("click", setTimeout(() => {
+                                bioquestion.next();
+                            }, 60000));
+
+                            },
+
+                            wrong7: function(){
+                            // change background color
+
+                            opt1.style.backgroundColor = "red";
+                            opt3.style.backgroundColor = "grey"; 
+                            opt2.style.backgroundColor = "lawngreen";
+                            opt4.style.backgroundColor = "grey";
+
+
+                            // remove border
+
+                            opt1.style.border = "none"; 
+                            opt2.style.border = "none";
+                            opt3.style.border = "none";
+                            opt4.style.border = "none";
+
+                            bioquestion.fourth.popwhenwrong();
+
+                            opt3.addEventListener("click", setTimeout(() => {
+                                bioquestion.next();
+                            }, 60000));
+
+                            },
+
+                            wrong8: function(){
+                            // change background color
+
+                            opt2.style.backgroundColor = "red";
+                            opt1.style.backgroundColor = "grey"; 
+                            opt3.style.backgroundColor = "lawngreen";
+                            opt4.style.backgroundColor = "grey";
+
+
+                            // remove border
+
+                            opt1.style.border = "none"; 
+                            opt2.style.border = "none";
+                            opt3.style.border = "none";
+                            opt4.style.border = "none";
+
+                            bioquestion.fourth.popwhenwrong();
+
+                            opt2.addEventListener("click", setTimeout(() => {
+                                bioquestion.next();
+                            }, 60000));
+
+                            },
+
+                            wrong9: function(){
+                            // change background color
+
+                            opt4.style.backgroundColor = "red";
+                            opt1.style.backgroundColor = "grey"; 
+                            opt2.style.backgroundColor = "grey";
+                            opt3.style.backgroundColor = "lawngreen";
+
+
+                            // remove border
+
+                            opt1.style.border = "none"; 
+                            opt2.style.border = "none";
+                            opt3.style.border = "none";
+                            opt4.style.border = "none";
+
+                            bioquestion.fourth.popwhenwrong();
+
+                            opt4.addEventListener("click", setTimeout(() => {
+                                bioquestion.next();
+                            }, 60000));
+
+                            },
+
+                            order1: function(){
+                            document.getElementById("question").innerHTML = "Why does salivary amylase not work in the stomach?";
+                            opt1.innerHTML = "The temperature of the stomach is 37 degrees celcius. ";
+                            opt2.innerHTML = "The pH of the stomach is acidic.";
+                            opt3.innerHTML = "It is produced in the mouth. ";
+                            opt4.innerHTML = "Starch is not present in the stomach. ";
+                            opt1.addEventListener("click", bioquestion.fourth.wrong1);
+                            opt2.addEventListener("click", bioquestion.fourth.correct);
+                            opt3.addEventListener("click", bioquestion.fourth.wrong2);
+                            opt4.addEventListener("click", bioquestion.fourth.wrong3);
+
+                            },
+
+                            order2: function(){
+                            document.getElementById("question").innerHTML = "Why does salivary amylase not work in the stomach?";
+                            opt1.innerHTML = "It is produced in the mouth. ";
+                            opt2.innerHTML = "Starch is not present in the stomach. ";
+                            opt3.innerHTML = "The temperature of the stomach is 37 degrees celcius. ";
+                            opt4.innerHTML = "The pH of the stomach is acidic.";
+                            opt1.addEventListener("click", bioquestion.fourth.wrong4);
+                            opt2.addEventListener("click", bioquestion.fourth.wrong5);
+                            opt3.addEventListener("click", bioquestion.fourth.wrong6);
+                            opt4.addEventListener("click", bioquestion.fourth.correct1);
+
+                            },
+
+                            order3: function(){
+                            document.getElementById("question").innerHTML = "Why does salivary amylase not work in the stomach?";
+                            opt1.innerHTML = "Starch is not present in the stomach. ";
+                            opt2.innerHTML = "The pH of the stomach is acidic.";
+                            opt3.innerHTML = "The temperature of the stomach is 37 degrees celcius. ";
+                            opt4.innerHTML = "It is produced in the mouth. ";
+                            opt1.addEventListener("click", bioquestion.fourth.wrong7);
+                            opt2.addEventListener("click", bioquestion.fourth.correct2);
+                            opt3.addEventListener("click", bioquestion.fourth.wrong8 );
+                            opt4.addEventListener("click", bioquestion.fourth.wrong9);
+
+                            },
+
+                        random: function(){
+                                let run = Math.floor(Math.random() * 3);
+                                onchoose = 0;
+
+                                // add question number
+                                document.getElementById("questionnum").innerHTML = "4 of 10 questions";
+
+                                // remove div 
+                                removechanges();
+
+                                //pick random question
+                                switch(run){
+
+                                case 0:
+                                bioquestion.fourth.order1();
+                                button.disabled = true;
+                                break;
+
+                                case 1:
+                                bioquestion.fourth.order2();
+                                button.disabled = true;
+                                break;
+
+                                case 2:
+                                bioquestion.fourth.order3();
                                 button.disabled = true;
                                 break;
 
