@@ -1145,7 +1145,11 @@
                         styleofpopupcorrect();
 
                         // update score
-                        score += 1;
+                        if(score === 1){
+                            score += 1;
+                        }else if(score === 2){
+                            scorecount.innerHTML = "2";
+                        }
                         updatescore();
 
                         // stop question timer
@@ -1575,7 +1579,11 @@
                             styleofpopupcorrect();
 
                             // update score
+                            if(score === 2){
                             score += 1;
+                        }else if(score === 3){
+                            scorecount.innerHTML = "3";
+                        }
                             updatescore();
 
                             // stop question timer
@@ -2003,7 +2011,11 @@
                             styleofpopupcorrect();
 
                             // update score
+                            if(score === 3){
                             score += 1;
+                        }else if(score === 4){
+                            scorecount.innerHTML = "4";
+                        }
                             updatescore();
 
                             // stop question timer
@@ -2431,7 +2443,11 @@ popwhencorrect: function(){
     styleofpopupcorrect();
 
     // update score
-    score += 1;
+    if(score === 4){
+        score += 1;
+    }else if(score === 5){
+        scorecount.innerHTML = "5";
+    }
     updatescore();
 
     // stop question timer
