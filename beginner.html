@@ -1078,10 +1078,10 @@
 
                     order1: function(){
                         document.getElementById("question").innerHTML = "Which  characteristic  of  living  organisms is  the  taking  in <br> of  materials  for  energy,  growth  and development?";
-                        opt1.innerHTML = "respiration";
-                        opt2.innerHTML = "nutrition";
-                        opt3.innerHTML = "excretion";
-                        opt4.innerHTML = "reproduction";
+                        opt1.innerHTML = "Respiration";
+                        opt2.innerHTML = "Nutrition";
+                        opt3.innerHTML = "Excretion";
+                        opt4.innerHTML = "Reproduction";
 
                         opt1.addEventListener("click", bioquestion.one.wrong1);
                         opt2.addEventListener("click", bioquestion.one.correct);
@@ -1092,10 +1092,10 @@
 
                     order2: function(){
                         document.getElementById("question").innerHTML = "Which  characteristic  of  living  organisms is  the  taking  in <br> of  materials  for  energy,  growth  and development?";
-                        opt1.innerHTML = "reproduction";
-                        opt2.innerHTML = "respiration";
-                        opt3.innerHTML = "excretion";
-                        opt4.innerHTML = "nutrition";
+                        opt1.innerHTML = "Reproduction";
+                        opt2.innerHTML = "Respiration";
+                        opt3.innerHTML = "Excretion";
+                        opt4.innerHTML = "Nutrition";
 
                         opt1.addEventListener("click", bioquestion.one.wrong4);
                         opt2.addEventListener("click", bioquestion.one.wrong5);
@@ -1106,10 +1106,10 @@
 
                     order3: function(){
                         document.getElementById("question").innerHTML = "Which  characteristic  of  living  organisms is  the  taking  in <br> of  materials  for  energy,  growth  and development?";
-                        opt1.innerHTML = "nutrition";
-                        opt2.innerHTML = "excretion";
-                        opt3.innerHTML = "respiration ";
-                        opt4.innerHTML = "reproduction";
+                        opt1.innerHTML = "Nutrition";
+                        opt2.innerHTML = "Excretion";
+                        opt3.innerHTML = "Respiration ";
+                        opt4.innerHTML = "Reproduction";
 
                         opt1.addEventListener("click", bioquestion.one.correct2);
                         opt2.addEventListener("click", bioquestion.one.wrong8);
@@ -2944,7 +2944,7 @@
                             document.getElementById("question").innerHTML = "Which organ detects the changes in the carbon dioxide concentration of the blood?";
                             opt1.innerHTML = "Liver";
                             opt2.innerHTML = "Brain";
-                            opt3.innerHTML = "pancreas";
+                            opt3.innerHTML = "Pancreas";
                             opt4.innerHTML = "Lungs";
                             opt1.addEventListener("click", bioquestion.fifth.wrong1);
                             opt2.addEventListener("click", bioquestion.fifth.correct);
@@ -2955,7 +2955,7 @@
 
                             order2: function(){
                             document.getElementById("question").innerHTML = "Which organ detects the changes in the carbon dioxide concentration of the blood?";
-                            opt1.innerHTML = "pancreas";
+                            opt1.innerHTML = "Pancreas";
                             opt2.innerHTML = "Liver ";
                             opt3.innerHTML = "Lungs";
                             opt4.innerHTML = "Brain";
@@ -2970,7 +2970,7 @@
                             document.getElementById("question").innerHTML = "Which organ detects the changes in the carbon dioxide concentration of the blood?";
                             opt1.innerHTML = "Lungs";
                             opt2.innerHTML = "Brain";
-                            opt3.innerHTML = "pancreas";
+                            opt3.innerHTML = "Pancreas";
                             opt4.innerHTML = "Liver";
                             opt1.addEventListener("click", bioquestion.fifth.wrong7);
                             opt2.addEventListener("click", bioquestion.fifth.correct2);
@@ -3487,7 +3487,1905 @@
                         }
                         },
 
+                seventh: {
+
+
+        popwhencorrect: function(){
+
+            // add div to state that they are correct
+
+            const heading = document.createElement("h3");
+            const par = document.createElement("p");
+            const text = document.createTextNode("Correct!");
+            const ans = document.createTextNode("It is a depressant")
+            const emoji = document.createTextNode("😀");
+
+            // append to webpage
+
+            element.appendChild(div6);
+            div6.appendChild(heading);
+            div6.appendChild(par);
+            div5.remove();
+            heading.appendChild(text);
+            heading.appendChild(emoji);
+            par.appendChild(ans);
+
+            styleofpopupcorrect();
+
+            // update score
+            switch(score){
+            case 0:
+                score += 1;
+                break;
+
+            case 1:
+                score += 1;
+                break; 
+
+            case 2:
+                score += 1;
+                break;
+
+            case 3:
+                score += 1; 
+                break;   
+
+            case 4:
+                score += 1;
+                break; 
+                
+            case 5:
+                score += 1;
+                break;
+
+            case 6: 
+                score += 1;  
+                break;
+
+            case 7:
+                scorecount.innerHTML = "7";
+                break
+            
+            case 8:
+                score -= 1;
+                break;  
+            
+            case 9:
+                score -= 2;
+                break;
+            
+            case 10:
+                score -= 3;
+                break; 
+        
+        };
+            updatescore();
+
+            // stop question timer
+            onchoose = 7;
+
+            },
+
+            popwhenwrong: function(){
+
+            // add div to state that they are correct
+
+            const heading = document.createElement("h3");
+            const par = document.createElement("p");
+            const text = document.createTextNode("Wrong!");
+            const ans = document.createTextNode("The correct answer is that it is a depressant.")
+            const emoji = document.createTextNode("🙁");
+
+            // append to webpage
+
+            element.appendChild(div6);
+            div6.appendChild(heading);
+            div6.appendChild(par);
+            div5.remove();
+            heading.appendChild(text);
+            heading.appendChild(emoji);
+            par.appendChild(ans);
+
+            styleofpopupwrong();
+
+            // stop question timer
+            onchoose = 7;
+
+            },
+
+
+            // option2 correct
+
+            correct: function(){
+
+            // change background color
+
+            opt2.style.backgroundColor = "lawngreen";
+            opt1.style.backgroundColor = "grey"; 
+            opt4.style.backgroundColor = "grey";
+            opt3.style.backgroundColor = "grey";
+
+
+            // remove border
+            opt1.style.border = "none"; 
+            opt2.style.border = "none";
+            opt3.style.border = "none";
+            opt4.style.border = "none";
+
+            bioquestion.seventh.popwhencorrect();
+
+            opt2.addEventListener("click", setTimeout(() => {
+            bioquestion.next();
+            }, 60000));
+
+            },
+
+            // option 4 correct
+
+            correct1: function(){
+
+            // change background color
+
+            opt4.style.backgroundColor = "lawngreen";
+            opt1.style.backgroundColor = "grey"; 
+            opt2.style.backgroundColor = "grey";
+            opt3.style.backgroundColor = "grey";
+
+            // remove border
+
+            opt1.style.border = "none"; 
+            opt2.style.border = "none";
+            opt3.style.border = "none";
+            opt4.style.border = "none";
+
+            bioquestion.seventh.popwhencorrect();
+
+            opt4.addEventListener("click", setTimeout(() => {
+            bioquestion.next();
+            }, 60000));
+
+            },
+
+            correct2: function(){
+
+            // change background color
+
+            opt2.style.backgroundColor = "lawngreen";
+            opt1.style.backgroundColor = "grey"; 
+            opt3.style.backgroundColor = "grey";
+            opt4.style.backgroundColor = "grey";
+
+
+            // remove border
+
+            opt1.style.border = "none"; 
+            opt2.style.border = "none";
+            opt3.style.border = "none";
+            opt4.style.border = "none";
+
+            bioquestion.seventh.popwhencorrect();
+
+            opt2.addEventListener("click", setTimeout(() => {
+                bioquestion.next();
+            }, 60000));
+
+            },
+
+            wrong1: function(){
+
+            // change background color
+
+            opt1.style.backgroundColor = "red";
+            opt3.style.backgroundColor = "grey"; 
+            opt2.style.backgroundColor = "lawngreen";
+            opt4.style.backgroundColor = "grey";
+
+
+            // remove border
+
+            opt1.style.border = "none"; 
+            opt2.style.border = "none";
+            opt3.style.border = "none";
+            opt4.style.border = "none";
+
+            bioquestion.seventh.popwhenwrong();
+
+            opt1.addEventListener("click", setTimeout(() => {
+                bioquestion.next();
+            }, 60000));
+
+            },
+
+            wrong2: function(){
+                // change background color
+
+                opt3.style.backgroundColor = "red";
+                opt1.style.backgroundColor = "grey"; 
+                opt2.style.backgroundColor = "lawngreen";
+                opt4.style.backgroundColor = "grey";
+
+
+                // remove border
+
+                opt1.style.border = "none"; 
+                opt2.style.border = "none";
+                opt3.style.border = "none";
+                opt4.style.border = "none";
+
+                bioquestion.seventh.popwhenwrong();
+
+                opt3.addEventListener("click", setTimeout(() => {
+                bioquestion.next();
+            }, 60000));
+
+            },
+
+            wrong3: function(){
+            // change background color
+
+            opt4.style.backgroundColor = "red";
+            opt1.style.backgroundColor = "grey"; 
+            opt2.style.backgroundColor = "lawngreen";
+            opt3.style.backgroundColor = "grey";
+
+
+            // remove border
+
+            opt1.style.border = "none"; 
+            opt2.style.border = "none";
+            opt3.style.border = "none";
+            opt4.style.border = "none";
+
+            bioquestion.seventh.popwhenwrong();
+
+            opt4.addEventListener("click", setTimeout(() => {
+                bioquestion.next();
+            }, 60000));
+
+            },
+
+            wrong4: function(){
+            // change background color
+
+            opt1.style.backgroundColor = "red";
+            opt3.style.backgroundColor = "grey"; 
+            opt2.style.backgroundColor = "grey";
+            opt4.style.backgroundColor = "lawngreen";
+
+
+            // remove border
+
+            opt1.style.border = "none"; 
+            opt2.style.border = "none";
+            opt3.style.border = "none";
+            opt4.style.border = "none";
+
+            bioquestion.seventh.popwhenwrong();
+
+            opt1.addEventListener("click", setTimeout(() => {
+                bioquestion.next();
+            }, 60000));
+
+            },
+
+            wrong5: function(){
+            // change background color
+
+            opt2.style.backgroundColor = "red";
+            opt1.style.backgroundColor = "grey"; 
+            opt3.style.backgroundColor = "grey";
+            opt4.style.backgroundColor = "lawngreen";
+
+
+            // remove border
+
+            opt1.style.border = "none"; 
+            opt2.style.border = "none";
+            opt3.style.border = "none";
+            opt4.style.border = "none";
+
+            bioquestion.seventh.popwhenwrong();
+
+            opt2.addEventListener("click", setTimeout(() => {
+                bioquestion.next();
+            }, 60000));
+
+            },
+
+            wrong6: function(){
+            // change background color
+
+            opt3.style.backgroundColor = "red";
+            opt1.style.backgroundColor = "grey"; 
+            opt2.style.backgroundColor = "grey";
+            opt4.style.backgroundColor = "lawngreen";
+
+
+            // remove border
+
+            opt1.style.border = "none"; 
+            opt2.style.border = "none";
+            opt3.style.border = "none";
+            opt4.style.border = "none";
+
+            bioquestion.seventh.popwhenwrong();
+
+            opt3.addEventListener("click", setTimeout(() => {
+                bioquestion.next();
+            }, 60000));
+
+            },
+
+            wrong7: function(){
+            // change background color
+
+            opt1.style.backgroundColor = "red";
+            opt3.style.backgroundColor = "grey"; 
+            opt2.style.backgroundColor = "lawngreen";
+            opt4.style.backgroundColor = "grey";
+
+
+            // remove border
+
+            opt1.style.border = "none"; 
+            opt2.style.border = "none";
+            opt3.style.border = "none";
+            opt4.style.border = "none";
+
+            bioquestion.seventh.popwhenwrong();
+
+            opt3.addEventListener("click", setTimeout(() => {
+                bioquestion.next();
+            }, 60000));
+
+            },
+
+            wrong8: function(){
+            // change background color
+
+            opt2.style.backgroundColor = "red";
+            opt1.style.backgroundColor = "grey"; 
+            opt3.style.backgroundColor = "lawngreen";
+            opt4.style.backgroundColor = "grey";
+
+
+            // remove border
+
+            opt1.style.border = "none"; 
+            opt2.style.border = "none";
+            opt3.style.border = "none";
+            opt4.style.border = "none";
+
+            bioquestion.seventh.popwhenwrong();
+
+            opt2.addEventListener("click", setTimeout(() => {
+                bioquestion.next();
+            }, 60000));
+
+            },
+
+            wrong9: function(){
+            // change background color
+
+            opt4.style.backgroundColor = "red";
+            opt1.style.backgroundColor = "grey"; 
+            opt2.style.backgroundColor = "grey";
+            opt3.style.backgroundColor = "lawngreen";
+
+
+            // remove border
+
+            opt1.style.border = "none"; 
+            opt2.style.border = "none";
+            opt3.style.border = "none";
+            opt4.style.border = "none";
+
+            bioquestion.seventh.popwhenwrong();
+
+            opt4.addEventListener("click", setTimeout(() => {
+                bioquestion.next();
+            }, 60000));
+
+            },
+
+            order1: function(){
+            document.getElementById("question").innerHTML = "Alcohol is a drug. Which statement is correct? ";
+            opt1.innerHTML = "It reduces reaction times";
+            opt2.innerHTML = "It is a depressant.";
+            opt3.innerHTML = "It is not addictive";
+            opt4.innerHTML = "It can cause COPD";
+            opt1.addEventListener("click", bioquestion.seventh.wrong1);
+            opt2.addEventListener("click", bioquestion.seventh.correct);
+            opt3.addEventListener("click", bioquestion.seventh.wrong2);
+            opt4.addEventListener("click", bioquestion.seventh.wrong3);
+
+            },
+
+            order2: function(){
+            document.getElementById("question").innerHTML = "Alcohol is a drug. Which statement is correct? ";
+            opt1.innerHTML = "It can cause COPD";
+            opt2.innerHTML = "It reduces reaction times";
+            opt3.innerHTML = "It is not addictive";
+            opt4.innerHTML = "It is a depressant";
+            opt1.addEventListener("click", bioquestion.seventh.wrong4);
+            opt2.addEventListener("click", bioquestion.seventh.wrong5);
+            opt3.addEventListener("click", bioquestion.seventh.wrong6);
+            opt4.addEventListener("click", bioquestion.seventh.correct1);
+
+            },
+
+            order3: function(){
+            document.getElementById("question").innerHTML = "Alcohol is a drug. Which statement is correct? ";
+            opt1.innerHTML = "It reduces reaction times";
+            opt2.innerHTML = "It is a depressant";
+            opt3.innerHTML = "It can cause COPD";
+            opt4.innerHTML = "It is not addictive";
+            opt1.addEventListener("click", bioquestion.seventh.wrong7);
+            opt2.addEventListener("click", bioquestion.seventh.correct2);
+            opt3.addEventListener("click", bioquestion.seventh.wrong8 );
+            opt4.addEventListener("click", bioquestion.seventh.wrong9);
+
+            },
+
+        random: function(){
+                let run = Math.floor(Math.random() * 3);
+                onchoose = 0;
+
+                // add question number
+                document.getElementById("questionnum").innerHTML = "7 of 10 questions";
+
+                // remove div 
+                removechanges();
+
+                //pick random question
+                switch(run){
+
+                case 0:
+                bioquestion.seventh.order1();
+                button.disabled = true;
+                break;
+
+                case 1:
+                bioquestion.seventh.order2();
+                button.disabled = true;
+                break;
+
+                case 2:
+                bioquestion.seventh.order3();
+                button.disabled = true;
+                break;
+
+            };
+
+            }
+           
+       },
+
+                eighth: {
+
+
+popwhencorrect: function(){
+
+    // add div to state that they are correct
+
+    const heading = document.createElement("h3");
+    const par = document.createElement("p");
+    const text = document.createTextNode("Correct!");
+    const ans = document.createTextNode("Two haploid gamete nuclei fuse to form a diploid zygote")
+    const emoji = document.createTextNode("😀");
+
+    // append to webpage
+
+    element.appendChild(div7);
+    div7.appendChild(heading);
+    div7.appendChild(par);
+    div6.remove();
+    heading.appendChild(text);
+    heading.appendChild(emoji);
+    par.appendChild(ans);
+
+    styleofpopupcorrect();
+
+    // update score
+    switch(score){
+    case 0:
+        score += 1;
+        break;
+
+    case 1:
+        score += 1;
+        break; 
+
+    case 2:
+        score += 1;
+        break;
+
+    case 3:
+        score += 1; 
+        break;   
+
+    case 4:
+        score += 1;
+        break; 
+        
+    case 5:
+        score += 1;
+        break;
+
+    case 6: 
+        score += 1;  
+        break;
+
+    case 7:
+        score += 1;
+        break
+    
+    case 8:
+        scorecount.innerHTML = "8";
+        break;  
+    
+    case 9:
+        score -= 1;
+        break;
+    
+    case 10:
+        score -= 2;
+        break; 
+
+};
+    updatescore();
+
+    // stop question timer
+    onchoose = 8;
+
+    },
+
+    popwhenwrong: function(){
+
+    // add div to state that they are correct
+
+    const heading = document.createElement("h3");
+    const par = document.createElement("p");
+    const text = document.createTextNode("Wrong!");
+    const ans = document.createTextNode("The correct answer is that two haploid gamete nuclei fuse to form a diploid zygote.")
+    const emoji = document.createTextNode("🙁");
+
+    // append to webpage
+
+    element.appendChild(div7);
+    div7.appendChild(heading);
+    div7.appendChild(par);
+    div6.remove();
+    heading.appendChild(text);
+    heading.appendChild(emoji);
+    par.appendChild(ans);
+
+    styleofpopupwrong();
+
+    // stop question timer
+    onchoose = 8;
+
+    },
+
+
+    // option2 correct
+
+    correct: function(){
+
+    // change background color
+
+    opt2.style.backgroundColor = "lawngreen";
+    opt1.style.backgroundColor = "grey"; 
+    opt4.style.backgroundColor = "grey";
+    opt3.style.backgroundColor = "grey";
+
+
+    // remove border
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.eighth.popwhencorrect();
+
+    opt2.addEventListener("click", setTimeout(() => {
+    bioquestion.next();
+    }, 60000));
+
+    },
+
+    // option 4 correct
+
+    correct1: function(){
+
+    // change background color
+
+    opt4.style.backgroundColor = "lawngreen";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt3.style.backgroundColor = "grey";
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.eighth.popwhencorrect();
+
+    opt4.addEventListener("click", setTimeout(() => {
+    bioquestion.next();
+    }, 60000));
+
+    },
+
+    correct2: function(){
+
+    // change background color
+
+    opt2.style.backgroundColor = "lawngreen";
+    opt1.style.backgroundColor = "grey"; 
+    opt3.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.eighth.popwhencorrect();
+
+    opt2.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong1: function(){
+
+    // change background color
+
+    opt1.style.backgroundColor = "red";
+    opt3.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "lawngreen";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.eighth.popwhenwrong();
+
+    opt1.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong2: function(){
+        // change background color
+
+        opt3.style.backgroundColor = "red";
+        opt1.style.backgroundColor = "grey"; 
+        opt2.style.backgroundColor = "lawngreen";
+        opt4.style.backgroundColor = "grey";
+
+
+        // remove border
+
+        opt1.style.border = "none"; 
+        opt2.style.border = "none";
+        opt3.style.border = "none";
+        opt4.style.border = "none";
+
+        bioquestion.eighth.popwhenwrong();
+
+        opt3.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong3: function(){
+    // change background color
+
+    opt4.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "lawngreen";
+    opt3.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.eighth.popwhenwrong();
+
+    opt4.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong4: function(){
+    // change background color
+
+    opt1.style.backgroundColor = "red";
+    opt3.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "lawngreen";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.eighth.popwhenwrong();
+
+    opt1.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong5: function(){
+    // change background color
+
+    opt2.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt3.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "lawngreen";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.eighth.popwhenwrong();
+
+    opt2.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong6: function(){
+    // change background color
+
+    opt3.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "lawngreen";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.eighth.popwhenwrong();
+
+    opt3.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong7: function(){
+    // change background color
+
+    opt1.style.backgroundColor = "red";
+    opt3.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "lawngreen";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.eighth.popwhenwrong();
+
+    opt3.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong8: function(){
+    // change background color
+
+    opt2.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt3.style.backgroundColor = "lawngreen";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.eighth.popwhenwrong();
+
+    opt2.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong9: function(){
+    // change background color
+
+    opt4.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt3.style.backgroundColor = "lawngreen";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.eighth.popwhenwrong();
+
+    opt4.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    order1: function(){
+    document.getElementById("question").innerHTML = "Which statement about fertilisation is correct? ";
+    opt1.innerHTML = "Two diploid gamete nuclei fuse to form a haploid zygote";
+    opt2.innerHTML = "Two haploid gamete nuclei fuse to form a diploid zygote";
+    opt3.innerHTML = "One diploid gamete nucleus divides to form a haploid zygote";
+    opt4.innerHTML = "One haploid gamete nucleus divides to form a diploid zygote";
+    opt1.addEventListener("click", bioquestion.eighth.wrong1);
+    opt2.addEventListener("click", bioquestion.eighth.correct);
+    opt3.addEventListener("click", bioquestion.eighth.wrong2);
+    opt4.addEventListener("click", bioquestion.eighth.wrong3);
+
+    },
+
+    order2: function(){
+    document.getElementById("question").innerHTML = "Which statement about fertilisation is correct?  ";
+    opt1.innerHTML = "One diploid gamete nucleus divides to form a haploid zygote";
+    opt2.innerHTML = "Two diploid gamete nuclei fuse to form a haploid zygote";
+    opt3.innerHTML = "One haploid gamete nucleus divides to form a diploid zygote";
+    opt4.innerHTML = "Two haploid gamete nuclei fuse to form a diploid zygote";
+    opt1.addEventListener("click", bioquestion.eighth.wrong4);
+    opt2.addEventListener("click", bioquestion.eighth.wrong5);
+    opt3.addEventListener("click", bioquestion.eighth.wrong6);
+    opt4.addEventListener("click", bioquestion.eighth.correct1);
+
+    },
+
+    order3: function(){
+    document.getElementById("question").innerHTML = "Which statement about fertilisation is correct?  ";
+    opt1.innerHTML = "One diploid gamete nucleus divides to form a haploid zygote";
+    opt2.innerHTML = "Two haploid gamete nuclei fuse to form a diploid zygote";
+    opt3.innerHTML = "One haploid gamete nucleus divides to form a diploid zygote";
+    opt4.innerHTML = "Two diploid gamete nuclei fuse to form a haploid zygote";
+    opt1.addEventListener("click", bioquestion.eighth.wrong7);
+    opt2.addEventListener("click", bioquestion.eighth.correct2);
+    opt3.addEventListener("click", bioquestion.eighth.wrong8 );
+    opt4.addEventListener("click", bioquestion.eighth.wrong9);
+
+    },
+
+random: function(){
+        let run = Math.floor(Math.random() * 3);
+        onchoose = 0;
+
+        // add question number
+        document.getElementById("questionnum").innerHTML = "8 of 10 questions";
+
+        // remove div 
+        removechanges();
+
+        //pick random question
+        switch(run){
+
+        case 0:
+        bioquestion.eighth.order1();
+        button.disabled = true;
+        break;
+
+        case 1:
+        bioquestion.eighth.order2();
+        button.disabled = true;
+        break;
+
+        case 2:
+        bioquestion.eighth.order3();
+        button.disabled = true;
+        break;
+
     };
+
+    }
+   
+},
+
+                ninth: {
+
+
+popwhencorrect: function(){
+
+    // add div to state that they are correct
+
+    const heading = document.createElement("h3");
+    const par = document.createElement("p");
+    const text = document.createTextNode("Correct!");
+    const ans = document.createTextNode("Restriction enzyme")
+    const emoji = document.createTextNode("😀");
+
+    // append to webpage
+
+    element.appendChild(div8);
+    div8.appendChild(heading);
+    div8.appendChild(par);
+    div7.remove();
+    heading.appendChild(text);
+    heading.appendChild(emoji);
+    par.appendChild(ans);
+
+    styleofpopupcorrect();
+
+    // update score
+    switch(score){
+    case 0:
+        score += 1;
+        break;
+
+    case 1:
+        score += 1;
+        break; 
+
+    case 2:
+        score += 1;
+        break;
+
+    case 3:
+        score += 1; 
+        break;   
+
+    case 4:
+        score += 1;
+        break; 
+        
+    case 5:
+        score += 1;
+        break;
+
+    case 6: 
+        score += 1;  
+        break;
+
+    case 7:
+        score += 1;
+        break
+    
+    case 8:
+        score += 1;
+        break;  
+    
+    case 9:
+        scorecount.innerHTML = "9";
+        break;
+    
+    case 10:
+        score -= 1;
+        break; 
+
+};
+    updatescore();
+
+    // stop question timer
+    onchoose = 9;
+
+    },
+
+    popwhenwrong: function(){
+
+    // add div to state that they are correct
+
+    const heading = document.createElement("h3");
+    const par = document.createElement("p");
+    const text = document.createTextNode("Wrong!");
+    const ans = document.createTextNode("The correct answer is restriction enzyme.")
+    const emoji = document.createTextNode("🙁");
+
+    // append to webpage
+
+    element.appendChild(div8);
+    div8.appendChild(heading);
+    div8.appendChild(par);
+    div7.remove();
+    heading.appendChild(text);
+    heading.appendChild(emoji);
+    par.appendChild(ans);
+
+    styleofpopupwrong();
+
+    // stop question timer
+    onchoose = 9;
+
+    },
+
+
+    // option2 correct
+
+    correct: function(){
+
+    // change background color
+
+    opt2.style.backgroundColor = "lawngreen";
+    opt1.style.backgroundColor = "grey"; 
+    opt4.style.backgroundColor = "grey";
+    opt3.style.backgroundColor = "grey";
+
+
+    // remove border
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.ninth.popwhencorrect();
+
+    opt2.addEventListener("click", setTimeout(() => {
+    bioquestion.next();
+    }, 60000));
+
+    },
+
+    // option 4 correct
+
+    correct1: function(){
+
+    // change background color
+
+    opt4.style.backgroundColor = "lawngreen";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt3.style.backgroundColor = "grey";
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.ninth.popwhencorrect();
+
+    opt4.addEventListener("click", setTimeout(() => {
+    bioquestion.next();
+    }, 60000));
+
+    },
+
+    correct2: function(){
+
+    // change background color
+
+    opt2.style.backgroundColor = "lawngreen";
+    opt1.style.backgroundColor = "grey"; 
+    opt3.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.ninth.popwhencorrect();
+
+    opt2.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong1: function(){
+
+    // change background color
+
+    opt1.style.backgroundColor = "red";
+    opt3.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "lawngreen";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.ninth.popwhenwrong();
+
+    opt1.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong2: function(){
+        // change background color
+
+        opt3.style.backgroundColor = "red";
+        opt1.style.backgroundColor = "grey"; 
+        opt2.style.backgroundColor = "lawngreen";
+        opt4.style.backgroundColor = "grey";
+
+
+        // remove border
+
+        opt1.style.border = "none"; 
+        opt2.style.border = "none";
+        opt3.style.border = "none";
+        opt4.style.border = "none";
+
+        bioquestion.ninth.popwhenwrong();
+
+        opt3.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong3: function(){
+    // change background color
+
+    opt4.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "lawngreen";
+    opt3.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.ninth.popwhenwrong();
+
+    opt4.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong4: function(){
+    // change background color
+
+    opt1.style.backgroundColor = "red";
+    opt3.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "lawngreen";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.ninth.popwhenwrong();
+
+    opt1.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong5: function(){
+    // change background color
+
+    opt2.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt3.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "lawngreen";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.ninth.popwhenwrong();
+
+    opt2.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong6: function(){
+    // change background color
+
+    opt3.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "lawngreen";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.ninth.popwhenwrong();
+
+    opt3.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong7: function(){
+    // change background color
+
+    opt1.style.backgroundColor = "red";
+    opt3.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "lawngreen";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.ninth.popwhenwrong();
+
+    opt3.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong8: function(){
+    // change background color
+
+    opt2.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt3.style.backgroundColor = "lawngreen";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.ninth.popwhenwrong();
+
+    opt2.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong9: function(){
+    // change background color
+
+    opt4.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt3.style.backgroundColor = "lawngreen";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.ninth.popwhenwrong();
+
+    opt4.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    order1: function(){
+    document.getElementById("question").innerHTML = "Which enzyme is used to create complementary sticky ends in genetic engineering? ";
+    opt1.innerHTML = "Lipase";
+    opt2.innerHTML = "Restriction enzyme";
+    opt3.innerHTML = "Trypsin";
+    opt4.innerHTML = "DNA ligase ";
+    opt1.addEventListener("click", bioquestion.ninth.wrong1);
+    opt2.addEventListener("click", bioquestion.ninth.correct);
+    opt3.addEventListener("click", bioquestion.ninth.wrong2);
+    opt4.addEventListener("click", bioquestion.ninth.wrong3);
+
+    },
+
+    order2: function(){
+    document.getElementById("question").innerHTML = "Which enzyme is used to create complementary sticky ends in genetic engineering?  ";
+    opt1.innerHTML = "Trypsin";
+    opt2.innerHTML = "DNA ligase ";
+    opt3.innerHTML = "Lipase";
+    opt4.innerHTML = "Restriction enzyme";
+    opt1.addEventListener("click", bioquestion.ninth.wrong4);
+    opt2.addEventListener("click", bioquestion.ninth.wrong5);
+    opt3.addEventListener("click", bioquestion.ninth.wrong6);
+    opt4.addEventListener("click", bioquestion.ninth.correct1);
+
+    },
+
+    order3: function(){
+    document.getElementById("question").innerHTML = "Which enzyme is used to create complementary sticky ends in genetic engineering? ";
+    opt1.innerHTML = "Lipase";
+    opt2.innerHTML = "Restriction enzyme";
+    opt3.innerHTML = "DNA ligase ";
+    opt4.innerHTML = "Trypsin";
+    opt1.addEventListener("click", bioquestion.ninth.wrong7);
+    opt2.addEventListener("click", bioquestion.ninth.correct2);
+    opt3.addEventListener("click", bioquestion.ninth.wrong8 );
+    opt4.addEventListener("click", bioquestion.ninth.wrong9);
+
+    },
+
+random: function(){
+        let run = Math.floor(Math.random() * 3);
+        onchoose = 0;
+
+        // add question number
+        document.getElementById("questionnum").innerHTML = "9 of 10 questions";
+
+        // remove div 
+        removechanges();
+
+        //pick random question
+        switch(run){
+
+        case 0:
+        bioquestion.ninth.order1();
+        button.disabled = true;
+        break;
+
+        case 1:
+        bioquestion.ninth.order2();
+        button.disabled = true;
+        break;
+
+        case 2:
+        bioquestion.ninth.order3();
+        button.disabled = true;
+        break;
+
+    };
+
+    }
+   
+},
+
+                tenth: {
+
+
+popwhencorrect: function(){
+
+    // add div to state that they are correct
+
+    const heading = document.createElement("h3");
+    const par = document.createElement("p");
+    const text = document.createTextNode("Correct!");
+    const ans = document.createTextNode("Reduced genetic variation")
+    const emoji = document.createTextNode("😀");
+
+    // append to webpage
+
+    element.appendChild(div9);
+    div9.appendChild(heading);
+    div9.appendChild(par);
+    div8.remove();
+    heading.appendChild(text);
+    heading.appendChild(emoji);
+    par.appendChild(ans);
+
+    styleofpopupcorrect();
+
+    // update score
+    switch(score){
+    case 0:
+        score += 1;
+        break;
+
+    case 1:
+        score += 1;
+        break; 
+
+    case 2:
+        score += 1;
+        break;
+
+    case 3:
+        score += 1; 
+        break;   
+
+    case 4:
+        score += 1;
+        break; 
+        
+    case 5:
+        score += 1;
+        break;
+
+    case 6: 
+        score += 1;  
+        break;
+
+    case 7:
+        score += 1;
+        break
+    
+    case 8:
+        score += 1;
+        break;  
+    
+    case 9:
+        score += 1;
+        break;
+    
+    case 10:
+        scorecount.innerHTML = "10";
+        break; 
+
+};
+    updatescore();
+
+    // stop question timer
+    onchoose = 10;
+
+    },
+
+    popwhenwrong: function(){
+
+    // add div to state that they are correct
+
+    const heading = document.createElement("h3");
+    const par = document.createElement("p");
+    const text = document.createTextNode("Wrong!");
+    const ans = document.createTextNode("The correct answer is reduced genetic variation.")
+    const emoji = document.createTextNode("🙁");
+
+    // append to webpage
+
+    element.appendChild(div8);
+    div9.appendChild(heading);
+    div9.appendChild(par);
+    div8.remove();
+    heading.appendChild(text);
+    heading.appendChild(emoji);
+    par.appendChild(ans);
+
+    styleofpopupwrong();
+
+    // stop question timer
+    onchoose = 10;
+
+    },
+
+
+    // option2 correct
+
+    correct: function(){
+
+    // change background color
+
+    opt2.style.backgroundColor = "lawngreen";
+    opt1.style.backgroundColor = "grey"; 
+    opt4.style.backgroundColor = "grey";
+    opt3.style.backgroundColor = "grey";
+
+
+    // remove border
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.tenth.popwhencorrect();
+
+    opt2.addEventListener("click", setTimeout(() => {
+    bioquestion.next();
+    }, 60000));
+
+    },
+
+    // option 4 correct
+
+    correct1: function(){
+
+    // change background color
+
+    opt4.style.backgroundColor = "lawngreen";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt3.style.backgroundColor = "grey";
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.tenth.popwhencorrect();
+
+    opt4.addEventListener("click", setTimeout(() => {
+    bioquestion.next();
+    }, 60000));
+
+    },
+
+    correct2: function(){
+
+    // change background color
+
+    opt2.style.backgroundColor = "lawngreen";
+    opt1.style.backgroundColor = "grey"; 
+    opt3.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.tenth.popwhencorrect();
+
+    opt2.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong1: function(){
+
+    // change background color
+
+    opt1.style.backgroundColor = "red";
+    opt3.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "lawngreen";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.tenth.popwhenwrong();
+
+    opt1.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong2: function(){
+        // change background color
+
+        opt3.style.backgroundColor = "red";
+        opt1.style.backgroundColor = "grey"; 
+        opt2.style.backgroundColor = "lawngreen";
+        opt4.style.backgroundColor = "grey";
+
+
+        // remove border
+
+        opt1.style.border = "none"; 
+        opt2.style.border = "none";
+        opt3.style.border = "none";
+        opt4.style.border = "none";
+
+        bioquestion.tenth.popwhenwrong();
+
+        opt3.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong3: function(){
+    // change background color
+
+    opt4.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "lawngreen";
+    opt3.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.tenth.popwhenwrong();
+
+    opt4.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong4: function(){
+    // change background color
+
+    opt1.style.backgroundColor = "red";
+    opt3.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "lawngreen";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.tenth.popwhenwrong();
+
+    opt1.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong5: function(){
+    // change background color
+
+    opt2.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt3.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "lawngreen";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.tenth.popwhenwrong();
+
+    opt2.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong6: function(){
+    // change background color
+
+    opt3.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt4.style.backgroundColor = "lawngreen";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.tenth.popwhenwrong();
+
+    opt3.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong7: function(){
+    // change background color
+
+    opt1.style.backgroundColor = "red";
+    opt3.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "lawngreen";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.tenth.popwhenwrong();
+
+    opt3.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong8: function(){
+    // change background color
+
+    opt2.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt3.style.backgroundColor = "lawngreen";
+    opt4.style.backgroundColor = "grey";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.tenth.popwhenwrong();
+
+    opt2.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    wrong9: function(){
+    // change background color
+
+    opt4.style.backgroundColor = "red";
+    opt1.style.backgroundColor = "grey"; 
+    opt2.style.backgroundColor = "grey";
+    opt3.style.backgroundColor = "lawngreen";
+
+
+    // remove border
+
+    opt1.style.border = "none"; 
+    opt2.style.border = "none";
+    opt3.style.border = "none";
+    opt4.style.border = "none";
+
+    bioquestion.tenth.popwhenwrong();
+
+    opt4.addEventListener("click", setTimeout(() => {
+        bioquestion.next();
+    }, 60000));
+
+    },
+
+    order1: function(){
+    document.getElementById("question").innerHTML = "Some fish populations have greatly reduced in size as a result of overfishing. What are the effects on a species of having a very small population size? ";
+    opt1.innerHTML = "Fewer genetic diseases ";
+    opt2.innerHTML = "Reduced genetic variation ";
+    opt3.innerHTML = "Better adapted to environmental changes";
+    opt4.innerHTML = "More competition for resources ";
+    opt1.addEventListener("click", bioquestion.tenth.wrong1);
+    opt2.addEventListener("click", bioquestion.tenth.correct);
+    opt3.addEventListener("click", bioquestion.tenth.wrong2);
+    opt4.addEventListener("click", bioquestion.tenth.wrong3);
+
+    },
+
+    order2: function(){
+    document.getElementById("question").innerHTML = "Some fish populations have greatly reduced in size as a result of overfishing. What are the effects on a species of having a very small population size? ";
+    opt1.innerHTML = "More competition for resources ";
+    opt2.innerHTML = "Better adapted to environmental changes";
+    opt3.innerHTML = "Fewer genetic diseases ";
+    opt4.innerHTML = "Reduced genetic variation";
+    opt1.addEventListener("click", bioquestion.tenth.wrong4);
+    opt2.addEventListener("click", bioquestion.tenth.wrong5);
+    opt3.addEventListener("click", bioquestion.tenth.wrong6);
+    opt4.addEventListener("click", bioquestion.tenth.correct1);
+
+    },
+
+    order3: function(){
+    document.getElementById("question").innerHTML = "Some fish populations have greatly reduced in size as a result of overfishing. What are the effects on a species of having a very small population size?";
+    opt1.innerHTML = "Better adapted to environmental changes";
+    opt2.innerHTML = "Reduced genetic variation";
+    opt3.innerHTML = "Fewer genetic diseases ";
+    opt4.innerHTML = "More competition for resources ";
+    opt1.addEventListener("click", bioquestion.tenth.wrong7);
+    opt2.addEventListener("click", bioquestion.tenth.correct2);
+    opt3.addEventListener("click", bioquestion.tenth.wrong8 );
+    opt4.addEventListener("click", bioquestion.tenth.wrong9);
+
+    },
+
+random: function(){
+        let run = Math.floor(Math.random() * 3);
+        onchoose = 0;
+
+        // add question number
+        document.getElementById("questionnum").innerHTML = "10 of 10 questions";
+
+        // remove div 
+        removechanges();
+
+        //pick random question
+        switch(run){
+
+        case 0:
+        bioquestion.tenth.order1();
+        button.disabled = true;
+        break;
+
+        case 1:
+        bioquestion.ntenth.order2();
+        button.disabled = true;
+        break;
+
+        case 2:
+        bioquestion.tenth.order3();
+        button.disabled = true;
+        break;
+
+    };
+
+    }
+   
+},
+
+       
+            };
+            
 
         //countdown
         function overalltimer(){
