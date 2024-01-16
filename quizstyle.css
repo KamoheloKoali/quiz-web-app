@@ -171,5 +171,48 @@ h3{
   }
 }
 
+.continue, .cancel{
+  text-decoration: none;
+  border-radius: 30px;
+  display: inline-block;
+  padding: 6px 12px;
+  font-size: 1.5rem;
+  color: rgb(102, 102, 102);
+  background-color: antiquewhite;
+  border: solid 1px rgb(102, 102, 102);
+}
 
+.continue:hover, .cancel:hover{
+  color: burlywood;
+  background-color: rgb(102, 102, 102);
+}
 
+/*modal window*/
+.popupoverlay{
+  background-color: rgba(0, 0, 0, 0.8);
+  border: solid 2px rgb(102, 102, 102);
+  padding: 2rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  visibility: hidden;
+}
+
+.popupcontent{
+  background-color: antiquewhite;
+  border: solid 2px rgb(102, 102, 102);
+  border-radius: 15px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  padding: 4rem;
+  width: 50%;
+  position: absolute;
+  left: 25%;
+  font-family: sans-serif;
+  visibility: hidden;
+}
+
+.popupoverlay.active, .popupcontent.active{
+  visibility: visible;
+}

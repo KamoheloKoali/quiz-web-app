@@ -7,8 +7,17 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
     </head>
     <body onload=" overalltimer(), bioquestion.one.random()">
+        <div class="popupoverlay">
+            <div class="popupcontent">
+                <h2>If you leave the page, all of your progress will be lost</h2>
+                <a href="Home.html" class="continue">Continue</a>
+                <a href="#" class="cancel">Cancel</a>
+            </div>
+        </div>
         <main>
 
             <div id="options">
@@ -40,6 +49,17 @@
             let onchoose = 0;
             let score = 0;
             const scorecount = document.getElementById("score");
+
+            $(document).ready(function(){
+                $(".fa").click(function(){
+                    $(".popupoverlay, .popupcontent").addClass("active");
+                });
+
+                $(".cancel, .popupoverlay").click(function(){
+                    $(".popupoverlay, .popupcontent").removeClass("active");
+                });
+
+            });
             
             function timer(){
                 var count = 89;
@@ -47,7 +67,7 @@
 
                 document.getElementById('count').innerHTML=count;
                 count--;
-                if (count === 0){
+                if (count === -1){
                     clearInterval(interval);
                     document.getElementById('count').innerHTML='0';
                     alert("You're out of time!");
@@ -3957,6 +3977,8 @@
 
             };
 
+            timer();
+
             }
            
        },
@@ -4430,6 +4452,8 @@ random: function(){
         break;
 
     };
+
+    timer();
 
     }
    
@@ -4905,6 +4929,8 @@ random: function(){
 
     };
 
+    timer();
+
     }
    
 },
@@ -5379,6 +5405,8 @@ random: function(){
 
     };
 
+    timer();
+
     }
    
 },
@@ -5456,11 +5484,7 @@ random: function(){
         };
 
         </script>
-<!--use switch statement for score -->
     </body>
 
 </html>
-
-
-
   
