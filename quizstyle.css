@@ -216,3 +216,100 @@ h3{
 .popupoverlay.active, .popupcontent.active{
   visibility: visible;
 }
+
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  #options{
+    width: fit-content;
+}
+
+.fa{
+  position: absolute;
+  top: 2%;
+  left: 85%;
+}
+
+h4{
+  position: absolute;
+  top: 0;
+  left: 30%;
+  padding-left: 0;
+  margin-left: 0;
+  box-shadow: 1px 1px 8px 0 black;
+}
+
+h4 span{
+   padding: 0 10px;
+   margin-right: 0;
+}
+
+.popupcontent{
+  background-color: antiquewhite;
+  border: solid 2px rgb(102, 102, 102);
+  border-radius: 15px;
+  box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+  padding: 0.8rem;
+  width: 50%;
+}
+
+.continue, .cancel{
+  margin-bottom: 5px;
+}
+
+}
+
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+  #options{
+    width: fit-content;
+    font-size: x-large;
+}
+
+.fa{
+  position: absolute;
+  top: 2%;
+  left: 85%;
+}
+
+h4{
+  position: absolute;
+  top: 0;
+  left: 30%;
+  padding-left: 0;
+  margin-left: 0;
+  box-shadow: 1px 1px 8px 0 black;
+}
+
+h4 span{
+   padding: 0 10px;
+   margin-right: 0;
+}
+
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+  #options{
+    width: fit-content;
+    font-size: x-large;
+}
+
+.fa{
+  position: absolute;
+  top: 2%;
+  left: 85%;
+  font-size: 48px;
+}
+
+h4{
+  position: absolute;
+  top: 0;
+  left: 30%;
+  padding-left: 0;
+  margin-left: 0;
+  box-shadow: 1px 1px 8px 0 black;
+}
+
+h4 span{
+   padding: 0 10px;
+   margin-right: 0;
+}
+
+}

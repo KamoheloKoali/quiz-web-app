@@ -23,7 +23,7 @@
             <div id="options">
                 <h1>SCORE: <span id="score">0</span></h1>
                 <h4 id="time">Time Left<span id="count">Start</span></h4>
-                <h2 id="home"><i title="Home" class="fa fa-home" style="font-size: 48px;"></i></h2>
+                <h2 id="home"><i title="Home" class="fa fa-home" style="font-size: 52px;"></i></h2>
                 <h3 id="question"></h3>
 
                 <div>
@@ -70,7 +70,7 @@
                 if (count === -1){
                     clearInterval(interval);
                     document.getElementById('count').innerHTML='0';
-                    alert("You're out of time!");
+                    timerunout();
                 };
 
                 switch(onchoose){
@@ -228,7 +228,7 @@
 
                                 // style new elements
                                 timediv.style.backgroundColor = "red";
-                                timediv.style.maxWidth = "20%";
+                                timediv.style.maxWidth = "80%";
                                 timediv.style.maxHeight = "80%";
                                 timediv.style.zIndex = "-1";
                                 timediv.style.position = "absolute";
@@ -283,7 +283,7 @@
                 
                                 // style new elements first div
                                 div.style.backgroundColor = "lawngreen";
-                                div.style.maxWidth = "20%";
+                                div.style.maxWidth = "50%";
                                 div.style.maxHeight = "80%";
                                 div.style.position = "absolute"
                                 div.style.top = "5%"
@@ -299,7 +299,7 @@
 
                                 // style new elements sec div
                                 div1.style.backgroundColor = "lawngreen";
-                                div1.style.maxWidth = "20%";
+                                div1.style.maxWidth = "80%";
                                 div1.style.maxHeight = "80%";
                                 div1.style.position = "absolute"
                                 div1.style.top = "5%"
@@ -315,7 +315,7 @@
 
                                 // style new elements third div
                                 div2.style.backgroundColor = "lawngreen";
-                                div2.style.maxWidth = "20%";
+                                div2.style.maxWidth = "80%";
                                 div2.style.maxHeight = "80%";
                                 div2.style.position = "absolute"
                                 div2.style.top = "5%"
@@ -331,8 +331,8 @@
 
                                 // style new elements fourth div
                                 div3.style.backgroundColor = "lawngreen";
-                                div3.style.maxWidth = "20%";
-                                div3.style.maxHeight = "80%";
+                                div3.style.maxWidth = "80%";
+                                div3.style.maxHeight = "50%";
                                 div3.style.position = "absolute"
                                 div3.style.top = "5%"
                                 div3.style.borderRadius = "10px";
@@ -347,7 +347,7 @@
 
                                 // style new elements fifth div
                                 div4.style.backgroundColor = "lawngreen";
-                                div4.style.maxWidth = "20%";
+                                div4.style.maxWidth = "80%";
                                 div4.style.maxHeight = "80%";
                                 div4.style.position = "absolute"
                                 div4.style.top = "5%"
@@ -363,7 +363,7 @@
 
                                 // style new elements sixth div
                                 div5.style.backgroundColor = "lawngreen";
-                                div5.style.maxWidth = "20%";
+                                div5.style.maxWidth = "80%";
                                 div5.style.maxHeight = "80%";
                                 div5.style.position = "absolute"
                                 div5.style.top = "5%"
@@ -379,7 +379,7 @@
 
                                 // style new elements seventh div
                                 div6.style.backgroundColor = "lawngreen";
-                                div6.style.maxWidth = "20%";
+                                div6.style.maxWidth = "80%";
                                 div6.style.maxHeight = "80%";
                                 div6.style.position = "absolute"
                                 div6.style.top = "5%"
@@ -395,7 +395,7 @@
 
                                 // style new elements eighth div
                                 div7.style.backgroundColor = "lawngreen";
-                                div7.style.maxWidth = "20%";
+                                div7.style.maxWidth = "80%";
                                 div7.style.maxHeight = "80%";
                                 div7.style.position = "absolute"
                                 div7.style.top = "5%"
@@ -411,7 +411,7 @@
 
                                 // style new elements ninth div
                                 div8.style.backgroundColor = "lawngreen";
-                                div8.style.maxWidth = "20%";
+                                div8.style.maxWidth = "80%";
                                 div8.style.maxHeight = "80%";
                                 div8.style.position = "absolute"
                                 div8.style.top = "5%"
@@ -427,7 +427,7 @@
 
                                 // style new elements tenth div
                                 div9.style.backgroundColor = "lawngreen";
-                                div9.style.maxWidth = "20%";
+                                div9.style.maxWidth = "80%";
                                 div9.style.maxHeight = "80%";
                                 div9.style.position = "absolute"
                                 div9.style.top = "5%"
@@ -471,7 +471,7 @@
                 
                                 // style new elements for first div
                                 div.style.backgroundColor = "red";
-                                div.style.maxWidth = "20%";
+                                div.style.maxWidth = "80%";
                                 div.style.maxHeight = "80%";
                                 div.style.position = "absolute"
                                 div.style.top = "2%"
@@ -487,7 +487,7 @@
 
                                 // style new elements for sec div
                                 div1.style.backgroundColor = "red";
-                                div1.style.maxWidth = "20%";
+                                div1.style.maxWidth = "80%";
                                 div1.style.maxHeight = "80%";
                                 div1.style.position = "absolute"
                                 div1.style.top = "2%"
@@ -503,7 +503,7 @@
 
                                 // style new elements for third div
                                 div2.style.backgroundColor = "red";
-                                div2.style.maxWidth = "20%";
+                                div2.style.maxWidth = "80%";
                                 div2.style.maxHeight = "80%";
                                 div2.style.position = "absolute"
                                 div2.style.top = "5%"
@@ -519,7 +519,7 @@
 
                                 // style new elements for fourth div
                                 div3.style.backgroundColor = "red";
-                                div3.style.maxWidth = "20%";
+                                div3.style.maxWidth = "80%";
                                 div3.style.maxHeight = "80%";
                                 div3.style.position = "absolute"
                                 div3.style.top = "2%"
@@ -536,7 +536,7 @@
                                 
                                 // style new elements for fifth div
                                 div4.style.backgroundColor = "red";
-                                div4.style.maxWidth = "20%";
+                                div4.style.maxWidth = "80%";
                                 div4.style.maxHeight = "80%";
                                 div4.style.position = "absolute"
                                 div4.style.top = "2%"
@@ -552,7 +552,7 @@
 
                                 // style new elements for sixth div
                                 div5.style.backgroundColor = "red";
-                                div5.style.maxWidth = "20%";
+                                div5.style.maxWidth = "80%";
                                 div5.style.maxHeight = "80%";
                                 div5.style.position = "absolute"
                                 div5.style.top = "2%"
@@ -568,7 +568,7 @@
 
                                 // style new elements for seventh div
                                 div6.style.backgroundColor = "red";
-                                div6.style.maxWidth = "20%";
+                                div6.style.maxWidth = "80%";
                                 div6.style.maxHeight = "80%";
                                 div6.style.position = "absolute"
                                 div6.style.top = "2%"
@@ -584,7 +584,7 @@
 
                                 // style new elements for eighth div
                                 div7.style.backgroundColor = "red";
-                                div7.style.maxWidth = "20%";
+                                div7.style.maxWidth = "80%";
                                 div7.style.maxHeight = "80%";
                                 div7.style.position = "absolute"
                                 div7.style.top = "2%"
@@ -600,7 +600,7 @@
 
                                 // style new elements for ninth div
                                 div8.style.backgroundColor = "red";
-                                div8.style.maxWidth = "20%";
+                                div8.style.maxWidth = "80%";
                                 div8.style.maxHeight = "80%";
                                 div8.style.position = "absolute"
                                 div8.style.top = "2%"
@@ -616,7 +616,7 @@
 
                                 // style new elements for tenth div
                                 div9.style.backgroundColor = "red";
-                                div9.style.maxWidth = "20%";
+                                div9.style.maxWidth = "80%";
                                 div9.style.maxHeight = "80%";
                                 div9.style.position = "absolute"
                                 div9.style.top = "2%"
@@ -728,7 +728,7 @@
                                 const par = document.createElement("p");
                                 const heading = document.createElement("h3");
                                 const text = document.createTextNode("Correct!");
-                                const ans = document.createTextNode("Nutrition is the process of taking in food and converting it into energy and other vital nutrients required for life")
+                                const ans = document.createTextNode("Nutrition")
                                 const emoji = document.createTextNode("😀");
 
                                 // append to webpage
@@ -757,7 +757,7 @@
                                 const par = document.createElement("p");
                                 const heading = document.createElement("h3");
                                 const text = document.createTextNode("Wrong!");
-                                const ans = document.createTextNode("The correct answer is nutrition. It is the process of taking in food and converting it into energy and other vital nutrients required for life")
+                                const ans = document.createTextNode("The correct answer is nutrition")
                                 const emoji = document.createTextNode("🙁");
 
                                 // append to webpage
