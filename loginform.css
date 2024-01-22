@@ -1,0 +1,80 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: hsl(0, 0%, 60%);
+}
+
+/******************************************************************Navigation bar***************************************************************************************/
+nav{
+    width: 100dvw;
+    border-bottom: 2px solid hsla(0, 0%, 0%, 0.5);
+    display: inline-flex;
+    font-family: sans-serif;
+    font-weight: medium;
+    font-size: large;
+    position: absolute;
+    top: 0;
+    justify-content: space-between;
+    background-color: hsla(10, 30%, 80%, 0.3);
+}
+
+nav div{
+    padding: 20px;
+}
+
+.link1, .link2{
+  border-right: 2px solid black;
+  padding-right: 10px;
+  padding-left: auto;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+.home-button{
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+}
+
+.home-button:hover{
+    text-decoration: none;
+    color: ghostwhite;
+    font-size: 20px;
+}
+
+.login{
+    border: 2px solid hsl(0, 20%, 10%, 0.4);
+    border-radius: 20px;
+    background-color: hsl(187, 52%, 80%, 0.3);
+    padding: 8px 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+
+.login:hover{
+    box-shadow: 0 2px 25px 0 black;
+}
+
+.link1:hover, .link2:hover{
+    padding-top: 20px;
+    padding-bottom: 20px;
+   border: none;
+    background-color: grey;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+
+/******************************************************************************Navigation bar**************************************************************************/
+
+/******************************************************************************Login/Sign Up Form**********************************************************************/
+
+/******************************************************************************Login/Sign Up Form*********************************************************************/
