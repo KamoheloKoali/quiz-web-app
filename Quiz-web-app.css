@@ -24,6 +24,15 @@ nav div{
     padding: 20px;
 }
 
+nav div a{
+    padding: 5px;
+}
+
+#logo{
+    position: absolute;
+    left: 5%;
+}
+
 .link1, .link2{
   border-right: 2px solid black;
   padding-right: 5px;
@@ -329,3 +338,4 @@ img{
     bottom: 15%;
 
 }
+
