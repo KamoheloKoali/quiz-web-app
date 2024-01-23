@@ -5,6 +5,7 @@
         <link rel="icon" type="image/x-icon" href="logo.png">
         <link rel="stylesheet" href="loginform.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
@@ -20,6 +21,59 @@
 
 <!--------------------------------------------------------------------------Login Form----------------------------------------------------------------------------------->
 
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <form action="#">
+            <h1>Create Account</h1>
+            <div class="social-container">
+                <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank" class="social"><i class="fab fa-instagram"></i></a>
+                <a href="https://za.pinterest.com/" target="_blank" class="social"><i class="fab fa-pinterest"></i></a>
+                <a href="https://www.facebook.com/" target="_blank" class="social"><i class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com/i/flow/login" target="_blank" class="social"><i class="fab fa-twitter"></i></a>
+            </div>
+
+            <span>or use your email for registration</span>
+            <input type="text" placeholder="Name"/>
+            <input type="email" placeholder="Email"/>
+            <input type="password" placeholder="Password"/>
+            <button class="su" >Sign Up</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        <form action="#">
+            <h1>Sign In</h1>
+            <div class="social-container">
+                <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank" class="social instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://za.pinterest.com/" target="_blank" class="social pinterest"><i class="fab fa-pinterest"></i></a>
+                <a href="https://www.facebook.com/" target="_blank" class="social facebook"><i class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com/i/flow/login" target="_blank" class="social twitter"><i class="fab fa-twitter"></i></a>
+            </div>
+
+            <span>or use your account</span>
+            <input type="email" placeholder="Email"/>
+            <input type="password" placeholder="Password"/>
+            <a href="" target="_blank" class="forgot">I Forgot my Password</a>
+            <button class="si">Sign In</button>
+        </form>
+    </div>
+
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To Keep connected with us please login with your personal info</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Welcome!</h1>
+                <p>Please sign up and get ready to put your brain to the test</p>
+                <button class="ghost" id="signUp">Sign Up</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+<script src="loginform.js"></script>
 <!----------------------------------------------------------------------------Login Form-------------------------------------------------------------------------------------------->
     </body>
 </html>
