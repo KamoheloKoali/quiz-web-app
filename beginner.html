@@ -9,8 +9,61 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+        <style>
+
+           
+            #home{
+                font-size: 48px;
+                position: relative;
+                width:  60px;
+                height: 60px;
+                display: inline-block;
+                padding: none;
+                
+            }
+
+            .score {
+               
+                width: 200px;
+                position: relative;
+                display: inline-block;
+                margin: 0px;
+            }
+
+            #countdown{
+                font-family: san-serif;
+                font-weight: bolder;
+                
+            }
+
+
+            .divtimer{
+            
+                background-color: red;
+                max-width: 20%;
+                max-Height: 80%;
+                z-index: -1;
+                position: relative;
+                border-radius: 10px;
+                box-shadow: 0px 4px 25px 0 black;
+                font-family: sans-serif;
+                font-weight:bold;
+                font-size: 1em;
+                animation: timedivanimation;
+                animation-duration: 5s;
+                animation-timing-function: "ease-in-out";
+                transition: top 5s;
+                border: 1px solid red;
+            }
+
+
+        </style>
+
     </head>
-    <body onload=" overalltimer(), bioquestion.one.random()">
+
+      <body onload="resert(), overalltimer(), bioquestion.one.random()">
+        
+
         <div class="popupoverlay">
             <div class="popupcontent">
                 <h2>If you leave the page, all of your progress will be lost</h2>
@@ -18,35 +71,78 @@
                 <a href="#" class="cancel">Cancel</a>
             </div>
         </div>
+
         <main>
 
-            <div id="options">
-                <h1>SCORE: <span id="score">0</span></h1>
-                <h4 id="time">Time Left<span id="count">Start</span></h4>
-                <h2 id="home"><i title="Home" class="fa fa-home" style="font-size: 48px;"></i></h2>
-                <h3 id="question"></h3>
+           <div id="options">
+                <div id="home"><i title="Home"  class="fa fa-home"></i></div>
+                <div class="score"><h1>SCORE: <span id="score">0</span></h1></div>
+                <div class="timediv"></div>
 
-                <div>
-                    <button id="opt1"></button><br>
-                    <button id="opt2"></button><br>
-                    <button id="opt3"></button><br>
-                    <button id="opt4"></button>
+<!--********************This is the timer div*************************-->
+
+                <div id="time">
+                    <h4>
+                        Time Left
+                        <span id="count">Start</span>
+                    </h4>
                 </div>
 
-                <div id="countdown" style="font-family: sans-serif; font-weight: bolder;"></div>
+<!--*******************This is the questions and answers html****************-->
+                
+                <h3 id="question"></h3>
 
+                <div class="answers" id="container">
+                    <div><button id="opt1">the</button></div>
+                    <div><button id="opt2"></button></div>
+                    <div><button id="opt3"></button></div>
+                    <div><button id="opt4"></button></div>
+                </div>
+
+<!--*********************This is the overrole countdown div***********************-->
+
+                <div id="countdown" ></div>
+       
                 <hr>
+
+<!--*************This is the question number count and the next button************-->
 
                 <div id="next">
                   <h5 id="questionnum">1 of 10 questions</h5>
                   <button id="nextbutton" onclick="bioquestion.next()">Next</button>
                 </div>
+                
            </div>
+        
+
         </main>
 
-        <script>
+
+
+    <script>
+
+            function resert() {
+            var containor = document.querySelector('#container');
+            shuffleElements(containor);
+        };
+
+        
+        function  shuffleElements(containor) {
+            var elements = containor.children;
+            for (var i = elements.length; i >= 0; i--) {
+            containor.appendChild(elements[Math.random() * i | 0]);
+            }
+        };
+
+
+    </script>
+
+    <script>
 
             let onchoose = 0;
+
+//********************** setting the score element-********************
+
             let score = 0;
             const scorecount = document.getElementById("score");
 
@@ -61,16 +157,21 @@
 
             });
             
+//***********************Setting the timer upper*********************
+
             function timer(){
-                var count = 89;
+
+                var count =10;
                 var interval = setInterval(function(){
 
-                document.getElementById('count').innerHTML=count;
+                document.getElementById('count').innerHTML = count;
                 count--;
+
                 if (count === -1){
+
                     clearInterval(interval);
-                    document.getElementById('count').innerHTML='0';
-                    alert("You're out of time!");
+                    document.getElementById('count').innerHTML = '0';
+                    
                 };
 
                 switch(onchoose){
@@ -116,7 +217,7 @@
                 }, 1000);
             };
 
-            //questions
+//*************************Calling question and answer div****************************
 
             const element = document.getElementById("options");
             const opt1 = document.getElementById("opt1");
@@ -124,7 +225,7 @@
             const opt3 = document.getElementById("opt3");
             const opt4 = document.getElementById("opt4");
 
-            // div for pop up when wrong or correct
+// ********************creating divs for pop up when wrong or correct****************
 
             const div = document.createElement("div");
             const div1 = document.createElement("div");
@@ -136,55 +237,61 @@
             const div7 = document.createElement("div");
             const div8 = document.createElement("div");
             const div9 = document.createElement("div");
-            const timediv = document.createElement("div");
+            const timediv = document.querySelector("divtimer");
 
 
-            // removing changes on page for following question
+//************************Removing changes on page for following question**************
 
             function removechanges(){
+
                         // background color
 
-                        opt2.style.backgroundColor = "hsla(33, 100%, 88%, 0.5)";
-                        opt1.style.backgroundColor = "hsla(33, 100%, 88%, 0.5)"; 
-                        opt4.style.backgroundColor = "hsla(33, 100%, 88%, 0.5)";
-                        opt3.style.backgroundColor = "hsla(33, 100%, 88%, 0.5)";
+                opt2.style.backgroundColor = "hsla(33, 100%, 88%, 0.5)";
+                opt1.style.backgroundColor = "hsla(33, 100%, 88%, 0.5)"; 
+                opt4.style.backgroundColor = "hsla(33, 100%, 88%, 0.5)";
+                opt3.style.backgroundColor = "hsla(33, 100%, 88%, 0.5)";
 
 
-                        //  border
+                    //  border
 
-                        opt1.style.border = "5px solid rgba(0, 0, 0, 0.3)"; 
-                        opt2.style.border = "5px solid rgba(0, 0, 0, 0.3)";
-                        opt3.style.border = "5px solid rgba(0, 0, 0, 0.3)";
-                        opt4.style.border = "5px solid rgba(0, 0, 0, 0.3)";
+                opt1.style.border = "5px solid rgba(0, 0, 0, 0.3)"; 
+                opt2.style.border = "5px solid rgba(0, 0, 0, 0.3)";
+                opt3.style.border = "5px solid rgba(0, 0, 0, 0.3)";
+                opt4.style.border = "5px solid rgba(0, 0, 0, 0.3)";
 
-                        // remove pop up
-                        div.remove();
-                        div1.remove();
-                        div2.remove();
-                        div3.remove();
-                        div4.remove();
-                        div5.remove();
-                        div6.remove();
-                        div7.remove();
-                        div8.remove();
-                        div9.remove();
-                        timediv.remove();
+                // remove pop up
+                div.remove();
+                div1.remove();
+                div2.remove();
+                div3.remove();
+                div4.remove();
+                div5.remove();
+                div6.remove();
+                div7.remove();
+                div8.remove();
+                div9.remove();
+                    
 
-                        // stop button animation
-                        button.style.animation = "none";     
-                        
-                        //enable buttons for answers
-                            opt1.disabled = false;
-                            opt2.disabled = false;
-                            opt3.disabled = false;
-                            opt4.disabled = false;
+                // stop button animation
+                button.style.animation = "none";     
+                
+                //enable buttons for answers
+                opt1.disabled = false;
+                opt2.disabled = false;
+                opt3.disabled = false;
+                opt4.disabled = false;
 
 
             };
 
+//********************Apdating the score**************************
+
+     
             function updatescore(){
 
-                if(score === 1){
+                           
+
+               /* if(score === 1){
                     scorecount.innerHTML = "1";
                 }else if(score === 2){
                     scorecount.innerHTML = "2";
@@ -204,7 +311,9 @@
                     scorecount.innerHTML = "9";
                 }else if(score === 10){
                     scorecount.innerHTML = "10";
-                }
+                }*/
+             
+
 
             };
 
@@ -217,508 +326,129 @@
                 // add div
                 const text = document.createTextNode("You\'ve run out time!!😦");
                 const par = document.createElement("p");
-                                const heading = document.createElement("h3");
+                const heading = document.createElement("h3");
 
+                // append to webpage
+                element.appendChild(timediv);
+                timediv.appendChild(heading);
+                timediv.appendChild(par);
+                heading.appendChild(text);
+                
+                //button style
+                button.style.animation = "anim";
+                button.style.animationDuration = "3s";
+                button.style.animationIterationCount = "infinite";
+                button.style.animationTimingFunction = "ease-in-out";
+                button.disabled = false;
 
-                                // append to webpage
-                                element.appendChild(timediv);
-                                timediv.appendChild(heading);
-                                timediv.appendChild(par);
-                                heading.appendChild(text);
+                // disable option buttons
+                opt1.disabled = true;
+                opt2.disabled = true;
+                opt3.disabled = true;
+                opt4.disabled = true;
 
-                                // style new elements
-                                timediv.style.backgroundColor = "red";
-                                timediv.style.maxWidth = "20%";
-                                timediv.style.maxHeight = "80%";
-                                timediv.style.zIndex = "-1";
-                                timediv.style.position = "absolute";
-                                timediv.style.top = "13%";
-                                timediv.style.right = "30%";
-                                timediv.style.borderRadius = "10px";
-                                timediv.style.boxShadow = "0px 4px 25px 0 black";
-                                timediv.style.fontFamily = "sans-serif";
-                                timediv.style.fontWeight = "bold";
-                                timediv.style.fontSize = "1em";
-
-                                // timediv animation
-                                timediv.style.animation = "timedivanimation";
-                                timediv.style.animationDuration = "5s";
-                                timediv.style.animationTimingFunction = "ease-in-out";
-                                timediv.style.transition = "top 5s";
-
-                                //button 
-                                button.style.animation = "anim";
-                                button.style.animationDuration = "3s";
-                                button.style.animationIterationCount = "infinite";
-                                button.style.animationTimingFunction = "ease-in-out";
-                                button.disabled = false;
-
-                                // disable option buttons
-                                opt1.disabled = true;
-                                opt2.disabled = true;
-                                opt3.disabled = true;
-                                opt4.disabled = true;
-
-                                // remove pop up 
-                                setTimeout(() => {
-                                    bioquestion.next();
-                                }, 10000);
+                // remove pop up 
+                setTimeout(() => {
+                    bioquestion.next();
+                }, 10000);
                        
             };
 
             function styleofpopupcorrect(){
 
-                                //animation
-                                div.style.animation = "popwhencorrectanimation";
-                                div1.style.animation = "popwhencorrectanimation";
-                                div2.style.animation = "popwhencorrectanimation";
-                                div3.style.animation = "popwhencorrectanimation";
-                                div4.style.animation = "popwhencorrectanimation";
-                                div5.style.animation = "popwhencorrectanimation";
-                                div6.style.animation = "popwhencorrectanimation";
-                                div7.style.animation = "popwhencorrectanimation";
-                                div8.style.animation = "popwhencorrectanimation";
-                                div9.style.animation = "popwhencorrectanimation";
-                                
-                
-                                // style new elements first div
-                                div.style.backgroundColor = "lawngreen";
-                                div.style.maxWidth = "20%";
-                                div.style.maxHeight = "80%";
-                                div.style.position = "absolute"
-                                div.style.top = "5%"
-                                div.style.borderRadius = "10px";
-                                div.style.boxShadow = "1px 1px 8px 0 black";
-                                div.style.fontFamily = "sans-serif"
-                                div.style.fontWeight = "bold";
-                                div.style.fontSize = "1em";
-                                div.style.animationDuration = "5s";
-                                div.style.animationTimingFunction = "ease-in-out";
-                                div.style.transition = "top 5s";
-                                div.style.zIndex = "-1";
+                // next button
+                button.style.animation = "anim";
+                button.style.animationDuration = "3s";
+                button.style.animationIterationCount = "infinite";
+                button.style.animationTimingFunction = "ease-in-out";
 
-                                // style new elements sec div
-                                div1.style.backgroundColor = "lawngreen";
-                                div1.style.maxWidth = "20%";
-                                div1.style.maxHeight = "80%";
-                                div1.style.position = "absolute"
-                                div1.style.top = "5%"
-                                div1.style.borderRadius = "10px";
-                                div1.style.boxShadow = "1px 1px 8px 0 black";
-                                div1.style.fontFamily = "sans-serif"
-                                div1.style.fontWeight = "bold";
-                                div1.style.fontSize = "1em";
-                                div1.style.animationDuration = "5s";
-                                div1.style.animationTimingFunction = "ease-in-out";
-                                div1.style.transition = "top 5s";
-                                div1.style.zIndex = "-1";
-
-                                // style new elements third div
-                                div2.style.backgroundColor = "lawngreen";
-                                div2.style.maxWidth = "20%";
-                                div2.style.maxHeight = "80%";
-                                div2.style.position = "absolute"
-                                div2.style.top = "5%"
-                                div2.style.borderRadius = "10px";
-                                div2.style.boxShadow = "1px 1px 8px 0 black";
-                                div2.style.fontFamily = "sans-serif"
-                                div2.style.fontWeight = "bold";
-                                div2.style.fontSize = "1em";
-                                div2.style.animationDuration = "5s";
-                                div2.style.animationTimingFunction = "ease-in-out";
-                                div2.style.transition = "top 5s";
-                                div2.style.zIndex = "-1";
-
-                                // style new elements fourth div
-                                div3.style.backgroundColor = "lawngreen";
-                                div3.style.maxWidth = "20%";
-                                div3.style.maxHeight = "80%";
-                                div3.style.position = "absolute"
-                                div3.style.top = "5%"
-                                div3.style.borderRadius = "10px";
-                                div3.style.boxShadow = "1px 1px 8px 0 black";
-                                div3.style.fontFamily = "sans-serif"
-                                div3.style.fontWeight = "bold";
-                                div3.style.fontSize = "1em";
-                                div3.style.animationDuration = "5s";
-                                div3.style.animationTimingFunction = "ease-in-out";
-                                div3.style.transition = "top 5s";
-                                div3.style.zIndex = "-1";
-
-                                // style new elements fifth div
-                                div4.style.backgroundColor = "lawngreen";
-                                div4.style.maxWidth = "20%";
-                                div4.style.maxHeight = "80%";
-                                div4.style.position = "absolute"
-                                div4.style.top = "5%"
-                                div4.style.borderRadius = "10px";
-                                div4.style.boxShadow = "1px 1px 8px 0 black";
-                                div4.style.fontFamily = "sans-serif"
-                                div4.style.fontWeight = "bold";
-                                div4.style.fontSize = "1em";
-                                div4.style.animationDuration = "5s";
-                                div4.style.animationTimingFunction = "ease-in-out";
-                                div4.style.transition = "top 5s";
-                                div4.style.zIndex = "-1";
-
-                                // style new elements sixth div
-                                div5.style.backgroundColor = "lawngreen";
-                                div5.style.maxWidth = "20%";
-                                div5.style.maxHeight = "80%";
-                                div5.style.position = "absolute"
-                                div5.style.top = "5%"
-                                div5.style.borderRadius = "10px";
-                                div5.style.boxShadow = "1px 1px 8px 0 black";
-                                div5.style.fontFamily = "sans-serif"
-                                div5.style.fontWeight = "bold";
-                                div5.style.fontSize = "1em";
-                                div5.style.animationDuration = "5s";
-                                div5.style.animationTimingFunction = "ease-in-out";
-                                div5.style.transition = "top 5s";
-                                div5.style.zIndex = "-1";
-
-                                // style new elements seventh div
-                                div6.style.backgroundColor = "lawngreen";
-                                div6.style.maxWidth = "20%";
-                                div6.style.maxHeight = "80%";
-                                div6.style.position = "absolute"
-                                div6.style.top = "5%"
-                                div6.style.borderRadius = "10px";
-                                div6.style.boxShadow = "1px 1px 8px 0 black";
-                                div6.style.fontFamily = "sans-serif"
-                                div6.style.fontWeight = "bold";
-                                div6.style.fontSize = "1em";
-                                div6.style.animationDuration = "5s";
-                                div6.style.animationTimingFunction = "ease-in-out";
-                                div6.style.transition = "top 5s";
-                                div6.style.zIndex = "-1";
-
-                                // style new elements eighth div
-                                div7.style.backgroundColor = "lawngreen";
-                                div7.style.maxWidth = "20%";
-                                div7.style.maxHeight = "80%";
-                                div7.style.position = "absolute"
-                                div7.style.top = "5%"
-                                div7.style.borderRadius = "10px";
-                                div7.style.boxShadow = "1px 1px 8px 0 black";
-                                div7.style.fontFamily = "sans-serif"
-                                div7.style.fontWeight = "bold";
-                                div7.style.fontSize = "1em";
-                                div7.style.animationDuration = "5s";
-                                div7.style.animationTimingFunction = "ease-in-out";
-                                div7.style.transition = "top 5s";
-                                div7.style.zIndex = "-1";
-
-                                // style new elements ninth div
-                                div8.style.backgroundColor = "lawngreen";
-                                div8.style.maxWidth = "20%";
-                                div8.style.maxHeight = "80%";
-                                div8.style.position = "absolute"
-                                div8.style.top = "5%"
-                                div8.style.borderRadius = "10px";
-                                div8.style.boxShadow = "1px 1px 8px 0 black";
-                                div8.style.fontFamily = "sans-serif"
-                                div8.style.fontWeight = "bold";
-                                div8.style.fontSize = "1em";
-                                div8.style.animationDuration = "5s";
-                                div8.style.animationTimingFunction = "ease-in-out";
-                                div8.style.transition = "top 5s";
-                                div8.style.zIndex = "-1";
-
-                                // style new elements tenth div
-                                div9.style.backgroundColor = "lawngreen";
-                                div9.style.maxWidth = "20%";
-                                div9.style.maxHeight = "80%";
-                                div9.style.position = "absolute"
-                                div9.style.top = "5%"
-                                div9.style.borderRadius = "10px";
-                                div9.style.boxShadow = "1px 1px 8px 0 black";
-                                div9.style.fontFamily = "sans-serif"
-                                div9.style.fontWeight = "bold";
-                                div9.style.fontSize = "1em";
-                                div9.style.animationDuration = "5s";
-                                div9.style.animationTimingFunction = "ease-in-out";
-                                div9.style.transition = "top 5s";
-                                div9.style.zIndex = "-1";
-
-                                // next button
-
-                                button.style.animation = "anim";
-                                button.style.animationDuration = "3s";
-                                button.style.animationIterationCount = "infinite";
-                                button.style.animationTimingFunction = "ease-in-out";
-
-                                button.disabled = false;
-                                opt1.disabled = true;
-                                opt2.disabled = true;
-                                opt3.disabled = true;
-                                opt4.disabled = true;
+                button.disabled = false;
+                opt1.disabled = true;
+                opt2.disabled = true;
+                opt3.disabled = true;
+                opt4.disabled = true;
 
             };
+
 
             function styleofpopupwrong(){
 
-                                //animation
-                                div.style.animation = "popwhenwronganimation";
-                                div1.style.animation = "popwhenwronganimation";
-                                div2.style.animation = "popwhenwronganimation";
-                                div4.style.animation = "popwhencorrectanimation";
-                                div5.style.animation = "popwhencorrectanimation";
-                                div6.style.animation = "popwhencorrectanimation";
-                                div7.style.animation = "popwhencorrectanimation";
-                                div8.style.animation = "popwhencorrectanimation";
-                                div9.style.animation = "popwhencorrectanimation";
-                
-                                // style new elements for first div
-                                div.style.backgroundColor = "red";
-                                div.style.maxWidth = "20%";
-                                div.style.maxHeight = "80%";
-                                div.style.position = "absolute"
-                                div.style.top = "2%"
-                                div.style.borderRadius = "10px";
-                                div.style.boxShadow = "1px 1px 8px 0 black";
-                                div.style.fontFamily = "sans-serif"
-                                div.style.fontWeight = "bold";
-                                div.style.fontSize = "1em";
-                                div.style.animationDuration = "5s";
-                                div.style.animationTimingFunction = "ease-in-out";
-                                div.style.transition = "top 5s";
-                                div.style.zIndex = "-1";
+                // next button
 
-                                // style new elements for sec div
-                                div1.style.backgroundColor = "red";
-                                div1.style.maxWidth = "20%";
-                                div1.style.maxHeight = "80%";
-                                div1.style.position = "absolute"
-                                div1.style.top = "2%"
-                                div1.style.borderRadius = "10px";
-                                div1.style.boxShadow = "1px 1px 8px 0 black";
-                                div1.style.fontFamily = "sans-serif"
-                                div1.style.fontWeight = "bold";
-                                div1.style.fontSize = "1em";
-                                div1.style.animationDuration = "5s";
-                                div1.style.animationTimingFunction = "ease-in-out";
-                                div1.style.transition = "top 5s";
-                                div1.style.zIndex = "-1";
+                button.style.animation = "anim";
+                button.style.animationDuration = "3s";
+                button.style.animationIterationCount = "infinite";
+                button.style.animationTimingFunction = "ease-in-out";
 
-                                // style new elements for third div
-                                div2.style.backgroundColor = "red";
-                                div2.style.maxWidth = "20%";
-                                div2.style.maxHeight = "80%";
-                                div2.style.position = "absolute"
-                                div2.style.top = "5%"
-                                div2.style.borderRadius = "10px";
-                                div2.style.boxShadow = "1px 1px 8px 0 black";
-                                div2.style.fontFamily = "sans-serif"
-                                div2.style.fontWeight = "bold";
-                                div2.style.fontSize = "1em";
-                                div2.style.animationDuration = "5s";
-                                div2.style.animationTimingFunction = "ease-in-out";
-                                div2.style.transition = "top 5s";
-                                div2.style.zIndex = "-1";
-
-                                // style new elements for fourth div
-                                div3.style.backgroundColor = "red";
-                                div3.style.maxWidth = "20%";
-                                div3.style.maxHeight = "80%";
-                                div3.style.position = "absolute"
-                                div3.style.top = "2%"
-                                div3.style.borderRadius = "10px";
-                                div3.style.boxShadow = "1px 1px 8px 0 black";
-                                div3.style.fontFamily = "sans-serif"
-                                div3.style.fontWeight = "bold";
-                                div3.style.fontSize = "1em";
-                                div3.style.animationDuration = "5s";
-                                div3.style.animationTimingFunction = "ease-in-out";
-                                div3.style.transition = "top 5s";
-                                div3.style.zIndex = "-1";
-
-                                
-                                // style new elements for fifth div
-                                div4.style.backgroundColor = "red";
-                                div4.style.maxWidth = "20%";
-                                div4.style.maxHeight = "80%";
-                                div4.style.position = "absolute"
-                                div4.style.top = "2%"
-                                div4.style.borderRadius = "10px";
-                                div4.style.boxShadow = "1px 1px 8px 0 black";
-                                div4.style.fontFamily = "sans-serif"
-                                div4.style.fontWeight = "bold";
-                                div4.style.fontSize = "1em";
-                                div4.style.animationDuration = "5s";
-                                div4.style.animationTimingFunction = "ease-in-out";
-                                div4.style.transition = "top 5s";
-                                div4.style.zIndex = "-1";
-
-                                // style new elements for sixth div
-                                div5.style.backgroundColor = "red";
-                                div5.style.maxWidth = "20%";
-                                div5.style.maxHeight = "80%";
-                                div5.style.position = "absolute"
-                                div5.style.top = "2%"
-                                div5.style.borderRadius = "10px";
-                                div5.style.boxShadow = "1px 1px 8px 0 black";
-                                div5.style.fontFamily = "sans-serif"
-                                div5.style.fontWeight = "bold";
-                                div5.style.fontSize = "1em";
-                                div5.style.animationDuration = "5s";
-                                div5.style.animationTimingFunction = "ease-in-out";
-                                div5.style.transition = "top 5s";
-                                div5.style.zIndex = "-1";
-
-                                // style new elements for seventh div
-                                div6.style.backgroundColor = "red";
-                                div6.style.maxWidth = "20%";
-                                div6.style.maxHeight = "80%";
-                                div6.style.position = "absolute"
-                                div6.style.top = "2%"
-                                div6.style.borderRadius = "10px";
-                                div6.style.boxShadow = "1px 1px 8px 0 black";
-                                div6.style.fontFamily = "sans-serif"
-                                div6.style.fontWeight = "bold";
-                                div6.style.fontSize = "1em";
-                                div6.style.animationDuration = "5s";
-                                div6.style.animationTimingFunction = "ease-in-out";
-                                div6.style.transition = "top 5s";
-                                div6.style.zIndex = "-1";
-
-                                // style new elements for eighth div
-                                div7.style.backgroundColor = "red";
-                                div7.style.maxWidth = "20%";
-                                div7.style.maxHeight = "80%";
-                                div7.style.position = "absolute"
-                                div7.style.top = "2%"
-                                div7.style.borderRadius = "10px";
-                                div7.style.boxShadow = "1px 1px 8px 0 black";
-                                div7.style.fontFamily = "sans-serif"
-                                div7.style.fontWeight = "bold";
-                                div7.style.fontSize = "1em";
-                                div7.style.animationDuration = "5s";
-                                div7.style.animationTimingFunction = "ease-in-out";
-                                div7.style.transition = "top 5s";
-                                div7.style.zIndex = "-1";
-
-                                // style new elements for ninth div
-                                div8.style.backgroundColor = "red";
-                                div8.style.maxWidth = "20%";
-                                div8.style.maxHeight = "80%";
-                                div8.style.position = "absolute"
-                                div8.style.top = "2%"
-                                div8.style.borderRadius = "10px";
-                                div8.style.boxShadow = "1px 1px 8px 0 black";
-                                div8.style.fontFamily = "sans-serif"
-                                div8.style.fontWeight = "bold";
-                                div8.style.fontSize = "1em";
-                                div8.style.animationDuration = "5s";
-                                div8.style.animationTimingFunction = "ease-in-out";
-                                div8.style.transition = "top 5s";
-                                div8.style.zIndex = "-1";
-
-                                // style new elements for tenth div
-                                div9.style.backgroundColor = "red";
-                                div9.style.maxWidth = "20%";
-                                div9.style.maxHeight = "80%";
-                                div9.style.position = "absolute"
-                                div9.style.top = "2%"
-                                div9.style.borderRadius = "10px";
-                                div9.style.boxShadow = "1px 1px 8px 0 black";
-                                div9.style.fontFamily = "sans-serif"
-                                div9.style.fontWeight = "bold";
-                                div9.style.fontSize = "1em";
-                                div9.style.animationDuration = "5s";
-                                div9.style.animationTimingFunction = "ease-in-out";
-                                div9.style.transition = "top 5s";
-                                div9.style.zIndex = "-1";
-
-                                // next button
-
-                                button.style.animation = "anim";
-                                button.style.animationDuration = "3s";
-                                button.style.animationIterationCount = "infinite";
-                                button.style.animationTimingFunction = "ease-in-out";
-
-                                button.disabled = false;
-                                opt1.disabled = true;
-                                opt2.disabled = true;
-                                opt3.disabled = true;
-                                opt4.disabled = true;
-                            
+                button.disabled = false;
+                opt1.disabled = true;
+                opt2.disabled = true;
+                opt3.disabled = true;
+                opt4.disabled = true;
+                  
             };
+
+
 
 
             const bioquestion = {
 
                 next: function(){
-                    switch(onchoose){
+
+                  switch(onchoose){
                     case 1:
                         bioquestion.two.random();
                         break;
 
                     case 2:
-                        bioquestion.three.random();
+                        bioquestion.three();
                         break;
                         
                     case 3:
-                        bioquestion.fourth.random();
+                        bioquestion.fourth();
                         break;
 
                     case 4:
-                        bioquestion.fifth.random();
+                        bioquestion.fifth();
                         break;  
                     
                     case 5:
-                        bioquestion.sixth.random();
+                        bioquestion.sixth();
                         break;
 
                     case 6:
-                        bioquestion.seventh.random();
+                        bioquestion.seventh();
                         break; 
                         
                     case 7:
-                        bioquestion.eighth.random();
+                        bioquestion.eighth();
                         break; 
                         
                     case 8:
-                        bioquestion.ninth.random();
+                        bioquestion.ninth();
                         break; 
                         
                     case 9:
-                        bioquestion.tenth.random();
+                        bioquestion.tenth();
                         break; 
                         
-                    case 10:
-                        bioquestion.three.random();
-                        break;    
                       
-                };
+                    };
             
                 },
 
                 one: {
 
-                    random: function(){
-                       let run = Math.floor(Math.random() * 3);
+           
+                 random: function(){
 
-                       removechanges();
+                      // let run = Math.floor(Math.random() * 3);
 
-                       switch(run){
-                        case 0:
-                            bioquestion.one.order1();
-                            button.disabled = true;
-                            break;
+                    removechanges();
+                    bioquestion.one.order1();
+                    button.disabled = true;
 
-                        case 1:
-                            bioquestion.one.order2();
-                            button.disabled = true;
-                            break;
-
-                        case 2:
-                            bioquestion.one.order3();
-                            button.disabled = true;
-                            break;
-                       };
-
-                       timer();
+                    timer();
 
                     },
 
@@ -734,13 +464,14 @@
                                 // append to webpage
 
                                 element.appendChild(div);
+                                div.classList.add("correct")
                                 div.appendChild(heading);
                                 div.appendChild(par);
                                 heading.appendChild(text);
                                 heading.appendChild(emoji);
                                 par.appendChild(ans);
 
-                                styleofpopupcorrect();
+                               styleofpopupcorrect();
 
                                 // update score
                                 score += 1;
@@ -763,6 +494,7 @@
                                 // append to webpage
 
                                 element.appendChild(div);
+                                div.classList.add("wrong");
                                 div.appendChild(heading);
                                 div.appendChild(par);
                                 heading.appendChild(text);
@@ -782,17 +514,11 @@
 
                         // change background color
 
-                        opt2.style.backgroundColor = "lawngreen";
+                        
                         opt1.style.backgroundColor = "grey"; 
+                        opt2.style.backgroundColor = "lawngreen";
                         opt4.style.backgroundColor = "grey";
                         opt3.style.backgroundColor = "grey";
-
-
-                        // remove border
-                        opt1.style.border = "none"; 
-                        opt2.style.border = "none";
-                        opt3.style.border = "none";
-                        opt4.style.border = "none";
 
                         bioquestion.one.popwhencorrect();
 
@@ -810,17 +536,10 @@
 
                         // change background color
 
-                        opt4.style.backgroundColor = "lawngreen";
                         opt1.style.backgroundColor = "grey"; 
                         opt2.style.backgroundColor = "grey";
                         opt3.style.backgroundColor = "grey";
-
-                        // remove border
-
-                        opt1.style.border = "none"; 
-                        opt2.style.border = "none";
-                        opt3.style.border = "none";
-                        opt4.style.border = "none";
+                        opt4.style.backgroundColor = "lawngreen";
 
                         bioquestion.one.popwhencorrect();
 
@@ -836,19 +555,10 @@
                     correct2: function(){
                         
                         // change background color
-
-                        opt3.style.backgroundColor = "grey";
-                        opt1.style.backgroundColor = "lawngreen"; 
+                        opt1.style.backgroundColor = "lawngreen";
                         opt2.style.backgroundColor = "grey";
+                        opt3.style.backgroundColor = "grey";
                         opt4.style.backgroundColor = "grey";
-
-
-                        // remove border
-
-                        opt1.style.border = "none"; 
-                        opt2.style.border = "none";
-                        opt3.style.border = "none";
-                        opt4.style.border = "none";
 
                         bioquestion.one.popwhencorrect();
 
@@ -865,17 +575,9 @@
                         // change background color
 
                         opt1.style.backgroundColor = "red";
-                        opt3.style.backgroundColor = "grey"; 
                         opt2.style.backgroundColor = "lawngreen";
+                        opt3.style.backgroundColor = "grey"; 
                         opt4.style.backgroundColor = "grey";
-
-
-                        // remove border
-
-                        opt1.style.border = "none"; 
-                        opt2.style.border = "none";
-                        opt3.style.border = "none";
-                        opt4.style.border = "none";
 
                         bioquestion.one.popwhenwrong();
 
@@ -890,18 +592,11 @@
                     wrong2: function(){
                         // change background color
 
-                        opt3.style.backgroundColor = "red";
+                        
                         opt1.style.backgroundColor = "grey"; 
                         opt2.style.backgroundColor = "lawngreen";
+                        opt3.style.backgroundColor = "red";
                         opt4.style.backgroundColor = "grey";
-
-
-                        // remove border
-
-                        opt1.style.border = "none"; 
-                        opt2.style.border = "none";
-                        opt3.style.border = "none";
-                        opt4.style.border = "none";
 
                         bioquestion.one.popwhenwrong();
 
@@ -921,14 +616,6 @@
                         opt2.style.backgroundColor = "lawngreen";
                         opt3.style.backgroundColor = "grey";
 
-
-                        // remove border
-
-                        opt1.style.border = "none"; 
-                        opt2.style.border = "none";
-                        opt3.style.border = "none";
-                        opt4.style.border = "none";
-
                         bioquestion.one.popwhenwrong();
 
                         // next
@@ -946,14 +633,6 @@
                         opt3.style.backgroundColor = "grey"; 
                         opt2.style.backgroundColor = "grey";
                         opt4.style.backgroundColor = "lawngreen";
-
-
-                        // remove border
-
-                        opt1.style.border = "none"; 
-                        opt2.style.border = "none";
-                        opt3.style.border = "none";
-                        opt4.style.border = "none";
 
                         bioquestion.one.popwhenwrong();
 
@@ -973,14 +652,6 @@
                         opt3.style.backgroundColor = "grey";
                         opt4.style.backgroundColor = "lawngreen";
 
-
-                        // remove border
-
-                        opt1.style.border = "none"; 
-                        opt2.style.border = "none";
-                        opt3.style.border = "none";
-                        opt4.style.border = "none";
-
                         bioquestion.one.popwhenwrong();
 
                         // next
@@ -998,14 +669,6 @@
                         opt1.style.backgroundColor = "grey"; 
                         opt2.style.backgroundColor = "grey";
                         opt4.style.backgroundColor = "lawngreen";
-
-
-                        // remove border
-
-                        opt1.style.border = "none"; 
-                        opt2.style.border = "none";
-                        opt3.style.border = "none";
-                        opt4.style.border = "none";
 
                         bioquestion.one.popwhenwrong();
 
@@ -1025,14 +688,6 @@
                         opt2.style.backgroundColor = "grey";
                         opt4.style.backgroundColor = "grey";
 
-
-                        // remove border
-
-                        opt1.style.border = "none"; 
-                        opt2.style.border = "none";
-                        opt3.style.border = "none";
-                        opt4.style.border = "none";
-
                         bioquestion.one.popwhenwrong();
 
                         // next
@@ -1050,14 +705,6 @@
                         opt1.style.backgroundColor = "grey"; 
                         opt3.style.backgroundColor = "lawngreen";
                         opt4.style.backgroundColor = "grey";
-
-
-                        // remove border
-
-                        opt1.style.border = "none"; 
-                        opt2.style.border = "none";
-                        opt3.style.border = "none";
-                        opt4.style.border = "none";
 
                         bioquestion.one.popwhenwrong();
 
@@ -1077,14 +724,6 @@
                         opt2.style.backgroundColor = "grey";
                         opt3.style.backgroundColor = "lawngreen";
 
-
-                        // remove border
-
-                        opt1.style.border = "none"; 
-                        opt2.style.border = "none";
-                        opt3.style.border = "none";
-                        opt4.style.border = "none";
-
                         bioquestion.one.popwhenwrong();
 
                         // next
@@ -1096,12 +735,16 @@
                         
                     },
 
+//***********************Question and answers*************************************
+
+                    
                     order1: function(){
+                    
                         document.getElementById("question").innerHTML = "Which  characteristic  of  living  organisms is  the  taking  in <br> of  materials  for  energy,  growth  and development?";
-                        opt1.innerHTML = "Respiration";
+                        opt1.innerHTML = "Reproduction";
                         opt2.innerHTML = "Nutrition";
                         opt3.innerHTML = "Excretion";
-                        opt4.innerHTML = "Reproduction";
+                        opt4.innerHTML = "Respiration";
 
                         opt1.addEventListener("click", bioquestion.one.wrong1);
                         opt2.addEventListener("click", bioquestion.one.correct);
@@ -1110,33 +753,6 @@
 
                     },
 
-                    order2: function(){
-                        document.getElementById("question").innerHTML = "Which  characteristic  of  living  organisms is  the  taking  in <br> of  materials  for  energy,  growth  and development?";
-                        opt1.innerHTML = "Reproduction";
-                        opt2.innerHTML = "Respiration";
-                        opt3.innerHTML = "Excretion";
-                        opt4.innerHTML = "Nutrition";
-
-                        opt1.addEventListener("click", bioquestion.one.wrong4);
-                        opt2.addEventListener("click", bioquestion.one.wrong5);
-                        opt3.addEventListener("click", bioquestion.one.wrong6);
-                        opt4.addEventListener("click", bioquestion.one.correct1);
-
-                    },
-
-                    order3: function(){
-                        document.getElementById("question").innerHTML = "Which  characteristic  of  living  organisms is  the  taking  in <br> of  materials  for  energy,  growth  and development?";
-                        opt1.innerHTML = "Nutrition";
-                        opt2.innerHTML = "Excretion";
-                        opt3.innerHTML = "Respiration ";
-                        opt4.innerHTML = "Reproduction";
-
-                        opt1.addEventListener("click", bioquestion.one.correct2);
-                        opt2.addEventListener("click", bioquestion.one.wrong8);
-                        opt3.addEventListener("click", bioquestion.one.wrong7);
-                        opt4.addEventListener("click", bioquestion.one.wrong9);
-
-                    }
                 },
 
                 two: {
@@ -1154,6 +770,7 @@
                         // append to webpage
 
                         element.appendChild(div1);
+                        div1.classList.add("correct");
                         div1.appendChild(heading);
                         div1.appendChild(par);
                         div.remove();
@@ -1164,7 +781,7 @@
                         styleofpopupcorrect();
 
                         // update score
-                        switch(score){
+                        /*switch(score){
                             case 0:
                                 score += 1;
                                 break;
@@ -1209,7 +826,7 @@
                                 score -= 8;
                                 break; 
                            
-                        };
+                        };*/
                         updatescore();
 
                         // stop question timer
@@ -1230,6 +847,7 @@
                             // append to webpage
 
                             element.appendChild(div1);
+                            div1.classList.add("wrong");
                             div1.appendChild(heading);
                             div1.appendChild(par);
                             div.remove();
@@ -1256,13 +874,6 @@
                         opt4.style.backgroundColor = "grey";
                         opt3.style.backgroundColor = "grey";
 
-
-                        // remove border
-                        opt1.style.border = "none"; 
-                        opt2.style.border = "none";
-                        opt3.style.border = "none";
-                        opt4.style.border = "none";
-
                         bioquestion.two.popwhencorrect();
 
                         opt2.addEventListener("click", setTimeout(() => {
@@ -1282,13 +893,6 @@
                             opt2.style.backgroundColor = "grey";
                             opt3.style.backgroundColor = "grey";
 
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
-
                             bioquestion.two.popwhencorrect();
 
                             opt4.addEventListener("click", setTimeout(() => {
@@ -1297,7 +901,7 @@
 
                             },
 
-                            correct2: function(){
+                         correct2: function(){
 
                                 // change background color
 
@@ -1305,14 +909,6 @@
                                 opt1.style.backgroundColor = "grey"; 
                                 opt3.style.backgroundColor = "grey";
                                 opt4.style.backgroundColor = "grey";
-
-
-                                // remove border
-
-                                opt1.style.border = "none"; 
-                                opt2.style.border = "none";
-                                opt3.style.border = "none";
-                                opt4.style.border = "none";
 
                                 bioquestion.two.popwhencorrect();
 
@@ -1322,7 +918,7 @@
 
                             },
 
-                            wrong1: function(){
+                        wrong1: function(){
 
                                 // change background color
 
@@ -1330,14 +926,6 @@
                                 opt3.style.backgroundColor = "grey"; 
                                 opt2.style.backgroundColor = "lawngreen";
                                 opt4.style.backgroundColor = "grey";
-
-
-                                // remove border
-
-                                opt1.style.border = "none"; 
-                                opt2.style.border = "none";
-                                opt3.style.border = "none";
-                                opt4.style.border = "none";
 
                                 bioquestion.two.popwhenwrong();
 
@@ -1347,21 +935,13 @@
 
                             },
 
-                            wrong2: function(){
+                        wrong2: function(){
                                     // change background color
 
                                     opt3.style.backgroundColor = "red";
                                     opt1.style.backgroundColor = "grey"; 
                                     opt2.style.backgroundColor = "lawngreen";
                                     opt4.style.backgroundColor = "grey";
-
-
-                                    // remove border
-
-                                    opt1.style.border = "none"; 
-                                    opt2.style.border = "none";
-                                    opt3.style.border = "none";
-                                    opt4.style.border = "none";
 
                                     bioquestion.two.popwhenwrong();
 
@@ -1371,21 +951,13 @@
 
                             },
 
-                            wrong3: function(){
+                        wrong3: function(){
                                 // change background color
 
                                 opt4.style.backgroundColor = "red";
                                 opt1.style.backgroundColor = "grey"; 
                                 opt2.style.backgroundColor = "lawngreen";
                                 opt3.style.backgroundColor = "grey";
-
-
-                                // remove border
-
-                                opt1.style.border = "none"; 
-                                opt2.style.border = "none";
-                                opt3.style.border = "none";
-                                opt4.style.border = "none";
 
                                 bioquestion.two.popwhenwrong();
 
@@ -1395,21 +967,13 @@
 
                             },
 
-                            wrong4: function(){
+                        wrong4: function(){
                                 // change background color
 
                                 opt1.style.backgroundColor = "red";
                                 opt3.style.backgroundColor = "grey"; 
                                 opt2.style.backgroundColor = "grey";
                                 opt4.style.backgroundColor = "lawngreen";
-
-
-                                // remove border
-
-                                opt1.style.border = "none"; 
-                                opt2.style.border = "none";
-                                opt3.style.border = "none";
-                                opt4.style.border = "none";
 
                                 bioquestion.two.popwhenwrong();
 
@@ -1419,7 +983,7 @@
 
                             },
 
-                            wrong5: function(){
+                        wrong5: function(){
                                 // change background color
 
                                 opt2.style.backgroundColor = "red";
@@ -1427,14 +991,6 @@
                                 opt3.style.backgroundColor = "grey";
                                 opt4.style.backgroundColor = "lawngreen";
 
-
-                                // remove border
-
-                                opt1.style.border = "none"; 
-                                opt2.style.border = "none";
-                                opt3.style.border = "none";
-                                opt4.style.border = "none";
-
                                 bioquestion.two.popwhenwrong();
 
                                 opt2.addEventListener("click", setTimeout(() => {
@@ -1443,7 +999,7 @@
 
                             },
 
-                            wrong6: function(){
+                        wrong6: function(){
                                 // change background color
 
                                 opt3.style.backgroundColor = "red";
@@ -1451,14 +1007,6 @@
                                 opt2.style.backgroundColor = "grey";
                                 opt4.style.backgroundColor = "lawngreen";
 
-
-                                // remove border
-
-                                opt1.style.border = "none"; 
-                                opt2.style.border = "none";
-                                opt3.style.border = "none";
-                                opt4.style.border = "none";
-
                                 bioquestion.two.popwhenwrong();
 
                                 opt3.addEventListener("click", setTimeout(() => {
@@ -1467,7 +1015,7 @@
 
                             },
 
-                            wrong7: function(){
+                        wrong7: function(){
                                 // change background color
 
                                 opt1.style.backgroundColor = "red";
@@ -1475,14 +1023,6 @@
                                 opt2.style.backgroundColor = "lawngreen";
                                 opt4.style.backgroundColor = "grey";
 
-
-                                // remove border
-
-                                opt1.style.border = "none"; 
-                                opt2.style.border = "none";
-                                opt3.style.border = "none";
-                                opt4.style.border = "none";
-
                                 bioquestion.two.popwhenwrong();
 
                                 opt3.addEventListener("click", setTimeout(() => {
@@ -1491,21 +1031,13 @@
 
                             },
 
-                            wrong8: function(){
+                        wrong8: function(){
                                 // change background color
 
                                 opt2.style.backgroundColor = "red";
                                 opt1.style.backgroundColor = "grey"; 
                                 opt3.style.backgroundColor = "lawngreen";
                                 opt4.style.backgroundColor = "grey";
-
-
-                                // remove border
-
-                                opt1.style.border = "none"; 
-                                opt2.style.border = "none";
-                                opt3.style.border = "none";
-                                opt4.style.border = "none";
 
                                 bioquestion.two.popwhenwrong();
 
@@ -1515,21 +1047,13 @@
 
                             },
 
-                            wrong9: function(){
+                        wrong9: function(){
                                 // change background color
 
                                 opt4.style.backgroundColor = "red";
                                 opt1.style.backgroundColor = "grey"; 
                                 opt2.style.backgroundColor = "grey";
                                 opt3.style.backgroundColor = "lawngreen";
-
-
-                                // remove border
-
-                                opt1.style.border = "none"; 
-                                opt2.style.border = "none";
-                                opt3.style.border = "none";
-                                opt4.style.border = "none";
 
                                 bioquestion.two.popwhenwrong();
 
@@ -1540,12 +1064,13 @@
                             },
 
 
-                            order1: function(){
+                        order1: function(){
                             document.getElementById("question").innerHTML = "Which pair of plant species belong to the same genus? ";
                             opt1.innerHTML = "Juncus bulbosus and Ranunculus bulbosus";
                             opt2.innerHTML = "Ranunculus bulbosus and Ranunculus repens";
                             opt3.innerHTML = "Callisia repens and Juncus bulbosus";
                             opt4.innerHTML = "Callisia repens and Ranunculus repens";
+
                             opt1.addEventListener("click", bioquestion.two.wrong1);
                             opt2.addEventListener("click", bioquestion.two.correct);
                             opt3.addEventListener("click", bioquestion.two.wrong2);
@@ -1629,6 +1154,7 @@
                             // append to webpage
 
                             element.appendChild(div2);
+                            div2.classList.add("correct");
                             div2.appendChild(heading);
                             div2.appendChild(par);
                             div1.remove();
@@ -1705,6 +1231,7 @@
                         // append to webpage
 
                         element.appendChild(div2);
+                        div2.classList.add("wrong");
                         div2.appendChild(heading);
                         div2.appendChild(par);
                         div1.remove();
@@ -1732,11 +1259,6 @@
                     opt3.style.backgroundColor = "grey";
 
 
-                    // remove border
-                    opt1.style.border = "none"; 
-                    opt2.style.border = "none";
-                    opt3.style.border = "none";
-                    opt4.style.border = "none";
 
                     bioquestion.three.popwhencorrect();
 
@@ -1757,12 +1279,7 @@
                         opt2.style.backgroundColor = "grey";
                         opt3.style.backgroundColor = "grey";
 
-                        // remove border
 
-                        opt1.style.border = "none"; 
-                        opt2.style.border = "none";
-                        opt3.style.border = "none";
-                        opt4.style.border = "none";
 
                         bioquestion.three.popwhencorrect();
 
@@ -1807,12 +1324,6 @@
                             opt4.style.backgroundColor = "grey";
 
 
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.three.popwhenwrong();
 
@@ -1831,12 +1342,6 @@
                                 opt4.style.backgroundColor = "grey";
 
 
-                                // remove border
-
-                                opt1.style.border = "none"; 
-                                opt2.style.border = "none";
-                                opt3.style.border = "none";
-                                opt4.style.border = "none";
 
                                 bioquestion.three.popwhenwrong();
 
@@ -1855,12 +1360,7 @@
                             opt3.style.backgroundColor = "grey";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.three.popwhenwrong();
 
@@ -1879,13 +1379,7 @@
                             opt4.style.backgroundColor = "lawngreen";
 
 
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
-
+ 
                             bioquestion.three.popwhenwrong();
 
                             opt1.addEventListener("click", setTimeout(() => {
@@ -1903,12 +1397,7 @@
                             opt4.style.backgroundColor = "lawngreen";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.three.popwhenwrong();
 
@@ -1927,12 +1416,7 @@
                             opt4.style.backgroundColor = "lawngreen";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.three.popwhenwrong();
 
@@ -1951,12 +1435,6 @@
                             opt4.style.backgroundColor = "grey";
 
 
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.three.popwhenwrong();
 
@@ -1975,12 +1453,7 @@
                             opt4.style.backgroundColor = "grey";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.three.popwhenwrong();
 
@@ -1999,12 +1472,7 @@
                             opt3.style.backgroundColor = "lawngreen";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.three.popwhenwrong();
 
@@ -2087,7 +1555,7 @@
                         }
                     },
 
-                fourth: {
+        /*       fourth: {
 
                         popwhencorrect: function(){
 
@@ -2102,6 +1570,7 @@
                             // append to webpage
 
                             element.appendChild(div3);
+                            div3.classList.add("correct");
                             div3.appendChild(heading);
                             div3.appendChild(par);
                             div2.remove();
@@ -2178,6 +1647,8 @@
                             // append to webpage
 
                             element.appendChild(div3);
+                            div3.classList.add("wrong");
+                            
                             div3.appendChild(heading);
                             div3.appendChild(par);
                             div2.remove();
@@ -2205,11 +1676,6 @@
                             opt3.style.backgroundColor = "grey";
 
 
-                            // remove border
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fourth.popwhencorrect();
 
@@ -2230,12 +1696,7 @@
                             opt2.style.backgroundColor = "grey";
                             opt3.style.backgroundColor = "grey";
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fourth.popwhencorrect();
 
@@ -2255,12 +1716,6 @@
                             opt4.style.backgroundColor = "grey";
 
 
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fourth.popwhencorrect();
 
@@ -2280,12 +1735,7 @@
                             opt4.style.backgroundColor = "grey";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fourth.popwhenwrong();
 
@@ -2304,12 +1754,6 @@
                                 opt4.style.backgroundColor = "grey";
 
 
-                                // remove border
-
-                                opt1.style.border = "none"; 
-                                opt2.style.border = "none";
-                                opt3.style.border = "none";
-                                opt4.style.border = "none";
 
                                 bioquestion.fourth.popwhenwrong();
 
@@ -2328,12 +1772,6 @@
                             opt3.style.backgroundColor = "grey";
 
 
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fourth.popwhenwrong();
 
@@ -2352,12 +1790,7 @@
                             opt4.style.backgroundColor = "lawngreen";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fourth.popwhenwrong();
 
@@ -2376,13 +1809,6 @@
                             opt4.style.backgroundColor = "lawngreen";
 
 
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
-
                             bioquestion.fourth.popwhenwrong();
 
                             opt2.addEventListener("click", setTimeout(() => {
@@ -2400,12 +1826,7 @@
                             opt4.style.backgroundColor = "lawngreen";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fourth.popwhenwrong();
 
@@ -2424,12 +1845,7 @@
                             opt4.style.backgroundColor = "grey";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fourth.popwhenwrong();
 
@@ -2448,12 +1864,7 @@
                             opt4.style.backgroundColor = "grey";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fourth.popwhenwrong();
 
@@ -2472,12 +1883,7 @@
                             opt3.style.backgroundColor = "lawngreen";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fourth.popwhenwrong();
 
@@ -2575,6 +1981,7 @@
                             // append to webpage
 
                             element.appendChild(div4);
+                            div4.classList.add("correct");
                             div4.appendChild(heading);
                             div4.appendChild(par);
                             div3.remove();
@@ -2584,7 +1991,7 @@
 
                             styleofpopupcorrect();
 
-                            // update score
+                           // update score
                             switch(score){
                             case 0:
                                 score += 1;
@@ -2651,6 +2058,7 @@
                             // append to webpage
 
                             element.appendChild(div4);
+                            div4.classList.add("wrong");
                             div4.appendChild(heading);
                             div4.appendChild(par);
                             div3.remove();
@@ -2678,11 +2086,7 @@
                             opt3.style.backgroundColor = "grey";
 
 
-                            // remove border
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
+
 
                             bioquestion.fifth.popwhencorrect();
 
@@ -2703,12 +2107,6 @@
                             opt2.style.backgroundColor = "grey";
                             opt3.style.backgroundColor = "grey";
 
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fifth.popwhencorrect();
 
@@ -2728,12 +2126,7 @@
                             opt4.style.backgroundColor = "grey";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fifth.popwhencorrect();
 
@@ -2753,12 +2146,7 @@
                             opt4.style.backgroundColor = "grey";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fifth.popwhenwrong();
 
@@ -2777,12 +2165,7 @@
                                 opt4.style.backgroundColor = "grey";
 
 
-                                // remove border
 
-                                opt1.style.border = "none"; 
-                                opt2.style.border = "none";
-                                opt3.style.border = "none";
-                                opt4.style.border = "none";
 
                                 bioquestion.fifth.popwhenwrong();
 
@@ -2801,12 +2184,7 @@
                             opt3.style.backgroundColor = "grey";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fifth.popwhenwrong();
 
@@ -2825,12 +2203,7 @@
                             opt4.style.backgroundColor = "lawngreen";
 
 
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
+ 
 
                             bioquestion.fifth.popwhenwrong();
 
@@ -2849,12 +2222,7 @@
                             opt4.style.backgroundColor = "lawngreen";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fifth.popwhenwrong();
 
@@ -2873,12 +2241,6 @@
                             opt4.style.backgroundColor = "lawngreen";
 
 
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fifth.popwhenwrong();
 
@@ -2897,12 +2259,7 @@
                             opt4.style.backgroundColor = "grey";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fifth.popwhenwrong();
 
@@ -2921,13 +2278,6 @@
                             opt4.style.backgroundColor = "grey";
 
 
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
-
                             bioquestion.fifth.popwhenwrong();
 
                             opt2.addEventListener("click", setTimeout(() => {
@@ -2944,13 +2294,6 @@
                             opt2.style.backgroundColor = "grey";
                             opt3.style.backgroundColor = "lawngreen";
 
-
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.fifth.popwhenwrong();
 
@@ -3049,6 +2392,7 @@
                             // append to webpage
 
                             element.appendChild(div5);
+                            div5.classList.add("correct");
                             div5.appendChild(heading);
                             div5.appendChild(par);
                             div4.remove();
@@ -3125,6 +2469,7 @@
                             // append to webpage
 
                             element.appendChild(div5);
+                            div5.classList.add("wrong");
                             div5.appendChild(heading);
                             div5.appendChild(par);
                             div4.remove();
@@ -3152,11 +2497,6 @@
                             opt3.style.backgroundColor = "grey";
 
 
-                            // remove border
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.sixth.popwhencorrect();
 
@@ -3177,13 +2517,6 @@
                             opt2.style.backgroundColor = "grey";
                             opt3.style.backgroundColor = "grey";
 
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
-
                             bioquestion.sixth.popwhencorrect();
 
                             opt4.addEventListener("click", setTimeout(() => {
@@ -3202,12 +2535,6 @@
                             opt4.style.backgroundColor = "grey";
 
 
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.sixth.popwhencorrect();
 
@@ -3227,12 +2554,7 @@
                             opt4.style.backgroundColor = "grey";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.sixth.popwhenwrong();
 
@@ -3251,12 +2573,6 @@
                                 opt4.style.backgroundColor = "grey";
 
 
-                                // remove border
-
-                                opt1.style.border = "none"; 
-                                opt2.style.border = "none";
-                                opt3.style.border = "none";
-                                opt4.style.border = "none";
 
                                 bioquestion.sixth.popwhenwrong();
 
@@ -3275,12 +2591,8 @@
                             opt3.style.backgroundColor = "grey";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
+
 
                             bioquestion.sixth.popwhenwrong();
 
@@ -3299,12 +2611,6 @@
                             opt4.style.backgroundColor = "lawngreen";
 
 
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.sixth.popwhenwrong();
 
@@ -3323,12 +2629,7 @@
                             opt4.style.backgroundColor = "lawngreen";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.sixth.popwhenwrong();
 
@@ -3347,12 +2648,7 @@
                             opt4.style.backgroundColor = "lawngreen";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.sixth.popwhenwrong();
 
@@ -3371,12 +2667,7 @@
                             opt4.style.backgroundColor = "grey";
 
 
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
+ 
 
                             bioquestion.sixth.popwhenwrong();
 
@@ -3395,13 +2686,6 @@
                             opt4.style.backgroundColor = "grey";
 
 
-                            // remove border
-
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
-
                             bioquestion.sixth.popwhenwrong();
 
                             opt2.addEventListener("click", setTimeout(() => {
@@ -3419,12 +2703,7 @@
                             opt3.style.backgroundColor = "lawngreen";
 
 
-                            // remove border
 
-                            opt1.style.border = "none"; 
-                            opt2.style.border = "none";
-                            opt3.style.border = "none";
-                            opt4.style.border = "none";
 
                             bioquestion.sixth.popwhenwrong();
 
@@ -3440,6 +2719,7 @@
                             opt2.innerHTML = "Protein";
                             opt3.innerHTML = "Mineral Salts";
                             opt4.innerHTML = "Fat";
+
                             opt1.addEventListener("click", bioquestion.sixth.wrong1);
                             opt2.addEventListener("click", bioquestion.sixth.correct);
                             opt3.addEventListener("click", bioquestion.sixth.wrong2);
@@ -3453,6 +2733,7 @@
                             opt2.innerHTML = "Fat";
                             opt3.innerHTML = "Carbohydrate";
                             opt4.innerHTML = "Protein";
+
                             opt1.addEventListener("click", bioquestion.sixth.wrong4);
                             opt2.addEventListener("click", bioquestion.sixth.wrong5);
                             opt3.addEventListener("click", bioquestion.sixth.wrong6);
@@ -3466,6 +2747,7 @@
                             opt2.innerHTML = "Protein";
                             opt3.innerHTML = "Fat";
                             opt4.innerHTML = "Carbohydrate";
+
                             opt1.addEventListener("click", bioquestion.sixth.wrong7);
                             opt2.addEventListener("click", bioquestion.sixth.correct2);
                             opt3.addEventListener("click", bioquestion.sixth.wrong8 );
@@ -3523,6 +2805,7 @@
             // append to webpage
 
             element.appendChild(div6);
+            div6.classList.add("correct");
             div6.appendChild(heading);
             div6.appendChild(par);
             div5.remove();
@@ -3599,6 +2882,7 @@
             // append to webpage
 
             element.appendChild(div6);
+            div6.classList.add("wrong");
             div6.appendChild(heading);
             div6.appendChild(par);
             div5.remove();
@@ -3626,11 +2910,6 @@
             opt3.style.backgroundColor = "grey";
 
 
-            // remove border
-            opt1.style.border = "none"; 
-            opt2.style.border = "none";
-            opt3.style.border = "none";
-            opt4.style.border = "none";
 
             bioquestion.seventh.popwhencorrect();
 
@@ -3651,12 +2930,7 @@
             opt2.style.backgroundColor = "grey";
             opt3.style.backgroundColor = "grey";
 
-            // remove border
 
-            opt1.style.border = "none"; 
-            opt2.style.border = "none";
-            opt3.style.border = "none";
-            opt4.style.border = "none";
 
             bioquestion.seventh.popwhencorrect();
 
@@ -3676,12 +2950,7 @@
             opt4.style.backgroundColor = "grey";
 
 
-            // remove border
 
-            opt1.style.border = "none"; 
-            opt2.style.border = "none";
-            opt3.style.border = "none";
-            opt4.style.border = "none";
 
             bioquestion.seventh.popwhencorrect();
 
@@ -3701,12 +2970,6 @@
             opt4.style.backgroundColor = "grey";
 
 
-            // remove border
-
-            opt1.style.border = "none"; 
-            opt2.style.border = "none";
-            opt3.style.border = "none";
-            opt4.style.border = "none";
 
             bioquestion.seventh.popwhenwrong();
 
@@ -3725,13 +2988,6 @@
                 opt4.style.backgroundColor = "grey";
 
 
-                // remove border
-
-                opt1.style.border = "none"; 
-                opt2.style.border = "none";
-                opt3.style.border = "none";
-                opt4.style.border = "none";
-
                 bioquestion.seventh.popwhenwrong();
 
                 opt3.addEventListener("click", setTimeout(() => {
@@ -3749,12 +3005,7 @@
             opt3.style.backgroundColor = "grey";
 
 
-            // remove border
 
-            opt1.style.border = "none"; 
-            opt2.style.border = "none";
-            opt3.style.border = "none";
-            opt4.style.border = "none";
 
             bioquestion.seventh.popwhenwrong();
 
@@ -3773,12 +3024,6 @@
             opt4.style.backgroundColor = "lawngreen";
 
 
-            // remove border
-
-            opt1.style.border = "none"; 
-            opt2.style.border = "none";
-            opt3.style.border = "none";
-            opt4.style.border = "none";
 
             bioquestion.seventh.popwhenwrong();
 
@@ -3797,12 +3042,7 @@
             opt4.style.backgroundColor = "lawngreen";
 
 
-            // remove border
 
-            opt1.style.border = "none"; 
-            opt2.style.border = "none";
-            opt3.style.border = "none";
-            opt4.style.border = "none";
 
             bioquestion.seventh.popwhenwrong();
 
@@ -3821,12 +3061,6 @@
             opt4.style.backgroundColor = "lawngreen";
 
 
-            // remove border
-
-            opt1.style.border = "none"; 
-            opt2.style.border = "none";
-            opt3.style.border = "none";
-            opt4.style.border = "none";
 
             bioquestion.seventh.popwhenwrong();
 
@@ -3845,12 +3079,6 @@
             opt4.style.backgroundColor = "grey";
 
 
-            // remove border
-
-            opt1.style.border = "none"; 
-            opt2.style.border = "none";
-            opt3.style.border = "none";
-            opt4.style.border = "none";
 
             bioquestion.seventh.popwhenwrong();
 
@@ -3869,12 +3097,6 @@
             opt4.style.backgroundColor = "grey";
 
 
-            // remove border
-
-            opt1.style.border = "none"; 
-            opt2.style.border = "none";
-            opt3.style.border = "none";
-            opt4.style.border = "none";
 
             bioquestion.seventh.popwhenwrong();
 
@@ -3893,12 +3115,6 @@
             opt3.style.backgroundColor = "lawngreen";
 
 
-            // remove border
-
-            opt1.style.border = "none"; 
-            opt2.style.border = "none";
-            opt3.style.border = "none";
-            opt4.style.border = "none";
 
             bioquestion.seventh.popwhenwrong();
 
@@ -3999,6 +3215,7 @@ popwhencorrect: function(){
     // append to webpage
 
     element.appendChild(div7);
+    div7.classList.add("correct");
     div7.appendChild(heading);
     div7.appendChild(par);
     div6.remove();
@@ -4075,6 +3292,7 @@ popwhencorrect: function(){
     // append to webpage
 
     element.appendChild(div7);
+    div7.classList.add("wrong");
     div7.appendChild(heading);
     div7.appendChild(par);
     div6.remove();
@@ -4089,7 +3307,6 @@ popwhencorrect: function(){
 
     },
 
-
     // option2 correct
 
     correct: function(){
@@ -4101,12 +3318,6 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "grey";
     opt3.style.backgroundColor = "grey";
 
-
-    // remove border
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.eighth.popwhencorrect();
 
@@ -4127,12 +3338,6 @@ popwhencorrect: function(){
     opt2.style.backgroundColor = "grey";
     opt3.style.backgroundColor = "grey";
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.eighth.popwhencorrect();
 
@@ -4152,13 +3357,6 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "grey";
 
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
-
     bioquestion.eighth.popwhencorrect();
 
     opt2.addEventListener("click", setTimeout(() => {
@@ -4177,13 +3375,6 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "grey";
 
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
-
     bioquestion.eighth.popwhenwrong();
 
     opt1.addEventListener("click", setTimeout(() => {
@@ -4200,13 +3391,6 @@ popwhencorrect: function(){
         opt2.style.backgroundColor = "lawngreen";
         opt4.style.backgroundColor = "grey";
 
-
-        // remove border
-
-        opt1.style.border = "none"; 
-        opt2.style.border = "none";
-        opt3.style.border = "none";
-        opt4.style.border = "none";
 
         bioquestion.eighth.popwhenwrong();
 
@@ -4225,13 +3409,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "grey";
 
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
-
     bioquestion.eighth.popwhenwrong();
 
     opt4.addEventListener("click", setTimeout(() => {
@@ -4249,13 +3426,6 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "lawngreen";
 
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
-
     bioquestion.eighth.popwhenwrong();
 
     opt1.addEventListener("click", setTimeout(() => {
@@ -4272,14 +3442,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "grey";
     opt4.style.backgroundColor = "lawngreen";
 
-
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
-
     bioquestion.eighth.popwhenwrong();
 
     opt2.addEventListener("click", setTimeout(() => {
@@ -4295,14 +3457,6 @@ popwhencorrect: function(){
     opt1.style.backgroundColor = "grey"; 
     opt2.style.backgroundColor = "grey";
     opt4.style.backgroundColor = "lawngreen";
-
-
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.eighth.popwhenwrong();
 
@@ -4321,13 +3475,6 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "grey";
 
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
-
     bioquestion.eighth.popwhenwrong();
 
     opt3.addEventListener("click", setTimeout(() => {
@@ -4344,13 +3491,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "lawngreen";
     opt4.style.backgroundColor = "grey";
 
-
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.eighth.popwhenwrong();
 
@@ -4369,12 +3509,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "lawngreen";
 
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.eighth.popwhenwrong();
 
@@ -4390,6 +3524,7 @@ popwhencorrect: function(){
     opt2.innerHTML = "Two haploid gamete nuclei fuse to form a diploid zygote";
     opt3.innerHTML = "One diploid gamete nucleus divides to form a haploid zygote";
     opt4.innerHTML = "One haploid gamete nucleus divides to form a diploid zygote";
+
     opt1.addEventListener("click", bioquestion.eighth.wrong1);
     opt2.addEventListener("click", bioquestion.eighth.correct);
     opt3.addEventListener("click", bioquestion.eighth.wrong2);
@@ -4403,6 +3538,7 @@ popwhencorrect: function(){
     opt2.innerHTML = "Two diploid gamete nuclei fuse to form a haploid zygote";
     opt3.innerHTML = "One haploid gamete nucleus divides to form a diploid zygote";
     opt4.innerHTML = "Two haploid gamete nuclei fuse to form a diploid zygote";
+    
     opt1.addEventListener("click", bioquestion.eighth.wrong4);
     opt2.addEventListener("click", bioquestion.eighth.wrong5);
     opt3.addEventListener("click", bioquestion.eighth.wrong6);
@@ -4416,6 +3552,7 @@ popwhencorrect: function(){
     opt2.innerHTML = "Two haploid gamete nuclei fuse to form a diploid zygote";
     opt3.innerHTML = "One haploid gamete nucleus divides to form a diploid zygote";
     opt4.innerHTML = "Two diploid gamete nuclei fuse to form a haploid zygote";
+    
     opt1.addEventListener("click", bioquestion.eighth.wrong7);
     opt2.addEventListener("click", bioquestion.eighth.correct2);
     opt3.addEventListener("click", bioquestion.eighth.wrong8 );
@@ -4475,6 +3612,7 @@ popwhencorrect: function(){
     // append to webpage
 
     element.appendChild(div8);
+    div8.classList.add("correct");
     div8.appendChild(heading);
     div8.appendChild(par);
     div7.remove();
@@ -4551,6 +3689,7 @@ popwhencorrect: function(){
     // append to webpage
 
     element.appendChild(div8);
+    div8.classList.add("wrong");
     div8.appendChild(heading);
     div8.appendChild(par);
     div7.remove();
@@ -4578,11 +3717,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "grey";
 
 
-    // remove border
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.ninth.popwhencorrect();
 
@@ -4601,14 +3735,7 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "lawngreen";
     opt1.style.backgroundColor = "grey"; 
     opt2.style.backgroundColor = "grey";
-    opt3.style.backgroundColor = "grey";
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.ninth.popwhencorrect();
 
@@ -4628,12 +3755,6 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "grey";
 
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.ninth.popwhencorrect();
 
@@ -4653,12 +3774,6 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "grey";
 
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.ninth.popwhenwrong();
 
@@ -4677,12 +3792,7 @@ popwhencorrect: function(){
         opt4.style.backgroundColor = "grey";
 
 
-        // remove border
 
-        opt1.style.border = "none"; 
-        opt2.style.border = "none";
-        opt3.style.border = "none";
-        opt4.style.border = "none";
 
         bioquestion.ninth.popwhenwrong();
 
@@ -4701,12 +3811,7 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "grey";
 
 
-    // remove border
 
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.ninth.popwhenwrong();
 
@@ -4725,12 +3830,7 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "lawngreen";
 
 
-    // remove border
 
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.ninth.popwhenwrong();
 
@@ -4749,12 +3849,7 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "lawngreen";
 
 
-    // remove border
 
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.ninth.popwhenwrong();
 
@@ -4773,12 +3868,7 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "lawngreen";
 
 
-    // remove border
 
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.ninth.popwhenwrong();
 
@@ -4797,12 +3887,7 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "grey";
 
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
+ 
 
     bioquestion.ninth.popwhenwrong();
 
@@ -4821,12 +3906,7 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "grey";
 
 
-    // remove border
 
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.ninth.popwhenwrong();
 
@@ -4845,12 +3925,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "lawngreen";
 
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.ninth.popwhenwrong();
 
@@ -4951,6 +4025,7 @@ popwhencorrect: function(){
     // append to webpage
 
     element.appendChild(div9);
+    div9.classList.add("correct");
     div9.appendChild(heading);
     div9.appendChild(par);
     div8.remove();
@@ -5027,6 +4102,7 @@ popwhencorrect: function(){
     // append to webpage
 
     element.appendChild(div8);
+    div9.classList.add("wrong");
     div9.appendChild(heading);
     div9.appendChild(par);
     div8.remove();
@@ -5054,11 +4130,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "grey";
 
 
-    // remove border
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.tenth.popwhencorrect();
 
@@ -5079,12 +4150,6 @@ popwhencorrect: function(){
     opt2.style.backgroundColor = "grey";
     opt3.style.backgroundColor = "grey";
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.tenth.popwhencorrect();
 
@@ -5104,12 +4169,6 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "grey";
 
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.tenth.popwhencorrect();
 
@@ -5129,12 +4188,6 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "grey";
 
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.tenth.popwhenwrong();
 
@@ -5153,13 +4206,6 @@ popwhencorrect: function(){
         opt4.style.backgroundColor = "grey";
 
 
-        // remove border
-
-        opt1.style.border = "none"; 
-        opt2.style.border = "none";
-        opt3.style.border = "none";
-        opt4.style.border = "none";
-
         bioquestion.tenth.popwhenwrong();
 
         opt3.addEventListener("click", setTimeout(() => {
@@ -5176,13 +4222,6 @@ popwhencorrect: function(){
     opt2.style.backgroundColor = "lawngreen";
     opt3.style.backgroundColor = "grey";
 
-
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.tenth.popwhenwrong();
 
@@ -5201,13 +4240,6 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "lawngreen";
 
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
-
     bioquestion.tenth.popwhenwrong();
 
     opt1.addEventListener("click", setTimeout(() => {
@@ -5224,13 +4256,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "grey";
     opt4.style.backgroundColor = "lawngreen";
 
-
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.tenth.popwhenwrong();
 
@@ -5249,12 +4274,6 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "lawngreen";
 
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.tenth.popwhenwrong();
 
@@ -5273,13 +4292,6 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "grey";
 
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
-
     bioquestion.tenth.popwhenwrong();
 
     opt3.addEventListener("click", setTimeout(() => {
@@ -5296,13 +4308,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "lawngreen";
     opt4.style.backgroundColor = "grey";
 
-
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
 
     bioquestion.tenth.popwhenwrong();
 
@@ -5321,13 +4326,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "lawngreen";
 
 
-    // remove border
-
-    opt1.style.border = "none"; 
-    opt2.style.border = "none";
-    opt3.style.border = "none";
-    opt4.style.border = "none";
-
     bioquestion.tenth.popwhenwrong();
 
     opt4.addEventListener("click", setTimeout(() => {
@@ -5342,6 +4340,7 @@ popwhencorrect: function(){
     opt2.innerHTML = "Reduced genetic variation ";
     opt3.innerHTML = "Better adapted to environmental changes";
     opt4.innerHTML = "More competition for resources ";
+
     opt1.addEventListener("click", bioquestion.tenth.wrong1);
     opt2.addEventListener("click", bioquestion.tenth.correct);
     opt3.addEventListener("click", bioquestion.tenth.wrong2);
@@ -5355,6 +4354,7 @@ popwhencorrect: function(){
     opt2.innerHTML = "Better adapted to environmental changes";
     opt3.innerHTML = "Fewer genetic diseases ";
     opt4.innerHTML = "Reduced genetic variation";
+
     opt1.addEventListener("click", bioquestion.tenth.wrong4);
     opt2.addEventListener("click", bioquestion.tenth.wrong5);
     opt3.addEventListener("click", bioquestion.tenth.wrong6);
@@ -5368,6 +4368,7 @@ popwhencorrect: function(){
     opt2.innerHTML = "Reduced genetic variation";
     opt3.innerHTML = "Fewer genetic diseases ";
     opt4.innerHTML = "More competition for resources ";
+
     opt1.addEventListener("click", bioquestion.tenth.wrong7);
     opt2.addEventListener("click", bioquestion.tenth.correct2);
     opt3.addEventListener("click", bioquestion.tenth.wrong8 );
@@ -5410,7 +4411,7 @@ random: function(){
     }
    
 },
-
+*/
        
             };
             
@@ -5430,7 +4431,7 @@ random: function(){
             updateTime();
 
             // If time runs out, stop the countdown
-            if(totalTime == -1){
+            if(totalTime == 0){
                 clearInterval(interval);
                 return;
             }
@@ -5482,6 +4483,26 @@ random: function(){
         updateTime();
 
         };
+
+        /*---------------------------------------------------------------------
+        -----------------------------------------------------------------------
+        
+            MODIFICATIONS DONE:
+
+        1. removed the border remover{   
+                opt1.style.border = "none"; 
+                opt2.style.border = "none";
+                opt3.style.border = "none";
+                opt4.style.border = "none"; }
+
+        
+
+        2. Added extra comments to make code more readable
+        
+        3. Removed div(correct and wrong arlet) styling created with javascript 
+        -----------------------------------------------------------------------
+        -----------------------------------------------------------------------*/
+
 
         </script>
     </body>
