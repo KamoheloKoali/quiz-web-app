@@ -53,6 +53,9 @@ nav div{
 
 .login:hover{
     box-shadow: 0 2px 25px 0 black;
+    color: ghostwhite;
+    background-color: #000;
+    transition: 1s ease;
 }
 
 .link1:hover, .link2:hover{

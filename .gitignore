@@ -1,5 +1,4 @@
 # ignore all images and pdf files
 
-*.pdf
 *webp
 *avif

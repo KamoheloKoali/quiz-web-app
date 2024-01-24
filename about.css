@@ -66,7 +66,7 @@ nav div{
 .link1:hover, .link2:hover{
     padding-top: 20px;
     padding-bottom: 20px;
-   border: none;
+    border-left: solid #000 2px;
     background-color: grey;
     color: whitesmoke;
     cursor: pointer;
