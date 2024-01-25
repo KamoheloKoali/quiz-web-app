@@ -121,6 +121,7 @@
 
     <script>
 
+//******************Script to rendomize the answers*********************
             function resert() {
             var containor = document.querySelector('#container');
             shuffleElements(containor);
@@ -244,7 +245,7 @@
 
             function removechanges(){
 
-                        // background color
+                    // background color
 
                 opt2.style.backgroundColor = "hsla(33, 100%, 88%, 0.5)";
                 opt1.style.backgroundColor = "hsla(33, 100%, 88%, 0.5)"; 
@@ -288,33 +289,8 @@
 
      
             function updatescore(){
-
-                           
-
-               /* if(score === 1){
-                    scorecount.innerHTML = "1";
-                }else if(score === 2){
-                    scorecount.innerHTML = "2";
-                }else if(score === 3){
-                    scorecount.innerHTML = "3";
-                }else if(score === 4){
-                    scorecount.innerHTML = "4";
-                }else if(score === 5){
-                    scorecount.innerHTML = "5";
-                }else if(score === 6){
-                    scorecount.innerHTML = "6";
-                }else if(score === 7){
-                    scorecount.innerHTML = "7";
-                }else if(score === 8){
-                    scorecount.innerHTML = "8";
-                }else if(score === 9){
-                    scorecount.innerHTML = "9";
-                }else if(score === 10){
-                    scorecount.innerHTML = "10";
-                }*/
-             
-
-
+                var upscore = score + 1;
+                document.getElementById("score").innerHTML = upscore;
             };
 
             // next button
@@ -401,38 +377,37 @@
                         break;
 
                     case 2:
-                        bioquestion.three();
+                        bioquestion.three.random();
                         break;
                         
                     case 3:
-                        bioquestion.fourth();
+                        bioquestion.fourth.random();
                         break;
 
                     case 4:
-                        bioquestion.fifth();
+                        bioquestion.fifth.random();
                         break;  
                     
                     case 5:
-                        bioquestion.sixth();
+                        bioquestion.sixth.random();
                         break;
 
                     case 6:
-                        bioquestion.seventh();
+                        bioquestion.seventh.random();
                         break; 
                         
                     case 7:
-                        bioquestion.eighth();
+                        bioquestion.eighth.random();
                         break; 
                         
                     case 8:
-                        bioquestion.ninth();
+                        bioquestion.ninth.random();
                         break; 
                         
                     case 9:
-                        bioquestion.tenth();
+                        bioquestion.tenth.random();
                         break; 
                         
-                      
                     };
             
                 },
@@ -780,53 +755,6 @@
 
                         styleofpopupcorrect();
 
-                        // update score
-                        /*switch(score){
-                            case 0:
-                                score += 1;
-                                break;
-
-                            case 1:
-                                score += 1;
-                                break; 
-                        
-                            case 2:
-                                scorecount.innerHTML = "2";
-                                break;
-
-                            case 3:
-                                score -= 1; 
-                                break;   
-
-                            case 4:
-                                score -= 2;
-                                break; 
-                                
-                            case 5:
-                                score -= 3;
-                                break;
-
-                            case 6: 
-                                score -= 4;  
-                                break;
-
-                            case 7:
-                                score -= 5;
-                                break
-                            
-                            case 8:
-                                score -= 6;
-                                break;  
-                            
-                            case 9:
-                                score -= 7;
-                                break;
-                            
-                            case 10:
-                                score -= 8;
-                                break; 
-                           
-                        };*/
                         updatescore();
 
                         // stop question timer
@@ -1078,63 +1006,17 @@
 
                         },
 
-                        order2: function(){
-                            document.getElementById("question").innerHTML = "Which pair of plant species belong to the same genus? ";
-                            opt1.innerHTML = "Callisia repens and Juncus bulbosus";
-                            opt2.innerHTML = "Callisia repens and Ranunculus repens";
-                            opt3.innerHTML = "Juncus bulbosus and Ranunculus bulbosus";
-                            opt4.innerHTML = "Ranunculus bulbosus and Ranunculus repens";
-                            opt1.addEventListener("click", bioquestion.two.wrong4);
-                            opt2.addEventListener("click", bioquestion.two.wrong5);
-                            opt3.addEventListener("click", bioquestion.two.wrong6);
-                            opt4.addEventListener("click", bioquestion.two.correct1);
-
-                        },
-
-                        order3: function(){
-                            document.getElementById("question").innerHTML = "Which pair of plant species belong to the same genus? ";
-                            opt1.innerHTML = "Juncus bulbosus and Ranunculus bulbosus";
-                            opt2.innerHTML = "Ranunculus bulbosus and Ranunculus repens";
-                            opt3.innerHTML = "Callisia repens and Juncus bulbosus";
-                            opt4.innerHTML = "Callisia repens and Ranunculus repens";
-                            opt1.addEventListener("click", bioquestion.two.wrong7);
-                            opt2.addEventListener("click", bioquestion.two.correct2);
-                            opt3.addEventListener("click", bioquestion.two.wrong8 );
-                            opt4.addEventListener("click", bioquestion.two.wrong9);
-
-                        },
-
-
                         random: function(){
-                                let run = Math.floor(Math.random() * 3);
-                                onchoose = 0;
+                                
+                            onchoose = 0;
 
-                                // add question number
-                                document.getElementById("questionnum").innerHTML = "2 of 10 questions";
+                            document.getElementById("questionnum").innerHTML = "2 of 10 questions";
 
-                                // remove div 
-                                removechanges();
-
-                                //pick random question
-                                switch(run){
-
-                                case 0:
-                                bioquestion.two.order1();
-                                button.disabled = true;
-                                break;
-
-                                case 1:
-                                bioquestion.two.order2();
-                                button.disabled = true;
-                                break;
-
-                                case 2:
-                                bioquestion.two.order3();
-                                button.disabled = true;
-                                break;
-
-                            };
-
+                            removechanges();
+                               
+                            bioquestion.two.order1();
+                            button.disabled = true;
+       
                             timer();
                         }
                     },
@@ -1164,53 +1046,7 @@
 
                             styleofpopupcorrect();
 
-                            // update score
-                            switch(score){
-                            case 0:
-                                score += 1;
-                                break;
-
-                            case 1:
-                                score += 1;
-                                break; 
                         
-                            case 2:
-                                score += 1;
-                                break;
-
-                            case 3:
-                                scorecount.innerHTML = "3"; 
-                                break;   
-
-                            case 4:
-                                score -= 1;
-                                break; 
-                                
-                            case 5:
-                                score -= 2;
-                                break;
-
-                            case 6: 
-                                score -= 3;  
-                                break;
-
-                            case 7:
-                                score -= 4;
-                                break
-                            
-                            case 8:
-                                score -= 5;
-                                break;  
-                            
-                            case 9:
-                                score -= 6;
-                                break;
-                            
-                            case 10:
-                                score -= 7;
-                                break; 
-                           
-                        };
                             updatescore();
 
                             // stop question timer
@@ -1258,8 +1094,6 @@
                     opt4.style.backgroundColor = "grey";
                     opt3.style.backgroundColor = "grey";
 
-
-
                     bioquestion.three.popwhencorrect();
 
                     opt2.addEventListener("click", setTimeout(() => {
@@ -1278,8 +1112,6 @@
                         opt1.style.backgroundColor = "grey"; 
                         opt2.style.backgroundColor = "grey";
                         opt3.style.backgroundColor = "grey";
-
-
 
                         bioquestion.three.popwhencorrect();
 
@@ -1323,8 +1155,6 @@
                             opt2.style.backgroundColor = "lawngreen";
                             opt4.style.backgroundColor = "grey";
 
-
-
                             bioquestion.three.popwhenwrong();
 
                             opt1.addEventListener("click", setTimeout(() => {
@@ -1340,8 +1170,6 @@
                                 opt1.style.backgroundColor = "grey"; 
                                 opt2.style.backgroundColor = "lawngreen";
                                 opt4.style.backgroundColor = "grey";
-
-
 
                                 bioquestion.three.popwhenwrong();
 
@@ -1359,9 +1187,6 @@
                             opt2.style.backgroundColor = "lawngreen";
                             opt3.style.backgroundColor = "grey";
 
-
-
-
                             bioquestion.three.popwhenwrong();
 
                             opt4.addEventListener("click", setTimeout(() => {
@@ -1378,8 +1203,6 @@
                             opt2.style.backgroundColor = "grey";
                             opt4.style.backgroundColor = "lawngreen";
 
-
- 
                             bioquestion.three.popwhenwrong();
 
                             opt1.addEventListener("click", setTimeout(() => {
@@ -1395,9 +1218,6 @@
                             opt1.style.backgroundColor = "grey"; 
                             opt3.style.backgroundColor = "grey";
                             opt4.style.backgroundColor = "lawngreen";
-
-
-
 
                             bioquestion.three.popwhenwrong();
 
@@ -1415,9 +1235,6 @@
                             opt2.style.backgroundColor = "grey";
                             opt4.style.backgroundColor = "lawngreen";
 
-
-
-
                             bioquestion.three.popwhenwrong();
 
                             opt3.addEventListener("click", setTimeout(() => {
@@ -1433,8 +1250,6 @@
                             opt3.style.backgroundColor = "grey"; 
                             opt2.style.backgroundColor = "lawngreen";
                             opt4.style.backgroundColor = "grey";
-
-
 
                             bioquestion.three.popwhenwrong();
 
@@ -1452,9 +1267,6 @@
                             opt3.style.backgroundColor = "lawngreen";
                             opt4.style.backgroundColor = "grey";
 
-
-
-
                             bioquestion.three.popwhenwrong();
 
                             opt2.addEventListener("click", setTimeout(() => {
@@ -1471,9 +1283,6 @@
                             opt2.style.backgroundColor = "grey";
                             opt3.style.backgroundColor = "lawngreen";
 
-
-
-
                             bioquestion.three.popwhenwrong();
 
                             opt4.addEventListener("click", setTimeout(() => {
@@ -1488,6 +1297,7 @@
                             opt2.innerHTML = "nitrogen";
                             opt3.innerHTML = "Carbon";
                             opt4.innerHTML = "Oxygen";
+
                             opt1.addEventListener("click", bioquestion.three.wrong1);
                             opt2.addEventListener("click", bioquestion.three.correct);
                             opt3.addEventListener("click", bioquestion.three.wrong2);
@@ -1495,67 +1305,26 @@
 
                         },
 
-                        order2: function(){
-                            document.getElementById("question").innerHTML = "Which element is found in proteins but is absent from fats?";
-                            opt1.innerHTML = "Oxygen";
-                            opt2.innerHTML = "Hydrogen";
-                            opt3.innerHTML = "Carbon";
-                            opt4.innerHTML = "Nitrogen";
-                            opt1.addEventListener("click", bioquestion.three.wrong4);
-                            opt2.addEventListener("click", bioquestion.three.wrong5);
-                            opt3.addEventListener("click", bioquestion.three.wrong6);
-                            opt4.addEventListener("click", bioquestion.three.correct1);
-
-                        },
-
-                        order3: function(){
-                            document.getElementById("question").innerHTML = "Which element is found in proteins but is absent from fats?";
-                            opt1.innerHTML = "Carbon";
-                            opt2.innerHTML = "Nitrogen";
-                            opt3.innerHTML = "Hydrogen";
-                            opt4.innerHTML = "Oxygen";
-                            opt1.addEventListener("click", bioquestion.three.wrong7);
-                            opt2.addEventListener("click", bioquestion.three.correct2);
-                            opt3.addEventListener("click", bioquestion.three.wrong8 );
-                            opt4.addEventListener("click", bioquestion.three.wrong9);
-
-                        },
+                       
 
                         random: function(){
-                                let run = Math.floor(Math.random() * 3);
-                                onchoose = 0;
+                               
+                            onchoose = 0;
 
                                 // add question number
-                                document.getElementById("questionnum").innerHTML = "3 of 10 questions";
+                            document.getElementById("questionnum").innerHTML = "3 of 10 questions";
 
                                 // remove div 
-                                removechanges();
+                            removechanges();
 
-                                //pick random question
-                                switch(run){
-
-                                case 0:
-                                bioquestion.three.order1();
-                                button.disabled = true;
-                                break;
-
-                                case 1:
-                                bioquestion.three.order2();
-                                button.disabled = true;
-                                break;
-
-                                case 2:
-                                bioquestion.three.order3();
-                                button.disabled = true;
-                                break;
-
-                            };
+                            bioquestion.three.order1();
+                            button.disabled = true;
 
                             timer();
                         }
                     },
 
-        /*       fourth: {
+             fourth: {
 
                         popwhencorrect: function(){
 
@@ -1580,53 +1349,6 @@
 
                             styleofpopupcorrect();
 
-                            // update score
-                            switch(score){
-                            case 0:
-                                score += 1;
-                                break;
-
-                            case 1:
-                                score += 1;
-                                break; 
-                        
-                            case 2:
-                                score += 1;
-                                break;
-
-                            case 3:
-                                score += 1; 
-                                break;   
-
-                            case 4:
-                                scorecount.innerHTML = "4";
-                                break; 
-                                
-                            case 5:
-                                score -= 1;
-                                break;
-
-                            case 6: 
-                                score -= 2;  
-                                break;
-
-                            case 7:
-                                score -= 3;
-                                break
-                            
-                            case 8:
-                                score -= 4;
-                                break;  
-                            
-                            case 9:
-                                score -= 5;
-                                break;
-                            
-                            case 10:
-                                score -= 6;
-                                break; 
-                           
-                        };
                             updatescore();
 
                             // stop question timer
@@ -1663,7 +1385,6 @@
 
                             },
 
-
                             // option2 correct
 
                             correct: function(){
@@ -1674,8 +1395,6 @@
                             opt1.style.backgroundColor = "grey"; 
                             opt4.style.backgroundColor = "grey";
                             opt3.style.backgroundColor = "grey";
-
-
 
                             bioquestion.fourth.popwhencorrect();
 
@@ -1696,8 +1415,6 @@
                             opt2.style.backgroundColor = "grey";
                             opt3.style.backgroundColor = "grey";
 
-
-
                             bioquestion.fourth.popwhencorrect();
 
                             opt4.addEventListener("click", setTimeout(() => {
@@ -1714,8 +1431,6 @@
                             opt1.style.backgroundColor = "grey"; 
                             opt3.style.backgroundColor = "grey";
                             opt4.style.backgroundColor = "grey";
-
-
 
                             bioquestion.fourth.popwhencorrect();
 
@@ -1734,9 +1449,6 @@
                             opt2.style.backgroundColor = "lawngreen";
                             opt4.style.backgroundColor = "grey";
 
-
-
-
                             bioquestion.fourth.popwhenwrong();
 
                             opt1.addEventListener("click", setTimeout(() => {
@@ -1752,8 +1464,6 @@
                                 opt1.style.backgroundColor = "grey"; 
                                 opt2.style.backgroundColor = "lawngreen";
                                 opt4.style.backgroundColor = "grey";
-
-
 
                                 bioquestion.fourth.popwhenwrong();
 
@@ -1771,8 +1481,6 @@
                             opt2.style.backgroundColor = "lawngreen";
                             opt3.style.backgroundColor = "grey";
 
-
-
                             bioquestion.fourth.popwhenwrong();
 
                             opt4.addEventListener("click", setTimeout(() => {
@@ -1788,9 +1496,6 @@
                             opt3.style.backgroundColor = "grey"; 
                             opt2.style.backgroundColor = "grey";
                             opt4.style.backgroundColor = "lawngreen";
-
-
-
 
                             bioquestion.fourth.popwhenwrong();
 
@@ -1808,7 +1513,6 @@
                             opt3.style.backgroundColor = "grey";
                             opt4.style.backgroundColor = "lawngreen";
 
-
                             bioquestion.fourth.popwhenwrong();
 
                             opt2.addEventListener("click", setTimeout(() => {
@@ -1824,9 +1528,6 @@
                             opt1.style.backgroundColor = "grey"; 
                             opt2.style.backgroundColor = "grey";
                             opt4.style.backgroundColor = "lawngreen";
-
-
-
 
                             bioquestion.fourth.popwhenwrong();
 
@@ -1844,9 +1545,6 @@
                             opt2.style.backgroundColor = "lawngreen";
                             opt4.style.backgroundColor = "grey";
 
-
-
-
                             bioquestion.fourth.popwhenwrong();
 
                             opt3.addEventListener("click", setTimeout(() => {
@@ -1862,9 +1560,6 @@
                             opt1.style.backgroundColor = "grey"; 
                             opt3.style.backgroundColor = "lawngreen";
                             opt4.style.backgroundColor = "grey";
-
-
-
 
                             bioquestion.fourth.popwhenwrong();
 
@@ -1882,9 +1577,6 @@
                             opt2.style.backgroundColor = "grey";
                             opt3.style.backgroundColor = "lawngreen";
 
-
-
-
                             bioquestion.fourth.popwhenwrong();
 
                             opt4.addEventListener("click", setTimeout(() => {
@@ -1899,6 +1591,7 @@
                             opt2.innerHTML = "The pH of the stomach is acidic.";
                             opt3.innerHTML = "It is produced in the mouth. ";
                             opt4.innerHTML = "Starch is not present in the stomach. ";
+
                             opt1.addEventListener("click", bioquestion.fourth.wrong1);
                             opt2.addEventListener("click", bioquestion.fourth.correct);
                             opt3.addEventListener("click", bioquestion.fourth.wrong2);
@@ -1906,62 +1599,22 @@
 
                             },
 
-                            order2: function(){
-                            document.getElementById("question").innerHTML = "Why does salivary amylase not work in the stomach?";
-                            opt1.innerHTML = "It is produced in the mouth. ";
-                            opt2.innerHTML = "Starch is not present in the stomach. ";
-                            opt3.innerHTML = "The temperature of the stomach is 37 degrees celcius. ";
-                            opt4.innerHTML = "The pH of the stomach is acidic.";
-                            opt1.addEventListener("click", bioquestion.fourth.wrong4);
-                            opt2.addEventListener("click", bioquestion.fourth.wrong5);
-                            opt3.addEventListener("click", bioquestion.fourth.wrong6);
-                            opt4.addEventListener("click", bioquestion.fourth.correct1);
-
-                            },
-
-                            order3: function(){
-                            document.getElementById("question").innerHTML = "Why does salivary amylase not work in the stomach?";
-                            opt1.innerHTML = "Starch is not present in the stomach. ";
-                            opt2.innerHTML = "The pH of the stomach is acidic.";
-                            opt3.innerHTML = "The temperature of the stomach is 37 degrees celcius. ";
-                            opt4.innerHTML = "It is produced in the mouth. ";
-                            opt1.addEventListener("click", bioquestion.fourth.wrong7);
-                            opt2.addEventListener("click", bioquestion.fourth.correct2);
-                            opt3.addEventListener("click", bioquestion.fourth.wrong8 );
-                            opt4.addEventListener("click", bioquestion.fourth.wrong9);
-
-                            },
-
+                           
                         random: function(){
-                                let run = Math.floor(Math.random() * 3);
-                                onchoose = 0;
+                            
+                           onchoose = 0;
 
                                 // add question number
-                                document.getElementById("questionnum").innerHTML = "4 of 10 questions";
+                            document.getElementById("questionnum").innerHTML = "4 of 10 questions";
 
                                 // remove div 
-                                removechanges();
+                            removechanges();
 
                                 //pick random question
-                                switch(run){
-
-                                case 0:
-                                bioquestion.fourth.order1();
-                                button.disabled = true;
-                                break;
-
-                                case 1:
-                                bioquestion.fourth.order2();
-                                button.disabled = true;
-                                break;
-
-                                case 2:
-                                bioquestion.fourth.order3();
-                                button.disabled = true;
-                                break;
-
-                            };
-
+ 
+                            bioquestion.fourth.order1();
+                            button.disabled = true;
+                            
                             timer();
                         }
                     },
@@ -1991,53 +1644,7 @@
 
                             styleofpopupcorrect();
 
-                           // update score
-                            switch(score){
-                            case 0:
-                                score += 1;
-                                break;
-
-                            case 1:
-                                score += 1;
-                                break; 
-                        
-                            case 2:
-                                score += 1;
-                                break;
-
-                            case 3:
-                                score += 1; 
-                                break;   
-
-                            case 4:
-                                score += 1;
-                                break; 
-                                
-                            case 5:
-                                scorecount.innerHTML = "5";
-                                break;
-
-                            case 6: 
-                                score -= 1;  
-                                break;
-
-                            case 7:
-                                score -= 2;
-                                break
-                            
-                            case 8:
-                                score -= 3;
-                                break;  
-                            
-                            case 9:
-                                score -= 4;
-                                break;
-                            
-                            case 10:
-                                score -= 5;
-                                break; 
                            
-                        };
                             updatescore();
 
                             // stop question timer
@@ -2085,9 +1692,6 @@
                             opt4.style.backgroundColor = "grey";
                             opt3.style.backgroundColor = "grey";
 
-
-
-
                             bioquestion.fifth.popwhencorrect();
 
                             opt2.addEventListener("click", setTimeout(() => {
@@ -2125,9 +1729,6 @@
                             opt3.style.backgroundColor = "grey";
                             opt4.style.backgroundColor = "grey";
 
-
-
-
                             bioquestion.fifth.popwhencorrect();
 
                             opt2.addEventListener("click", setTimeout(() => {
@@ -2145,9 +1746,6 @@
                             opt2.style.backgroundColor = "lawngreen";
                             opt4.style.backgroundColor = "grey";
 
-
-
-
                             bioquestion.fifth.popwhenwrong();
 
                             opt1.addEventListener("click", setTimeout(() => {
@@ -2163,9 +1761,6 @@
                                 opt1.style.backgroundColor = "grey"; 
                                 opt2.style.backgroundColor = "lawngreen";
                                 opt4.style.backgroundColor = "grey";
-
-
-
 
                                 bioquestion.fifth.popwhenwrong();
 
@@ -2183,9 +1778,6 @@
                             opt2.style.backgroundColor = "lawngreen";
                             opt3.style.backgroundColor = "grey";
 
-
-
-
                             bioquestion.fifth.popwhenwrong();
 
                             opt4.addEventListener("click", setTimeout(() => {
@@ -2201,9 +1793,6 @@
                             opt3.style.backgroundColor = "grey"; 
                             opt2.style.backgroundColor = "grey";
                             opt4.style.backgroundColor = "lawngreen";
-
-
- 
 
                             bioquestion.fifth.popwhenwrong();
 
@@ -2221,9 +1810,6 @@
                             opt3.style.backgroundColor = "grey";
                             opt4.style.backgroundColor = "lawngreen";
 
-
-
-
                             bioquestion.fifth.popwhenwrong();
 
                             opt2.addEventListener("click", setTimeout(() => {
@@ -2239,8 +1825,6 @@
                             opt1.style.backgroundColor = "grey"; 
                             opt2.style.backgroundColor = "grey";
                             opt4.style.backgroundColor = "lawngreen";
-
-
 
                             bioquestion.fifth.popwhenwrong();
 
@@ -2258,9 +1842,6 @@
                             opt2.style.backgroundColor = "lawngreen";
                             opt4.style.backgroundColor = "grey";
 
-
-
-
                             bioquestion.fifth.popwhenwrong();
 
                             opt3.addEventListener("click", setTimeout(() => {
@@ -2276,7 +1857,6 @@
                             opt1.style.backgroundColor = "grey"; 
                             opt3.style.backgroundColor = "lawngreen";
                             opt4.style.backgroundColor = "grey";
-
 
                             bioquestion.fifth.popwhenwrong();
 
@@ -2294,7 +1874,6 @@
                             opt2.style.backgroundColor = "grey";
                             opt3.style.backgroundColor = "lawngreen";
 
-
                             bioquestion.fifth.popwhenwrong();
 
                             opt4.addEventListener("click", setTimeout(() => {
@@ -2309,6 +1888,7 @@
                             opt2.innerHTML = "Brain";
                             opt3.innerHTML = "Pancreas";
                             opt4.innerHTML = "Lungs";
+
                             opt1.addEventListener("click", bioquestion.fifth.wrong1);
                             opt2.addEventListener("click", bioquestion.fifth.correct);
                             opt3.addEventListener("click", bioquestion.fifth.wrong2);
@@ -2316,62 +1896,18 @@
 
                             },
 
-                            order2: function(){
-                            document.getElementById("question").innerHTML = "Which organ detects the changes in the carbon dioxide concentration of the blood?";
-                            opt1.innerHTML = "Pancreas";
-                            opt2.innerHTML = "Liver ";
-                            opt3.innerHTML = "Lungs";
-                            opt4.innerHTML = "Brain";
-                            opt1.addEventListener("click", bioquestion.fifth.wrong4);
-                            opt2.addEventListener("click", bioquestion.fifth.wrong5);
-                            opt3.addEventListener("click", bioquestion.fifth.wrong6);
-                            opt4.addEventListener("click", bioquestion.fifth.correct1);
-
-                            },
-
-                            order3: function(){
-                            document.getElementById("question").innerHTML = "Which organ detects the changes in the carbon dioxide concentration of the blood?";
-                            opt1.innerHTML = "Lungs";
-                            opt2.innerHTML = "Brain";
-                            opt3.innerHTML = "Pancreas";
-                            opt4.innerHTML = "Liver";
-                            opt1.addEventListener("click", bioquestion.fifth.wrong7);
-                            opt2.addEventListener("click", bioquestion.fifth.correct2);
-                            opt3.addEventListener("click", bioquestion.fifth.wrong8 );
-                            opt4.addEventListener("click", bioquestion.fifth.wrong9);
-
-                            },
 
                         random: function(){
-                                let run = Math.floor(Math.random() * 3);
-                                onchoose = 0;
+                                
+                            onchoose = 0;
+                                
+                            document.getElementById("questionnum").innerHTML = "5 of 10 questions";
+                                
+                            removechanges();   
 
-                                // add question number
-                                document.getElementById("questionnum").innerHTML = "5 of 10 questions";
-
-                                // remove div 
-                                removechanges();
-
-                                //pick random question
-                                switch(run){
-
-                                case 0:
-                                bioquestion.fifth.order1();
-                                button.disabled = true;
-                                break;
-
-                                case 1:
-                                bioquestion.fifth.order2();
-                                button.disabled = true;
-                                break;
-
-                                case 2:
-                                bioquestion.fifth.order3();
-                                button.disabled = true;
-                                break;
-
-                            };
-
+                            bioquestion.fifth.order1();
+                            button.disabled = true;
+                            
                             timer();
                         }
                         },
@@ -2402,53 +1938,6 @@
 
                             styleofpopupcorrect();
 
-                            // update score
-                            switch(score){
-                            case 0:
-                                score += 1;
-                                break;
-
-                            case 1:
-                                score += 1;
-                                break; 
-                        
-                            case 2:
-                                score += 1;
-                                break;
-
-                            case 3:
-                                score += 1; 
-                                break;   
-
-                            case 4:
-                                score += 1;
-                                break; 
-                                
-                            case 5:
-                                score += 1;
-                                break;
-
-                            case 6: 
-                            scorecount.innerHTML = "6";  
-                                break;
-
-                            case 7:
-                                score -= 1;
-                                break
-                            
-                            case 8:
-                                score -= 2;
-                                break;  
-                            
-                            case 9:
-                                score -= 3;
-                                break;
-                            
-                            case 10:
-                                score -= 4;
-                                break; 
-                           
-                        };
                             updatescore();
 
                             // stop question timer
@@ -2496,8 +1985,6 @@
                             opt4.style.backgroundColor = "grey";
                             opt3.style.backgroundColor = "grey";
 
-
-
                             bioquestion.sixth.popwhencorrect();
 
                             opt2.addEventListener("click", setTimeout(() => {
@@ -2534,8 +2021,6 @@
                             opt3.style.backgroundColor = "grey";
                             opt4.style.backgroundColor = "grey";
 
-
-
                             bioquestion.sixth.popwhencorrect();
 
                             opt2.addEventListener("click", setTimeout(() => {
@@ -2553,9 +2038,6 @@
                             opt2.style.backgroundColor = "lawngreen";
                             opt4.style.backgroundColor = "grey";
 
-
-
-
                             bioquestion.sixth.popwhenwrong();
 
                             opt1.addEventListener("click", setTimeout(() => {
@@ -2571,8 +2053,6 @@
                                 opt1.style.backgroundColor = "grey"; 
                                 opt2.style.backgroundColor = "lawngreen";
                                 opt4.style.backgroundColor = "grey";
-
-
 
                                 bioquestion.sixth.popwhenwrong();
 
@@ -2590,10 +2070,6 @@
                             opt2.style.backgroundColor = "lawngreen";
                             opt3.style.backgroundColor = "grey";
 
-
-
-
-
                             bioquestion.sixth.popwhenwrong();
 
                             opt4.addEventListener("click", setTimeout(() => {
@@ -2609,8 +2085,6 @@
                             opt3.style.backgroundColor = "grey"; 
                             opt2.style.backgroundColor = "grey";
                             opt4.style.backgroundColor = "lawngreen";
-
-
 
                             bioquestion.sixth.popwhenwrong();
 
@@ -2628,9 +2102,6 @@
                             opt3.style.backgroundColor = "grey";
                             opt4.style.backgroundColor = "lawngreen";
 
-
-
-
                             bioquestion.sixth.popwhenwrong();
 
                             opt2.addEventListener("click", setTimeout(() => {
@@ -2646,9 +2117,6 @@
                             opt1.style.backgroundColor = "grey"; 
                             opt2.style.backgroundColor = "grey";
                             opt4.style.backgroundColor = "lawngreen";
-
-
-
 
                             bioquestion.sixth.popwhenwrong();
 
@@ -2666,9 +2134,6 @@
                             opt2.style.backgroundColor = "lawngreen";
                             opt4.style.backgroundColor = "grey";
 
-
- 
-
                             bioquestion.sixth.popwhenwrong();
 
                             opt3.addEventListener("click", setTimeout(() => {
@@ -2685,7 +2150,6 @@
                             opt3.style.backgroundColor = "lawngreen";
                             opt4.style.backgroundColor = "grey";
 
-
                             bioquestion.sixth.popwhenwrong();
 
                             opt2.addEventListener("click", setTimeout(() => {
@@ -2701,9 +2165,6 @@
                             opt1.style.backgroundColor = "grey"; 
                             opt2.style.backgroundColor = "grey";
                             opt3.style.backgroundColor = "lawngreen";
-
-
-
 
                             bioquestion.sixth.popwhenwrong();
 
@@ -2727,63 +2188,24 @@
 
                             },
 
-                            order2: function(){
-                            document.getElementById("question").innerHTML = "Which food type, when eaten in excess, will cause a rise in the urea content of urine?";
-                            opt1.innerHTML = "Mineral Salts";
-                            opt2.innerHTML = "Fat";
-                            opt3.innerHTML = "Carbohydrate";
-                            opt4.innerHTML = "Protein";
+                            
 
-                            opt1.addEventListener("click", bioquestion.sixth.wrong4);
-                            opt2.addEventListener("click", bioquestion.sixth.wrong5);
-                            opt3.addEventListener("click", bioquestion.sixth.wrong6);
-                            opt4.addEventListener("click", bioquestion.sixth.correct1);
-
-                            },
-
-                            order3: function(){
-                            document.getElementById("question").innerHTML = "Which food type, when eaten in excess, will cause a rise in the urea content of urine?";
-                            opt1.innerHTML = "Mineral Salts";
-                            opt2.innerHTML = "Protein";
-                            opt3.innerHTML = "Fat";
-                            opt4.innerHTML = "Carbohydrate";
-
-                            opt1.addEventListener("click", bioquestion.sixth.wrong7);
-                            opt2.addEventListener("click", bioquestion.sixth.correct2);
-                            opt3.addEventListener("click", bioquestion.sixth.wrong8 );
-                            opt4.addEventListener("click", bioquestion.sixth.wrong9);
-
-                            },
+                            
 
                         random: function(){
-                                let run = Math.floor(Math.random() * 3);
-                                onchoose = 0;
+                           
+                            onchoose = 0;
 
-                                // add question number
-                                document.getElementById("questionnum").innerHTML = "6 of 10 questions";
+                            // add question number
+                            document.getElementById("questionnum").innerHTML = "6 of 10 questions";
 
-                                // remove div 
-                                removechanges();
+                            // remove div 
+                            removechanges();
 
-                                //pick random question
-                                switch(run){
-
-                                case 0:
-                                bioquestion.sixth.order1();
-                                button.disabled = true;
-                                break;
-
-                                case 1:
-                                bioquestion.sixth.order2();
-                                button.disabled = true;
-                                break;
-
-                                case 2:
-                                bioquestion.sixth.order3();
-                                button.disabled = true;
-                                break;
-
-                            };
+                            //pick random question
+                    
+                            bioquestion.sixth.order1();
+                            button.disabled = true;
 
                             timer();
                         }
@@ -2815,53 +2237,6 @@
 
             styleofpopupcorrect();
 
-            // update score
-            switch(score){
-            case 0:
-                score += 1;
-                break;
-
-            case 1:
-                score += 1;
-                break; 
-
-            case 2:
-                score += 1;
-                break;
-
-            case 3:
-                score += 1; 
-                break;   
-
-            case 4:
-                score += 1;
-                break; 
-                
-            case 5:
-                score += 1;
-                break;
-
-            case 6: 
-                score += 1;  
-                break;
-
-            case 7:
-                scorecount.innerHTML = "7";
-                break
-            
-            case 8:
-                score -= 1;
-                break;  
-            
-            case 9:
-                score -= 2;
-                break;
-            
-            case 10:
-                score -= 3;
-                break; 
-        
-        };
             updatescore();
 
             // stop question timer
@@ -2897,7 +2272,6 @@
 
             },
 
-
             // option2 correct
 
             correct: function(){
@@ -2908,8 +2282,6 @@
             opt1.style.backgroundColor = "grey"; 
             opt4.style.backgroundColor = "grey";
             opt3.style.backgroundColor = "grey";
-
-
 
             bioquestion.seventh.popwhencorrect();
 
@@ -2930,8 +2302,6 @@
             opt2.style.backgroundColor = "grey";
             opt3.style.backgroundColor = "grey";
 
-
-
             bioquestion.seventh.popwhencorrect();
 
             opt4.addEventListener("click", setTimeout(() => {
@@ -2948,9 +2318,6 @@
             opt1.style.backgroundColor = "grey"; 
             opt3.style.backgroundColor = "grey";
             opt4.style.backgroundColor = "grey";
-
-
-
 
             bioquestion.seventh.popwhencorrect();
 
@@ -2969,8 +2336,6 @@
             opt2.style.backgroundColor = "lawngreen";
             opt4.style.backgroundColor = "grey";
 
-
-
             bioquestion.seventh.popwhenwrong();
 
             opt1.addEventListener("click", setTimeout(() => {
@@ -2986,7 +2351,6 @@
                 opt1.style.backgroundColor = "grey"; 
                 opt2.style.backgroundColor = "lawngreen";
                 opt4.style.backgroundColor = "grey";
-
 
                 bioquestion.seventh.popwhenwrong();
 
@@ -3004,9 +2368,6 @@
             opt2.style.backgroundColor = "lawngreen";
             opt3.style.backgroundColor = "grey";
 
-
-
-
             bioquestion.seventh.popwhenwrong();
 
             opt4.addEventListener("click", setTimeout(() => {
@@ -3022,8 +2383,6 @@
             opt3.style.backgroundColor = "grey"; 
             opt2.style.backgroundColor = "grey";
             opt4.style.backgroundColor = "lawngreen";
-
-
 
             bioquestion.seventh.popwhenwrong();
 
@@ -3041,9 +2400,6 @@
             opt3.style.backgroundColor = "grey";
             opt4.style.backgroundColor = "lawngreen";
 
-
-
-
             bioquestion.seventh.popwhenwrong();
 
             opt2.addEventListener("click", setTimeout(() => {
@@ -3059,8 +2415,6 @@
             opt1.style.backgroundColor = "grey"; 
             opt2.style.backgroundColor = "grey";
             opt4.style.backgroundColor = "lawngreen";
-
-
 
             bioquestion.seventh.popwhenwrong();
 
@@ -3078,8 +2432,6 @@
             opt2.style.backgroundColor = "lawngreen";
             opt4.style.backgroundColor = "grey";
 
-
-
             bioquestion.seventh.popwhenwrong();
 
             opt3.addEventListener("click", setTimeout(() => {
@@ -3095,8 +2447,6 @@
             opt1.style.backgroundColor = "grey"; 
             opt3.style.backgroundColor = "lawngreen";
             opt4.style.backgroundColor = "grey";
-
-
 
             bioquestion.seventh.popwhenwrong();
 
@@ -3114,8 +2464,6 @@
             opt2.style.backgroundColor = "grey";
             opt3.style.backgroundColor = "lawngreen";
 
-
-
             bioquestion.seventh.popwhenwrong();
 
             opt4.addEventListener("click", setTimeout(() => {
@@ -3130,6 +2478,7 @@
             opt2.innerHTML = "It is a depressant.";
             opt3.innerHTML = "It is not addictive";
             opt4.innerHTML = "It can cause COPD";
+
             opt1.addEventListener("click", bioquestion.seventh.wrong1);
             opt2.addEventListener("click", bioquestion.seventh.correct);
             opt3.addEventListener("click", bioquestion.seventh.wrong2);
@@ -3137,62 +2486,17 @@
 
             },
 
-            order2: function(){
-            document.getElementById("question").innerHTML = "Alcohol is a drug. Which statement is correct? ";
-            opt1.innerHTML = "It can cause COPD";
-            opt2.innerHTML = "It reduces reaction times";
-            opt3.innerHTML = "It is not addictive";
-            opt4.innerHTML = "It is a depressant";
-            opt1.addEventListener("click", bioquestion.seventh.wrong4);
-            opt2.addEventListener("click", bioquestion.seventh.wrong5);
-            opt3.addEventListener("click", bioquestion.seventh.wrong6);
-            opt4.addEventListener("click", bioquestion.seventh.correct1);
-
-            },
-
-            order3: function(){
-            document.getElementById("question").innerHTML = "Alcohol is a drug. Which statement is correct? ";
-            opt1.innerHTML = "It reduces reaction times";
-            opt2.innerHTML = "It is a depressant";
-            opt3.innerHTML = "It can cause COPD";
-            opt4.innerHTML = "It is not addictive";
-            opt1.addEventListener("click", bioquestion.seventh.wrong7);
-            opt2.addEventListener("click", bioquestion.seventh.correct2);
-            opt3.addEventListener("click", bioquestion.seventh.wrong8 );
-            opt4.addEventListener("click", bioquestion.seventh.wrong9);
-
-            },
-
         random: function(){
-                let run = Math.floor(Math.random() * 3);
-                onchoose = 0;
-
-                // add question number
-                document.getElementById("questionnum").innerHTML = "7 of 10 questions";
-
-                // remove div 
-                removechanges();
-
-                //pick random question
-                switch(run){
-
-                case 0:
-                bioquestion.seventh.order1();
-                button.disabled = true;
-                break;
-
-                case 1:
-                bioquestion.seventh.order2();
-                button.disabled = true;
-                break;
-
-                case 2:
-                bioquestion.seventh.order3();
-                button.disabled = true;
-                break;
-
-            };
-
+                
+            onchoose = 0;
+            // add question number
+            document.getElementById("questionnum").innerHTML = "7 of 10 questions";
+            // remove div 
+            removechanges();
+            
+            bioquestion.seventh.order1();
+            button.disabled = true;
+            
             timer();
 
             }
@@ -3200,7 +2504,6 @@
        },
 
                 eighth: {
-
 
 popwhencorrect: function(){
 
@@ -3225,53 +2528,6 @@ popwhencorrect: function(){
 
     styleofpopupcorrect();
 
-    // update score
-    switch(score){
-    case 0:
-        score += 1;
-        break;
-
-    case 1:
-        score += 1;
-        break; 
-
-    case 2:
-        score += 1;
-        break;
-
-    case 3:
-        score += 1; 
-        break;   
-
-    case 4:
-        score += 1;
-        break; 
-        
-    case 5:
-        score += 1;
-        break;
-
-    case 6: 
-        score += 1;  
-        break;
-
-    case 7:
-        score += 1;
-        break
-    
-    case 8:
-        scorecount.innerHTML = "8";
-        break;  
-    
-    case 9:
-        score -= 1;
-        break;
-    
-    case 10:
-        score -= 2;
-        break; 
-
-};
     updatescore();
 
     // stop question timer
@@ -3318,7 +2574,6 @@ popwhencorrect: function(){
     opt4.style.backgroundColor = "grey";
     opt3.style.backgroundColor = "grey";
 
-
     bioquestion.eighth.popwhencorrect();
 
     opt2.addEventListener("click", setTimeout(() => {
@@ -3338,7 +2593,6 @@ popwhencorrect: function(){
     opt2.style.backgroundColor = "grey";
     opt3.style.backgroundColor = "grey";
 
-
     bioquestion.eighth.popwhencorrect();
 
     opt4.addEventListener("click", setTimeout(() => {
@@ -3356,7 +2610,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "grey";
     opt4.style.backgroundColor = "grey";
 
-
     bioquestion.eighth.popwhencorrect();
 
     opt2.addEventListener("click", setTimeout(() => {
@@ -3373,7 +2626,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "grey"; 
     opt2.style.backgroundColor = "lawngreen";
     opt4.style.backgroundColor = "grey";
-
 
     bioquestion.eighth.popwhenwrong();
 
@@ -3408,7 +2660,6 @@ popwhencorrect: function(){
     opt2.style.backgroundColor = "lawngreen";
     opt3.style.backgroundColor = "grey";
 
-
     bioquestion.eighth.popwhenwrong();
 
     opt4.addEventListener("click", setTimeout(() => {
@@ -3424,7 +2675,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "grey"; 
     opt2.style.backgroundColor = "grey";
     opt4.style.backgroundColor = "lawngreen";
-
 
     bioquestion.eighth.popwhenwrong();
 
@@ -3474,7 +2724,6 @@ popwhencorrect: function(){
     opt2.style.backgroundColor = "lawngreen";
     opt4.style.backgroundColor = "grey";
 
-
     bioquestion.eighth.popwhenwrong();
 
     opt3.addEventListener("click", setTimeout(() => {
@@ -3491,7 +2740,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "lawngreen";
     opt4.style.backgroundColor = "grey";
 
-
     bioquestion.eighth.popwhenwrong();
 
     opt2.addEventListener("click", setTimeout(() => {
@@ -3507,8 +2755,6 @@ popwhencorrect: function(){
     opt1.style.backgroundColor = "grey"; 
     opt2.style.backgroundColor = "grey";
     opt3.style.backgroundColor = "lawngreen";
-
-
 
     bioquestion.eighth.popwhenwrong();
 
@@ -3532,64 +2778,19 @@ popwhencorrect: function(){
 
     },
 
-    order2: function(){
-    document.getElementById("question").innerHTML = "Which statement about fertilisation is correct?  ";
-    opt1.innerHTML = "One diploid gamete nucleus divides to form a haploid zygote";
-    opt2.innerHTML = "Two diploid gamete nuclei fuse to form a haploid zygote";
-    opt3.innerHTML = "One haploid gamete nucleus divides to form a diploid zygote";
-    opt4.innerHTML = "Two haploid gamete nuclei fuse to form a diploid zygote";
-    
-    opt1.addEventListener("click", bioquestion.eighth.wrong4);
-    opt2.addEventListener("click", bioquestion.eighth.wrong5);
-    opt3.addEventListener("click", bioquestion.eighth.wrong6);
-    opt4.addEventListener("click", bioquestion.eighth.correct1);
-
-    },
-
-    order3: function(){
-    document.getElementById("question").innerHTML = "Which statement about fertilisation is correct?  ";
-    opt1.innerHTML = "One diploid gamete nucleus divides to form a haploid zygote";
-    opt2.innerHTML = "Two haploid gamete nuclei fuse to form a diploid zygote";
-    opt3.innerHTML = "One haploid gamete nucleus divides to form a diploid zygote";
-    opt4.innerHTML = "Two diploid gamete nuclei fuse to form a haploid zygote";
-    
-    opt1.addEventListener("click", bioquestion.eighth.wrong7);
-    opt2.addEventListener("click", bioquestion.eighth.correct2);
-    opt3.addEventListener("click", bioquestion.eighth.wrong8 );
-    opt4.addEventListener("click", bioquestion.eighth.wrong9);
-
-    },
 
 random: function(){
-        let run = Math.floor(Math.random() * 3);
-        onchoose = 0;
-
-        // add question number
-        document.getElementById("questionnum").innerHTML = "8 of 10 questions";
-
-        // remove div 
-        removechanges();
-
-        //pick random question
-        switch(run){
-
-        case 0:
-        bioquestion.eighth.order1();
-        button.disabled = true;
-        break;
-
-        case 1:
-        bioquestion.eighth.order2();
-        button.disabled = true;
-        break;
-
-        case 2:
-        bioquestion.eighth.order3();
-        button.disabled = true;
-        break;
-
-    };
-
+        
+    onchoose = 0;
+    // add question number
+    document.getElementById("questionnum").innerHTML = "8 of 10 questions";
+    // remove div 
+    removechanges();
+    //pick random question
+    
+    bioquestion.eighth.order1();
+    button.disabled = true;
+    
     timer();
 
     }
@@ -3622,53 +2823,6 @@ popwhencorrect: function(){
 
     styleofpopupcorrect();
 
-    // update score
-    switch(score){
-    case 0:
-        score += 1;
-        break;
-
-    case 1:
-        score += 1;
-        break; 
-
-    case 2:
-        score += 1;
-        break;
-
-    case 3:
-        score += 1; 
-        break;   
-
-    case 4:
-        score += 1;
-        break; 
-        
-    case 5:
-        score += 1;
-        break;
-
-    case 6: 
-        score += 1;  
-        break;
-
-    case 7:
-        score += 1;
-        break
-    
-    case 8:
-        score += 1;
-        break;  
-    
-    case 9:
-        scorecount.innerHTML = "9";
-        break;
-    
-    case 10:
-        score -= 1;
-        break; 
-
-};
     updatescore();
 
     // stop question timer
@@ -3704,7 +2858,6 @@ popwhencorrect: function(){
 
     },
 
-
     // option2 correct
 
     correct: function(){
@@ -3715,8 +2868,6 @@ popwhencorrect: function(){
     opt1.style.backgroundColor = "grey"; 
     opt4.style.backgroundColor = "grey";
     opt3.style.backgroundColor = "grey";
-
-
 
     bioquestion.ninth.popwhencorrect();
 
@@ -3736,7 +2887,6 @@ popwhencorrect: function(){
     opt1.style.backgroundColor = "grey"; 
     opt2.style.backgroundColor = "grey";
 
-
     bioquestion.ninth.popwhencorrect();
 
     opt4.addEventListener("click", setTimeout(() => {
@@ -3753,8 +2903,6 @@ popwhencorrect: function(){
     opt1.style.backgroundColor = "grey"; 
     opt3.style.backgroundColor = "grey";
     opt4.style.backgroundColor = "grey";
-
-
 
     bioquestion.ninth.popwhencorrect();
 
@@ -3773,8 +2921,6 @@ popwhencorrect: function(){
     opt2.style.backgroundColor = "lawngreen";
     opt4.style.backgroundColor = "grey";
 
-
-
     bioquestion.ninth.popwhenwrong();
 
     opt1.addEventListener("click", setTimeout(() => {
@@ -3790,9 +2936,6 @@ popwhencorrect: function(){
         opt1.style.backgroundColor = "grey"; 
         opt2.style.backgroundColor = "lawngreen";
         opt4.style.backgroundColor = "grey";
-
-
-
 
         bioquestion.ninth.popwhenwrong();
 
@@ -3810,9 +2953,6 @@ popwhencorrect: function(){
     opt2.style.backgroundColor = "lawngreen";
     opt3.style.backgroundColor = "grey";
 
-
-
-
     bioquestion.ninth.popwhenwrong();
 
     opt4.addEventListener("click", setTimeout(() => {
@@ -3828,9 +2968,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "grey"; 
     opt2.style.backgroundColor = "grey";
     opt4.style.backgroundColor = "lawngreen";
-
-
-
 
     bioquestion.ninth.popwhenwrong();
 
@@ -3848,9 +2985,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "grey";
     opt4.style.backgroundColor = "lawngreen";
 
-
-
-
     bioquestion.ninth.popwhenwrong();
 
     opt2.addEventListener("click", setTimeout(() => {
@@ -3866,9 +3000,6 @@ popwhencorrect: function(){
     opt1.style.backgroundColor = "grey"; 
     opt2.style.backgroundColor = "grey";
     opt4.style.backgroundColor = "lawngreen";
-
-
-
 
     bioquestion.ninth.popwhenwrong();
 
@@ -3886,9 +3017,6 @@ popwhencorrect: function(){
     opt2.style.backgroundColor = "lawngreen";
     opt4.style.backgroundColor = "grey";
 
-
- 
-
     bioquestion.ninth.popwhenwrong();
 
     opt3.addEventListener("click", setTimeout(() => {
@@ -3904,9 +3032,6 @@ popwhencorrect: function(){
     opt1.style.backgroundColor = "grey"; 
     opt3.style.backgroundColor = "lawngreen";
     opt4.style.backgroundColor = "grey";
-
-
-
 
     bioquestion.ninth.popwhenwrong();
 
@@ -3924,8 +3049,6 @@ popwhencorrect: function(){
     opt2.style.backgroundColor = "grey";
     opt3.style.backgroundColor = "lawngreen";
 
-
-
     bioquestion.ninth.popwhenwrong();
 
     opt4.addEventListener("click", setTimeout(() => {
@@ -3940,6 +3063,7 @@ popwhencorrect: function(){
     opt2.innerHTML = "Restriction enzyme";
     opt3.innerHTML = "Trypsin";
     opt4.innerHTML = "DNA ligase ";
+
     opt1.addEventListener("click", bioquestion.ninth.wrong1);
     opt2.addEventListener("click", bioquestion.ninth.correct);
     opt3.addEventListener("click", bioquestion.ninth.wrong2);
@@ -3947,62 +3071,20 @@ popwhencorrect: function(){
 
     },
 
-    order2: function(){
-    document.getElementById("question").innerHTML = "Which enzyme is used to create complementary sticky ends in genetic engineering?  ";
-    opt1.innerHTML = "Trypsin";
-    opt2.innerHTML = "DNA ligase ";
-    opt3.innerHTML = "Lipase";
-    opt4.innerHTML = "Restriction enzyme";
-    opt1.addEventListener("click", bioquestion.ninth.wrong4);
-    opt2.addEventListener("click", bioquestion.ninth.wrong5);
-    opt3.addEventListener("click", bioquestion.ninth.wrong6);
-    opt4.addEventListener("click", bioquestion.ninth.correct1);
-
-    },
-
-    order3: function(){
-    document.getElementById("question").innerHTML = "Which enzyme is used to create complementary sticky ends in genetic engineering? ";
-    opt1.innerHTML = "Lipase";
-    opt2.innerHTML = "Restriction enzyme";
-    opt3.innerHTML = "DNA ligase ";
-    opt4.innerHTML = "Trypsin";
-    opt1.addEventListener("click", bioquestion.ninth.wrong7);
-    opt2.addEventListener("click", bioquestion.ninth.correct2);
-    opt3.addEventListener("click", bioquestion.ninth.wrong8 );
-    opt4.addEventListener("click", bioquestion.ninth.wrong9);
-
-    },
-
 random: function(){
-        let run = Math.floor(Math.random() * 3);
-        onchoose = 0;
+       
+    onchoose = 0;
+    // add question number
+    document.getElementById("questionnum").innerHTML = "9 of 10 questions";
 
-        // add question number
-        document.getElementById("questionnum").innerHTML = "9 of 10 questions";
+    // remove div 
+    removechanges();
 
-        // remove div 
-        removechanges();
-
-        //pick random question
-        switch(run){
-
-        case 0:
-        bioquestion.ninth.order1();
-        button.disabled = true;
-        break;
-
-        case 1:
-        bioquestion.ninth.order2();
-        button.disabled = true;
-        break;
-
-        case 2:
-        bioquestion.ninth.order3();
-        button.disabled = true;
-        break;
-
-    };
-
+    //pick random question
+    
+    bioquestion.ninth.order1();
+    button.disabled = true;
+        
     timer();
 
     }
@@ -4035,53 +3117,6 @@ popwhencorrect: function(){
 
     styleofpopupcorrect();
 
-    // update score
-    switch(score){
-    case 0:
-        score += 1;
-        break;
-
-    case 1:
-        score += 1;
-        break; 
-
-    case 2:
-        score += 1;
-        break;
-
-    case 3:
-        score += 1; 
-        break;   
-
-    case 4:
-        score += 1;
-        break; 
-        
-    case 5:
-        score += 1;
-        break;
-
-    case 6: 
-        score += 1;  
-        break;
-
-    case 7:
-        score += 1;
-        break
-    
-    case 8:
-        score += 1;
-        break;  
-    
-    case 9:
-        score += 1;
-        break;
-    
-    case 10:
-        scorecount.innerHTML = "10";
-        break; 
-
-};
     updatescore();
 
     // stop question timer
@@ -4117,7 +3152,6 @@ popwhencorrect: function(){
 
     },
 
-
     // option2 correct
 
     correct: function(){
@@ -4128,8 +3162,6 @@ popwhencorrect: function(){
     opt1.style.backgroundColor = "grey"; 
     opt4.style.backgroundColor = "grey";
     opt3.style.backgroundColor = "grey";
-
-
 
     bioquestion.tenth.popwhencorrect();
 
@@ -4150,7 +3182,6 @@ popwhencorrect: function(){
     opt2.style.backgroundColor = "grey";
     opt3.style.backgroundColor = "grey";
 
-
     bioquestion.tenth.popwhencorrect();
 
     opt4.addEventListener("click", setTimeout(() => {
@@ -4167,8 +3198,6 @@ popwhencorrect: function(){
     opt1.style.backgroundColor = "grey"; 
     opt3.style.backgroundColor = "grey";
     opt4.style.backgroundColor = "grey";
-
-
 
     bioquestion.tenth.popwhencorrect();
 
@@ -4187,8 +3216,6 @@ popwhencorrect: function(){
     opt2.style.backgroundColor = "lawngreen";
     opt4.style.backgroundColor = "grey";
 
-
-
     bioquestion.tenth.popwhenwrong();
 
     opt1.addEventListener("click", setTimeout(() => {
@@ -4204,7 +3231,6 @@ popwhencorrect: function(){
         opt1.style.backgroundColor = "grey"; 
         opt2.style.backgroundColor = "lawngreen";
         opt4.style.backgroundColor = "grey";
-
 
         bioquestion.tenth.popwhenwrong();
 
@@ -4222,7 +3248,6 @@ popwhencorrect: function(){
     opt2.style.backgroundColor = "lawngreen";
     opt3.style.backgroundColor = "grey";
 
-
     bioquestion.tenth.popwhenwrong();
 
     opt4.addEventListener("click", setTimeout(() => {
@@ -4238,7 +3263,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "grey"; 
     opt2.style.backgroundColor = "grey";
     opt4.style.backgroundColor = "lawngreen";
-
 
     bioquestion.tenth.popwhenwrong();
 
@@ -4256,7 +3280,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "grey";
     opt4.style.backgroundColor = "lawngreen";
 
-
     bioquestion.tenth.popwhenwrong();
 
     opt2.addEventListener("click", setTimeout(() => {
@@ -4272,8 +3295,6 @@ popwhencorrect: function(){
     opt1.style.backgroundColor = "grey"; 
     opt2.style.backgroundColor = "grey";
     opt4.style.backgroundColor = "lawngreen";
-
-
 
     bioquestion.tenth.popwhenwrong();
 
@@ -4291,7 +3312,6 @@ popwhencorrect: function(){
     opt2.style.backgroundColor = "lawngreen";
     opt4.style.backgroundColor = "grey";
 
-
     bioquestion.tenth.popwhenwrong();
 
     opt3.addEventListener("click", setTimeout(() => {
@@ -4308,7 +3328,6 @@ popwhencorrect: function(){
     opt3.style.backgroundColor = "lawngreen";
     opt4.style.backgroundColor = "grey";
 
-
     bioquestion.tenth.popwhenwrong();
 
     opt2.addEventListener("click", setTimeout(() => {
@@ -4324,7 +3343,6 @@ popwhencorrect: function(){
     opt1.style.backgroundColor = "grey"; 
     opt2.style.backgroundColor = "grey";
     opt3.style.backgroundColor = "lawngreen";
-
 
     bioquestion.tenth.popwhenwrong();
 
@@ -4348,70 +3366,25 @@ popwhencorrect: function(){
 
     },
 
-    order2: function(){
-    document.getElementById("question").innerHTML = "Some fish populations have greatly reduced in size as a result of overfishing. What are the effects on a species of having a very small population size? ";
-    opt1.innerHTML = "More competition for resources ";
-    opt2.innerHTML = "Better adapted to environmental changes";
-    opt3.innerHTML = "Fewer genetic diseases ";
-    opt4.innerHTML = "Reduced genetic variation";
-
-    opt1.addEventListener("click", bioquestion.tenth.wrong4);
-    opt2.addEventListener("click", bioquestion.tenth.wrong5);
-    opt3.addEventListener("click", bioquestion.tenth.wrong6);
-    opt4.addEventListener("click", bioquestion.tenth.correct1);
-
-    },
-
-    order3: function(){
-    document.getElementById("question").innerHTML = "Some fish populations have greatly reduced in size as a result of overfishing. What are the effects on a species of having a very small population size?";
-    opt1.innerHTML = "Better adapted to environmental changes";
-    opt2.innerHTML = "Reduced genetic variation";
-    opt3.innerHTML = "Fewer genetic diseases ";
-    opt4.innerHTML = "More competition for resources ";
-
-    opt1.addEventListener("click", bioquestion.tenth.wrong7);
-    opt2.addEventListener("click", bioquestion.tenth.correct2);
-    opt3.addEventListener("click", bioquestion.tenth.wrong8 );
-    opt4.addEventListener("click", bioquestion.tenth.wrong9);
-
-    },
-
 random: function(){
-        let run = Math.floor(Math.random() * 3);
-        onchoose = 0;
-
-        // add question number
-        document.getElementById("questionnum").innerHTML = "10 of 10 questions";
-
-        // remove div 
-        removechanges();
-
-        //pick random question
-        switch(run){
-
-        case 0:
-        bioquestion.tenth.order1();
-        button.disabled = true;
-        break;
-
-        case 1:
-        bioquestion.ntenth.order2();
-        button.disabled = true;
-        break;
-
-        case 2:
-        bioquestion.tenth.order3();
-        button.disabled = true;
-        break;
-
-    };
+       
+    onchoose = 0;
+    // add question number
+    document.getElementById("questionnum").innerHTML = "10 of 10 questions";
+    // remove div 
+    removechanges();
+    //pick random question
+    
+    bioquestion.tenth.order1();
+    button.disabled = true;
+    
 
     timer();
 
     }
    
 },
-*/
+
        
             };
             
@@ -4500,9 +3473,10 @@ random: function(){
         2. Added extra comments to make code more readable
         
         3. Removed div(correct and wrong arlet) styling created with javascript 
+
+        3.Reduced the anwser randomizer
         -----------------------------------------------------------------------
         -----------------------------------------------------------------------*/
-
 
         </script>
     </body>
