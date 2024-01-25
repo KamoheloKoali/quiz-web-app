@@ -1,0 +1,241 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: hsl(0, 0%, 60%);
+}
+
+/******************************************************************Navigation bar***************************************************************************************/
+nav{
+    width: 100dvw;
+    border-bottom: 2px solid hsla(0, 0%, 0%, 0.5);
+    display: inline-flex;
+    font-family: sans-serif;
+    font-weight: medium;
+    font-size: large;
+    position: absolute;
+    top: 0;
+    justify-content: space-between;
+    background-color: hsla(10, 30%, 80%, 0.3);
+}
+
+nav div{
+    padding: 20px;
+}
+
+.link1, .link2{
+  border-right: 2px solid black;
+  padding-right: 10px;
+  padding-left: auto;
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+.home-button{
+    text-decoration: none;
+    color: #000;
+    font-size: 20px;
+}
+
+.home-button:hover{
+    text-decoration: none;
+    color: ghostwhite;
+    font-size: 20px;
+}
+
+.login{
+    border: 2px solid hsl(0, 20%, 10%, 0.4);
+    border-radius: 20px;
+    background-color: hsl(187, 52%, 80%, 0.3);
+    padding: 8px 30px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    text-decoration: none;
+    color: black;
+}
+
+
+.login:hover{
+    box-shadow: 0 2px 25px 0 black;
+}
+
+.link1:hover, .link2:hover{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-left: solid #000 2px;
+    background-color: grey;
+    color: whitesmoke;
+    cursor: pointer;
+}
+
+
+/******************************************************************************Navigation bar**************************************************************************/
+
+/******************************************************************************About Us ********************************************************************************/
+.section {
+    width: 100dvw;
+    font-family: sans-serif;
+  }
+  
+  .section .container {
+    width: 80%;
+    display: block;
+    margin: 0px auto;
+    padding: 50px 0px;
+    text-align: justify;
+    font-family: sans-serif;
+  }
+  
+  .container .title {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 50px;
+    color: ghostwhite;
+    font-family: sans-serif;
+  }
+  
+  .container .title h1 {
+    text-transform: uppercase;
+    font-size: 35px;
+    color: ghostwhite;
+    font-family: sans-serif;
+  }
+  
+  .container .title h1::after {
+    content: "";
+    height: 5px;
+    width: 100px;
+    background-color: hsl(0, 0%, 60%);
+    border-radius: 25px;
+    display: block;
+    margin: auto;
+    font-family: sans-serif;
+  }
+  
+  .content {
+    float: left;
+    width: 55%;
+    font-family: sans-serif;
+  }
+  
+  .image-section {
+    float: right;
+    width: 40%;
+  }
+  
+  .image-section img {
+    padding-top: 15px;
+    width: 100%;
+    height: auto;
+  }
+  
+  .content .article h3 {
+    color: #333131;
+    font-size: 17px;
+    font-family: sans-serif;
+  }
+  
+  .content .article p {
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    font-family: sans-serif;
+  }
+  
+  .content .article .button {
+    padding-top: 30px;
+  }
+  
+  .exit {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #000;
+    cursor: pointer;
+    border-radius: 40px;
+    padding: 8px 25px;
+    background-color: ghostwhite;
+    letter-spacing: 1.1px;
+  }
+  
+  .exit:hover {
+    color: ghostwhite;
+    background-color: #000;
+    transition: 1s ease;
+  }
+  
+  .container .social {
+    width: 100%;
+    clear: both;
+    margin-top: 50px;
+    text-align: center;
+    display: inline-block;
+  }
+  
+  .container .social i {
+    color: ghostwhite;
+    font-size: 22px;
+    height: 45px;
+    width: 45px;
+    border-radius: 50%;
+    line-height: 45px;
+    text-align: center;
+    background-color: #000;
+    margin: 0px 5px;
+  }
+  
+  .container .social i:hover {
+    color: #e5e9c6f3;
+    background-color: #000;
+    transition: 1s ease;
+    transform: rotate(360deg);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .section .container {
+      width: 80%;
+      display: block;
+      margin: auto;
+    }
+    .content {
+      float: none;
+      width: 100%;
+      display: block;
+      margin: auto;
+    }
+    .image-section {
+      float: none;
+      width: 100%;
+      margin-top: 50px;
+    }
+    .image-section img {
+      width: 100%;
+      height: auto;
+      display: block;
+      margin: auto;
+    }
+    .container .title h1 {
+      text-align: center;
+      font-size: 30px;
+    }
+    .container .article .button {
+      text-align: center;
+    }
+    .container .article .button a {
+      padding: 6px 15px;
+      font-size: 16px;
+    }
+    .container .social i {
+      font-size: 19px;
+      height: 35px;
+      width: 35px;
+      line-height: 35px;
+    }
+  }
+  
+/******************************************************************************About Us ********************************************************************************/
