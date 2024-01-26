@@ -23,7 +23,7 @@
 
 <div class="container" id="container">
     <div class="form-container sign-up-container">
-        <form action="#">
+        <form action="#" id="signupform" onsubmit="checkCookie()">
             <h1>Create Account</h1>
             <div class="social-container">
                 <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank" class="social instagram"><i class="fab fa-instagram"></i></a>
@@ -33,14 +33,14 @@
             </div>
 
             <span>or use your email for registration</span>
-            <input type="text" placeholder="Name" required/>
-            <input type="email" placeholder="Email" required/>
-            <input type="password" placeholder="Password" required minlength="8" maxlength="15"/>
-            <button class="su" >Sign Up</button>
+            <input type="text" placeholder="Username"  id="name" name="name"/>
+            <input type="email" placeholder="Email"  name="email"/>
+            <input type="password" placeholder="Password" name="password" minlength="8" maxlength="15"/>
+            <button class="su">Sign Up</button>
         </form>
     </div>
     <div class="form-container sign-in-container">
-        <form action="#">
+        <form action="#" id="signinform" onsubmit="checkCookie()">
             <h1>Sign In</h1>
             <div class="social-container">
                 <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank" class="social instagram"><i class="fab fa-instagram"></i></a>
@@ -50,8 +50,9 @@
             </div>
 
             <span>or use your account</span>
-            <input type="email" placeholder="Email" required/>
-            <input type="password" placeholder="Password" required/>
+            <input type="text" placeholder="Username"name="name"/>
+            <input type="email" placeholder="Email" name="email"/>
+            <input type="password" placeholder="Password" name="password"/>
             <a href="" target="_blank" class="forgot">I Forgot my Password</a>
             <button class="si">Sign In</button>
         </form>
