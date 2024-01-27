@@ -34,7 +34,7 @@ function setCookie(cname,cvalue,exdays) {
     const d = new Date();
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     let expires = "expires=" + d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+    document.cookie = cname + "=" + cvalue + ";" + expires /*+ ";path=/"*/;
   }
   
   function getCookie(cname) {
@@ -58,7 +58,6 @@ function setCookie(cname,cvalue,exdays) {
     
     if (user != "") {
       alert("Welcome again " + user);
-      location.replace("/Home.html");
       
     } else {
       
@@ -66,8 +65,7 @@ function setCookie(cname,cvalue,exdays) {
        
        if (user != "" && user != null){
         setCookie("username", user, 365);
-        alert("Nice to meet you, " + user);  
-        location.replace("/Home.html");
+        alert("Nice to meet you, " + user);
 
       }else{
         alert("Please enter your name in the signup form.");

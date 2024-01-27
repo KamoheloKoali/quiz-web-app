@@ -1,14 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="eng">
     <head>
-        <title>chemistry</title>
+        <title>QUIZALOT| CHEMISTRY</title>
         <link rel="icon" type="image/x-icon" href="logo.png">
-        <link rel="stylesheet" href="quizstyle.css">
+        <link rel="stylesheet" href="style1.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
     </head>
+
     <body>
-        <h1 style="text-align: center;">Not ready</h1>
+        <main id="main">
+            <div class="leaderboard">
+                <h1 class="head">LEADERBOARD</h1>
+            </div>
+                <div class="beginner" onclick="choice(this)">
+                    <h1 class="head">BEGINNER</h1>
+                    <h3 class="curriculum">CHEM| <abbr title="International General Certificate of Secondary Education">IGCSE</abbr></h3>
+                    <p class="par">
+                    IGCSE is an internationally recognised qualification for secondary school students,
+                    typically taken by students aged 14 to 16. IGCSE provides a broad and balanced Education
+                    while also letting students develop essential skills and knowledge.
+                    </p>
+                </div>
+            <div class="intermediate" onclick="choice1(this)">
+                <h1 class="head">INTERMEDIATE</h1>
+                <h3 class="curriculum">CHEM| <abbr title="Ordinary Level">O LEVEL</abbr></h3>
+                <p class="par">
+                    O Level is the final certification for secondary school, to be taken at fifth form or year 11 at
+                    approximately age 17 (or age group 14-16).
+                </p>
+            </div>
+            <div class="advanced" onclick="choice2(this)">
+                <h1 class="head">ADVANCED</h1>
+                <h3 class="curriculum">CHEM| <abbr title="Advanced Subsidiary Level">AS LEVEL</abbr></h3>
+                <p class="par">
+                     Advanced Subsidiary level (AS level) is the first part of <abbr title="Advanced Level">A  Level</abbr>.
+                </p>
+            </div>
+        </main>
+
+        <!--functionality-->
+        <script>
+                const beginner = document.querySelector("beginner");
+                const intermediate = document.querySelector("intermediate");
+                const advanced = document.querySelector("advanced");
+
+                function choice(obj){
+                    document.location.assign("chembeginner.html");
+                }; 
+
+                function choice1(obj1){
+                    document.location.assign("chemintermediate.html");
+                }; 
+
+                function choice2(obj2){
+                    document.location.assign("chemadvanced.html");
+                }; 
+
+        </script>
     </body>
+
 </html>
