@@ -95,6 +95,7 @@
 
 <!--*******************This is the questions and answers html****************-->
                 
+
                 <h3 id="question"></h3>
 
                 <div class="answers" id="container">
@@ -194,8 +195,13 @@
                 if (count === -1){
 
                     clearInterval(interval);
+
                     document.getElementById('count').innerHTML = '0';
                     
+
+                    document.getElementById('count').innerHTML='0';
+                    timerunout();
+
                 };
 
                 switch(onchoose){
@@ -354,11 +360,12 @@
                 // remove pop up 
                 setTimeout(() => {
                     bioquestion.next();
-                }, 10000);
+                }, 10000);              
                        
             };
 
             function styleofpopupcorrect(){
+
 
                 // next button
                 button.style.animation = "anim";
@@ -377,6 +384,7 @@
 
             function styleofpopupwrong(){
 
+
                 // next button
 
                 button.style.animation = "anim";
@@ -390,6 +398,7 @@
                 opt3.disabled = true;
                 opt4.disabled = true;
                   
+                               
             };
 
 
@@ -464,12 +473,12 @@
 
                     popwhencorrect: function(){
 
-                        // add div to state that they are correct
-                        const par = document.createElement("p");
-                        const heading = document.createElement("h3");
-                        const text = document.createTextNode("Correct!");
-                        const ans = document.createTextNode("Nutrition is the process of taking in food and converting it into energy and other vital nutrients required for life")
-                        const emoji = document.createTextNode("😀");
+                                // add div to state that they are correct
+                                const par = document.createElement("p");
+                                const heading = document.createElement("h3");
+                                const text = document.createTextNode("Correct!");
+                                const ans = document.createTextNode("Nutrition is the process of taking in food and converting it into energy and other vital nutrients required for life")
+                                const emoji = document.createTextNode("😀");
 
                         // append to webpage
 
@@ -494,12 +503,12 @@
 
                     popwhenwrong: function(){
 
-                        // add div to state that they are correct
-                        const par = document.createElement("p");
-                        const heading = document.createElement("h3");
-                        const text = document.createTextNode("Wrong!");
-                        const ans = document.createTextNode("The correct answer is nutrition. It is the process of taking in food and converting it into energy and other vital nutrients required for life")
-                        const emoji = document.createTextNode("🙁");
+                                // add div to state that they are correct
+                                const par = document.createElement("p");
+                                const heading = document.createElement("h3");
+                                const text = document.createTextNode("Wrong!");
+                                const ans = document.createTextNode("The correct answer is nutrition. It is the process of taking in food and converting it into energy and other vital nutrients required for life")
+                                const emoji = document.createTextNode("🙁");
 
                         // append to webpage
 

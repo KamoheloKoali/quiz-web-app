@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    
     <nav>
         <div>
           <a class="link1" href="Home.html">Home</a>
@@ -31,7 +32,7 @@
         </h2>
 
         <div class="biology">
-            <h1 id="head1">BIOLOGY</h1>
+            <h1 class="head1">BIOLOGY</h1>
             <p>
                 Biology is the scientific study of life.<br>
                 It is a natural science with a broad scope<br> but has several unifying themes that tie it together as a single, coherent field.
@@ -40,12 +41,12 @@
             </p>
 
             <a href="biology.html" target="_blank">
-                <button class="button1">Take Quiz Now <span class="time"><i class="fa">&#xf017;</i>25 min</span></button>
+                <button class="button1" onclick="checkCookie()">Take Quiz Now</button>
             </a>
 
         </div>
         <div class="physics">
-            <h1 id="head1">PHYSICS</h1>
+            <h1 class="head1">PHYSICS</h1>
             <p>
                 Physics is the natural science of matter,
                 involving the study of matter, its fundamental constituents, 
@@ -53,18 +54,18 @@
             </p>
 
             <a href="physics.html" target="_blank">
-                <button class="button2">Take Quiz Now <span class="time"><i class="fa">&#xf017;</i>25 min</span></button> 
+                <button class="button2" onclick="checkCookie()">Take Quiz Now</button> 
             </a>
         </div>
         <div class="chemistry">
-            <h1 id="head1">CHEMISTRY</h1>
+            <h1 class="head1">CHEMISTRY</h1>
             <p>
                 Chemistry is a branch of natural science that deals principally with the properties of substances,
                 the changes they undergo, and the natural laws that describe these changes.
             </p>
 
             <a href="chemistry.html" target="_blank">
-                <button class="button3">Take Quiz Now <span class="time"><i class="fa">&#xf017;</i>25 min</span></button> 
+                <button class="button3" onclick="checkCookie()">Take Quiz Now</button> 
             </a>
         </div>
     </main>
@@ -120,9 +121,10 @@
                  that govern the natural world through scientific methods">Natural Sciences</span></p>
         </div>
 
-        <hr>
+        <hr id="hrtag">
   
     </footer>
+    <script src="cookie.js"></script>
 
 </body>
 

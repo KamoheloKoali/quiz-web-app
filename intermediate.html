@@ -68,9 +68,10 @@
 
                 document.getElementById('count').innerHTML=count;
                 count--;
-                if (count === 0){
+                if (count === -1){
                     clearInterval(interval);
                     document.getElementById('count').innerHTML='0';
+                    timerunout();
                     alert("You're out of time!");
                 };
 
@@ -1149,7 +1150,7 @@
                         const heading = document.createElement("h3");
                         const par = document.createElement("p");
                         const text = document.createTextNode("Correct!");
-                        const ans = document.createTextNode("Ranunculus bulbosus and Ranunculus repens")
+                        const ans = document.createTextNode("A lack of magnesium in the soil")
                         const emoji = document.createTextNode("😀");
 
                         // append to webpage
@@ -1225,7 +1226,7 @@
                             const heading = document.createElement("h3");
                             const par = document.createElement("p");
                             const text = document.createTextNode("Wrong!");
-                            const ans = document.createTextNode("The correct answer is Ranunculus bulbosus and Ranunculus repens")
+                            const ans = document.createTextNode("The correct answer is a lack of magnesium in the soil")
                             const emoji = document.createTextNode("🙁");
 
                             // append to webpage
@@ -1542,11 +1543,11 @@
 
 
                             order1: function(){
-                            document.getElementById("question").innerHTML = "Which pair of plant species belong to the same genus? ";
-                            opt1.innerHTML = "Juncus bulbosus and Ranunculus bulbosus";
-                            opt2.innerHTML = "Ranunculus bulbosus and Ranunculus repens";
-                            opt3.innerHTML = "Callisia repens and Juncus bulbosus";
-                            opt4.innerHTML = "Callisia repens and Ranunculus repens";
+                            document.getElementById("question").innerHTML = "Some plants have large leaves and are growing well but the leaves are turning yellow. Which factor is likely to be causing this problem? ";
+                            opt1.innerHTML = "Too much nitrate in the soil";
+                            opt2.innerHTML = "A lack of magnesium in the soil";
+                            opt3.innerHTML = "Not enough sunlight";
+                            opt4.innerHTML = "A lack of water in the soil";
                             opt1.addEventListener("click", bioquestion.two.wrong1);
                             opt2.addEventListener("click", bioquestion.two.correct);
                             opt3.addEventListener("click", bioquestion.two.wrong2);
@@ -1555,11 +1556,11 @@
                         },
 
                         order2: function(){
-                            document.getElementById("question").innerHTML = "Which pair of plant species belong to the same genus? ";
-                            opt1.innerHTML = "Callisia repens and Juncus bulbosus";
-                            opt2.innerHTML = "Callisia repens and Ranunculus repens";
-                            opt3.innerHTML = "Juncus bulbosus and Ranunculus bulbosus";
-                            opt4.innerHTML = "Ranunculus bulbosus and Ranunculus repens";
+                            document.getElementById("question").innerHTML = "Some plants have large leaves and are growing well but the leaves are turning yellow. Which factor is likely to be causing this problem?  ";
+                            opt1.innerHTML = "A lack of water in the soil ";
+                            opt2.innerHTML = "Not enough sunlight";
+                            opt3.innerHTML = "Too much nitrate in the soil";
+                            opt4.innerHTML = "A lack of magnesium in the soil";
                             opt1.addEventListener("click", bioquestion.two.wrong4);
                             opt2.addEventListener("click", bioquestion.two.wrong5);
                             opt3.addEventListener("click", bioquestion.two.wrong6);
@@ -1568,11 +1569,11 @@
                         },
 
                         order3: function(){
-                            document.getElementById("question").innerHTML = "Which pair of plant species belong to the same genus? ";
-                            opt1.innerHTML = "Juncus bulbosus and Ranunculus bulbosus";
-                            opt2.innerHTML = "Ranunculus bulbosus and Ranunculus repens";
-                            opt3.innerHTML = "Callisia repens and Juncus bulbosus";
-                            opt4.innerHTML = "Callisia repens and Ranunculus repens";
+                            document.getElementById("question").innerHTML = "Some plants have large leaves and are growing well but the leaves are turning yellow. Which factor is likely to be causing this problem?  ";
+                            opt1.innerHTML = "Too much nitrate in the soil";
+                            opt2.innerHTML = "A lack of magnesium in the soil";
+                            opt3.innerHTML = "A lack of water in the soil";
+                            opt4.innerHTML = "Not enough sunlight";
                             opt1.addEventListener("click", bioquestion.two.wrong7);
                             opt2.addEventListener("click", bioquestion.two.correct2);
                             opt3.addEventListener("click", bioquestion.two.wrong8 );
@@ -1624,7 +1625,7 @@
                             const heading = document.createElement("h3");
                             const par = document.createElement("p");
                             const text = document.createTextNode("Correct!");
-                            const ans = document.createTextNode("Nitrogen")
+                            const ans = document.createTextNode("Secretion of digestive enzymes")
                             const emoji = document.createTextNode("😀");
 
                             // append to webpage
@@ -1700,7 +1701,7 @@
                         const heading = document.createElement("h3");
                         const par = document.createElement("p");
                         const text = document.createTextNode("Wrong!");
-                        const ans = document.createTextNode("The correct answer is Nitrogen")
+                        const ans = document.createTextNode("The correct answer is secretion of digestive enzymes")
                         const emoji = document.createTextNode("🙁");
 
                         // append to webpage
@@ -2016,11 +2017,11 @@
                         },
 
                         order1: function(){
-                            document.getElementById("question").innerHTML = "Which element is found in proteins but is absent from fats?";
-                            opt1.innerHTML = "Hydrogen";
-                            opt2.innerHTML = "nitrogen";
-                            opt3.innerHTML = "Carbon";
-                            opt4.innerHTML = "Oxygen";
+                            document.getElementById("question").innerHTML = "Which function is not carried out by the liver?";
+                            opt1.innerHTML = "Formation of urea";
+                            opt2.innerHTML = "Secretion of digestive enzymes";
+                            opt3.innerHTML = "Conversion of glycogen to glucose";
+                            opt4.innerHTML = "Breakdown of alcohol";
                             opt1.addEventListener("click", bioquestion.three.wrong1);
                             opt2.addEventListener("click", bioquestion.three.correct);
                             opt3.addEventListener("click", bioquestion.three.wrong2);
@@ -2029,11 +2030,11 @@
                         },
 
                         order2: function(){
-                            document.getElementById("question").innerHTML = "Which element is found in proteins but is absent from fats?";
-                            opt1.innerHTML = "Oxygen";
-                            opt2.innerHTML = "Hydrogen";
-                            opt3.innerHTML = "Carbon";
-                            opt4.innerHTML = "Nitrogen";
+                            document.getElementById("question").innerHTML = "Which function is not carried out by the liver?";
+                            opt1.innerHTML = "Formation of urea";
+                            opt2.innerHTML = "Conversion of glycogen to glucose";
+                            opt3.innerHTML = "Breakdown of alcohol";
+                            opt4.innerHTML = "Secretion of digestive enzymes";
                             opt1.addEventListener("click", bioquestion.three.wrong4);
                             opt2.addEventListener("click", bioquestion.three.wrong5);
                             opt3.addEventListener("click", bioquestion.three.wrong6);
@@ -2042,11 +2043,11 @@
                         },
 
                         order3: function(){
-                            document.getElementById("question").innerHTML = "Which element is found in proteins but is absent from fats?";
-                            opt1.innerHTML = "Carbon";
-                            opt2.innerHTML = "Nitrogen";
-                            opt3.innerHTML = "Hydrogen";
-                            opt4.innerHTML = "Oxygen";
+                            document.getElementById("question").innerHTML = "Which function is not carried out by the liver?";
+                            opt1.innerHTML = "Breakdown of alcohol";
+                            opt2.innerHTML = "Secretion of digestive enzymes";
+                            opt3.innerHTML = "Formation of urea";
+                            opt4.innerHTML = "Conversion of glycogen to glucose";
                             opt1.addEventListener("click", bioquestion.three.wrong7);
                             opt2.addEventListener("click", bioquestion.three.correct2);
                             opt3.addEventListener("click", bioquestion.three.wrong8 );
