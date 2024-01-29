@@ -4,18 +4,25 @@
 
 body{
     background-color: hsl(34, 57%, 70%, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* main  */
 
 #options{
-    width: 40%;
+   
     background-color: hsl(0, 0%, 100%, 0.6);
     text-align: center;
-    margin: auto;
     margin-top: 180px;
     box-shadow: 1px 1px 8px 0 black;
     border-radius: 5px;
+    padding: 20px;
+    width: 500px;
+    height: 600px;
+
+
 }
 
 h1{
@@ -42,17 +49,16 @@ h4 span{
   background-color: hsla(0, 0%, 30%, 0.6);
   font-family: sans-serif;
   font-weight: bolder;
-   padding: 0 10px;
-   margin-right: 5px;
-   margin-left: 5px;
-   border-radius: 5px;
+  padding: 0 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
 }
 
 .fa{
-  position: absolute;
-  top: 25%;
-  left: 33%;
-  cursor: pointer;
+    
+    position:relative;
+    cursor: pointer;
 }
 
 h3{
@@ -76,9 +82,7 @@ h3{
     cursor: pointer;
 }
 
-#opt4{
-  margin-bottom: 15px;
-}
+
 
 #opt1:hover, #opt2:hover, #opt3:hover, #opt4:hover{
     background-color: lightcyan;
@@ -151,7 +155,10 @@ h3{
   }
 }
 
-@keyframes popwhencorrectanimation{
+
+/*------------------------feedback arlet animation------------------*/
+
+@keyframes CWpop{
   from {
     top: 48%;
   }
@@ -161,15 +168,8 @@ h3{
   }
 }
 
-@keyframes popwhenwronganimation{
-  from {
-    top: 48%;
-  }
 
-  to{
-    top: 2%;
-  }
-}
+
 
 .continue, .cancel{
   text-decoration: none;
@@ -216,6 +216,51 @@ h3{
 .popupoverlay.active, .popupcontent.active{
   visibility: visible;
 }
+
+
+.correct{
+  background-color: lawngreen;
+  animation-name: CWpop;
+  max-width: 20%;
+  max-height: 80%;
+  position: absolute;
+  top: 5%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px 0 black;
+  font-family: sans-serif;
+  font-weight:bold;
+  font-size: 1em;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+  transition:top 5s;
+  z-index:-1;
+}
+
+.wrong{
+  background-color:red;
+  max-width: 20%;
+  max-height: 80%;
+  position: absolute;
+  top: 2%;
+  border-radius: 10px;
+  box-shadow: 1px 1px 8px 0 black;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 1em;
+  animation-name: CWpop;
+  animation-duration: 1.2s;
+  animation-timing-function: ease-in-out;
+  transition: top 5s;
+  z-index: -1;
+}
+
+
+
+.answers{
+  border: 1px solid red;
+}
+
+
 
 @media only screen and (min-width: 320px) and (max-width: 480px) {
   #options{
@@ -313,3 +358,4 @@ h4 span{
 }
 
 }
+
