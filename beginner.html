@@ -12,7 +12,7 @@
         <style>
 
            
-            #home{
+            /*#home{
                 font-size: 48px;
                 position: relative;
                 width:  60px;
@@ -28,7 +28,7 @@
                 position: relative;
                 display: inline-block;
                 margin: 0px;
-            }
+            }*/
 
             #countdown{
                 font-family: san-serif;
@@ -3413,8 +3413,9 @@ random: function(){
             updateTime();
 
             // If time runs out, stop the countdown
-            if(totalTime == 0){
+            if(totalTime == -1){
                 clearInterval(interval);
+                timerunout();
                 return;
             }
         }, 1000);
