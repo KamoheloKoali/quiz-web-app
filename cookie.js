@@ -27,10 +27,8 @@ function getCookie(cname) {
   return "";
 }
 
-let user = getCookie("username");
-
 function checkCookie() {
-  
+  let user = getCookie("username");
   
   if (user != "") {
 

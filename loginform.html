@@ -33,9 +33,9 @@
             </div>
 
             <span>or use your email for registration</span>
-            <input type="text" placeholder="Username"  id="name" name="name"/>
-            <input type="email" placeholder="Email"  name="email"/>
-            <input type="password" placeholder="Password" name="password" minlength="8" maxlength="15"/>
+            <input type="text" placeholder="Username"  id="name" name="name" required/>
+            <input type="email" placeholder="Email"  name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
+            <input type="password" placeholder="Password" name="password" minlength="8" maxlength="15" required/>
             <button class="su" onclick="document.location.assign('/Home.html')">Sign Up</button>
         </form>
     </div>
@@ -50,9 +50,9 @@
             </div>
 
             <span>or use your account</span>
-            <input type="text" placeholder="Username"name="name"/>
-            <input type="email" placeholder="Email" name="email"/>
-            <input type="password" placeholder="Password" name="password"/>
+            <input type="text" placeholder="Username"name="name" required/>
+            <input type="email" placeholder="Email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required/>
+            <input type="password" placeholder="Password" name="password" minlength="8" maxlength="15" required/>
             <a href="" target="_blank" class="forgot">I Forgot my Password</a>
             <button class="si" onclick="document.location.assign('/Home.html')">Sign In</button>
         </form>
