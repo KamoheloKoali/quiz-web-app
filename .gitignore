@@ -1,4 +1,6 @@
-# ignore all images and pdf files
+# ignore all images, pdf files and text files
 
 *webp
 *avif
+*pdf
+*txt

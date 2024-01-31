@@ -92,6 +92,35 @@ body{
     text-align: center;
 }
 
+/* leaderboard  styling */
+
+#scoretable{
+    background-color: hsl(0, 0%, 30%, 0.5);
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: x-large;
+    text-align: center;
+    visibility: hidden;
+}
+
+table td{
+    padding: 10px;
+    border-top: solid 2px hsla(0, 0%, 50%, 0.5);
+}
+
+.score{
+    border-left: solid 2px hsla(0, 0%, 50%, 0.5);
+}
+
+/* make score table visible after finishing quiz */
+
+.visible{
+    visibility: visible;
+}
+
+/* responsiveness*/
 @media only screen and (min-width: 320px) and (max-width: 480px) {
 
     body{
@@ -131,6 +160,25 @@ body{
         background-color: hsla(0, 0%, 35%, 0.4); 
         color: aliceblue;
     }
+
+    /* leaderboard  styling */
+
+#scoretable{
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+table td{
+    padding: 10px;
+    border-top: solid 1px hsla(0, 0%, 100%, 0.1);
+}
+
+.score{
+    border-left: solid 1px hsla(0, 0%, 100%, 0.1);
+}
 }
 
 @media only screen and (min-width: 481px) and (max-width: 768px) {
@@ -183,6 +231,26 @@ body{
         font-size: x-large;
     }
 
+    /* leaderboard  styling */
+
+#scoretable{
+    opacity: 1;
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+table td{
+    padding: 10px;
+    border-top: solid 1px hsla(0, 0%, 100%, 0.1);
+}
+
+.score{
+    border-left: solid 1px hsla(0, 0%, 100%, 0.1);
+}
+
 }
 
 @media only screen and (min-width: 769px) and (max-width: 1024px) {
@@ -234,4 +302,24 @@ body{
         color: aliceblue;
         font-size: x-large;
     } 
+
+    /* leaderboard  styling */
+
+#scoretable{
+    opacity: 1;
+    width: 100%;
+    border-collapse: collapse;
+    font-family: sans-serif;
+    font-weight: bolder;
+    font-size: x-large;
+}
+
+table td{
+    padding: 10px;
+    border-top: solid 1px hsla(0, 0%, 100%, 0.1);
+}
+
+.score{
+    border-left: solid 1px hsla(0, 0%, 100%, 0.1);
+}
 }
