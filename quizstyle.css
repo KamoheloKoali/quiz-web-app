@@ -81,6 +81,35 @@ h3{
     box-shadow: 1px 1px 8px 0 grey;
 }
 
+/* div tyle for when the time has run out */
+
+.timediv{          
+  background-color: red;
+  max-width: 20%;
+  max-Height: 80%;
+  z-index: -1;
+  position: absolute;
+  top: 13%;
+  right: 30%;
+  border-radius: 10px;
+  box-shadow: 0px 4px 25px 0 black;
+  font-family: sans-serif;
+  font-weight:bold;
+  font-size: 1em;
+  animation: timedivanimation;
+  animation-duration: 5s;
+  animation-timing-function: "ease-in-out";
+  transition: top 5s;
+  display: none;
+  
+}
+
+.timediv.visible{
+  display: block;
+}
+
+/* next button */
+
 #next{
   display: flex;
   justify-content: space-between;
@@ -111,6 +140,8 @@ h3{
   background-color: hsla(0, 0%, 80%);
   box-shadow: 1px 1px 15px 0 hsla(0, 0%, 0%, 0.5);
 }
+
+/* animation */
 
 @keyframes anim{
   from {
@@ -162,7 +193,7 @@ h3{
 }
 
 
-
+/* modal window*/
 
 .continue, .cancel{
   text-decoration: none;
@@ -180,7 +211,6 @@ h3{
   background-color: rgb(102, 102, 102);
 }
 
-/*modal window*/
 .popupoverlay{
   background-color: rgba(0, 0, 0, 0.8);
   border: 2px solid rgb(102, 102, 102);

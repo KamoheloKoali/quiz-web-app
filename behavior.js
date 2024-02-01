@@ -1,5 +1,6 @@
 
 let onchoose = 0;
+let onchoose_time = 0;
 
 //********************** setting the score element-********************
 
@@ -28,13 +29,16 @@ function timer(){
     count--;
 
     if (count === -1){
-
         clearInterval(interval);
-        document.getElementById('count').innerHTML = '0';
+        timerunout();
+        //document.getElementById('count').innerHTML = '0';
         
     };
 
+    }, 1000);
+
     switch(onchoose){
+
         case 1:
             clearInterval(interval);
             break;
@@ -73,8 +77,6 @@ function timer(){
             break;  
 
     };
-
-    }, 1000);
 };
 
 //*************************Calling question and answer div****************************
@@ -97,7 +99,7 @@ const div6 = document.createElement("div");
 const div7 = document.createElement("div");
 const div8 = document.createElement("div");
 const div9 = document.createElement("div");
-const timediv = document.querySelector("divtimer");
+const timediv = document.querySelector("timediv");
 
 
 //************************Removing changes on page for following question**************
@@ -138,13 +140,21 @@ function removechanges(){
         
 
     // stop button animation
-    button.style.animation = "none";     
+    button.style.animation = "none"; 
+    
+    /* make timediv invisible */
+    $(document).ready(function(){
+        $(".timediv").removeClass("visible");
+});
     
     //enable buttons for answers
     opt1.disabled = false;
     opt2.disabled = false;
     opt3.disabled = false;
     opt4.disabled = false;
+
+    //reset timer
+    timer();
 
 
 };
@@ -164,16 +174,11 @@ const button = document.getElementById("nextbutton");
 // when time runs out
 function timerunout(){
 
-    // add div
-    const text = document.createTextNode("You\'ve run out time!!😦");
-    const par = document.createElement("p");
-    const heading = document.createElement("h3");
-
-    // append to webpage
-    element.appendChild(timediv);
-    timediv.appendChild(heading);
-    timediv.appendChild(par);
-    heading.appendChild(text);
+    /* make timediv visible*/
+    $(document).ready(function(){
+            $(".timediv").addClass("visible");
+    });
+    
     
     //button style
     button.style.animation = "anim";
@@ -237,6 +242,27 @@ const bioquestion = {
 
 
       switch(onchoose){
+
+        case 0:
+            if(onchoose_time === 1){
+                bioquestion.two.random();
+                resert();
+                //removechanges();
+            }else if(onchoose_time === 2){
+                bioquestion.three.random();
+                resert();
+                //removechanges();
+            }else if(onchoose_time === 3){
+                bioquestion.fourth.random();
+                resert();
+                //removechanges();
+            }else if(onchoose_time === 4){
+                bioquestion.fifth.random();
+                resert();
+                //removechanges();
+            }
+            break;
+
         case 1:
             bioquestion.two.random();
             resert();
@@ -291,8 +317,10 @@ const bioquestion = {
 
      random: function(){
 
-          // let run = Math.floor(Math.random() * 3);
+        //next if onchoose = 0
+        onchoose_time = 1;
 
+        //remove div
         removechanges();
         bioquestion.one.order1();
         button.disabled = true;
@@ -615,8 +643,9 @@ const bioquestion = {
         },
 
         random: function(){
-                
-            onchoose = 0;
+
+            //next if onchoose = 0
+            onchoose_time = 2;
 
             document.getElementById("questionnum").innerHTML = "2 of 10 questions";
 
@@ -625,7 +654,7 @@ const bioquestion = {
             bioquestion.two.order1();
             button.disabled = true;
 
-            timer();
+            //timer();
         }
     },
 
@@ -778,8 +807,8 @@ const bioquestion = {
            
 
             random: function(){
-                   
-                onchoose = 0;
+                //next if onchoose = 0
+                onchoose_time = 3;
 
                     // add question number
                 document.getElementById("questionnum").innerHTML = "3 of 10 questions";
@@ -790,7 +819,7 @@ const bioquestion = {
                 bioquestion.three.order1();
                 button.disabled = true;
 
-                timer();
+                //timer();
             }
         },
 
@@ -942,8 +971,9 @@ const bioquestion = {
 
                
             random: function(){
-                
-               onchoose = 0;
+
+                //next if onchoose = 0
+                onchoose_time = 4;
 
                     // add question number
                 document.getElementById("questionnum").innerHTML = "4 of 10 questions";
@@ -956,7 +986,7 @@ const bioquestion = {
                 bioquestion.fourth.order1();
                 button.disabled = true;
                 
-                timer();
+                //timer();
             }
         },
 
@@ -1109,8 +1139,6 @@ const bioquestion = {
 
             random: function(){
                     
-                onchoose = 0;
-                    
                 document.getElementById("questionnum").innerHTML = "5 of 10 questions";
                     
                 removechanges();   
@@ -1118,7 +1146,7 @@ const bioquestion = {
                 bioquestion.fifth.order1();
                 button.disabled = true;
                 
-                timer();
+                //timer();
             }
             },
             
@@ -1272,8 +1300,6 @@ const bioquestion = {
                 
 
             random: function(){
-               
-                onchoose = 0;
 
                 // add question number
                 document.getElementById("questionnum").innerHTML = "6 of 10 questions";
@@ -1286,7 +1312,7 @@ const bioquestion = {
                 bioquestion.sixth.order1();
                 button.disabled = true;
 
-                timer();
+                //timer();
             }
             },
 
@@ -1436,7 +1462,6 @@ opt4.addEventListener("click", bioquestion.seventh.wrong3);
 
 random: function(){
     
-onchoose = 0;
 // add question number
 document.getElementById("questionnum").innerHTML = "7 of 10 questions";
 // remove div 
@@ -1445,7 +1470,7 @@ removechanges();
 bioquestion.seventh.order1();
 button.disabled = true;
 
-timer();
+//timer();
 
 }
 
@@ -1597,7 +1622,6 @@ opt4.addEventListener("click", bioquestion.eighth.wrong3);
 
 random: function(){
 
-onchoose = 0;
 // add question number
 document.getElementById("questionnum").innerHTML = "8 of 10 questions";
 // remove div 
@@ -1607,7 +1631,7 @@ removechanges();
 bioquestion.eighth.order1();
 button.disabled = true;
 
-timer();
+//timer();
 
 }
 
@@ -1759,7 +1783,6 @@ opt4.addEventListener("click", bioquestion.ninth.wrong3);
 
 random: function(){
 
-onchoose = 0;
 // add question number
 document.getElementById("questionnum").innerHTML = "9 of 10 questions";
 
@@ -1771,7 +1794,7 @@ removechanges();
 bioquestion.ninth.order1();
 button.disabled = true;
 
-timer();
+//timer();
 
 }
 
@@ -1929,7 +1952,6 @@ opt4.addEventListener("click", bioquestion.tenth.wrong3);
 
 random: function(){
 
-onchoose = 0;
 // add question number
 document.getElementById("questionnum").innerHTML = "10 of 10 questions";
 // remove div 
@@ -1940,7 +1962,7 @@ bioquestion.tenth.order1();
 button.disabled = true;
 
 
-timer();
+//timer();
 
 }
 
